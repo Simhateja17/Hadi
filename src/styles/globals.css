@@ -1,38 +1,294 @@
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap');
 
 :root {
-  --background: #F5F3F1;
-  --foreground: #4A4A4A;
-  --primary: #E9E5E1;
-  --text-dark: #4A4A4A;
-  --text-light: #6B6B6B;
-  --accent: #C0C0C0;
+  /* Minimalist Color Palette */
+  --background: #E5DDD7;
+  --foreground: #2C1E1B;
+  --primary: #A8A4A1;
+  --primary-light: #B2AEAB;
+  --secondary: #1877F2;
+  --accent: #B2AEAB;
+  --text-dark: #2C1E1B;
+  --text-medium: #2C1E1B;
+  --text-light: #2C1E1B;
+  --text-muted: #A8A4A1;
+  --border: #A8A4A1;
+  --card: #E5DDD7;
+  --shadow: 0 1px 3px rgba(44, 30, 27, 0.1);
+  --shadow-lg: 0 4px 12px rgba(44, 30, 27, 0.15);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-primary: var(--primary);
-  --color-text-dark: var(--text-dark);
-  --color-text-light: var(--text-light);
+  --color-primary-light: var(--primary-light);
+  --color-secondary: var(--secondary);
   --color-accent: var(--accent);
-  --font-sans: 'Montserrat', sans-serif;
-  --font-mono: var(--font-geist-mono);
+  --color-text-dark: var(--text-dark);
+  --color-text-medium: var(--text-medium);
+  --color-text-light: var(--text-light);
+  --color-text-muted: var(--text-muted);
+  --color-border: var(--border);
+  --color-card: var(--card);
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-serif: 'Crimson Text', Georgia, serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
+/* Custom Utility Classes */
 @layer utilities {
-  @keyframes scroll {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); } /* Translate by half the width */
+  .card-shadow {
+    box-shadow: var(--shadow);
   }
-  .animate-scroll {
-    animation: scroll 40s linear infinite;
+  
+  .card-shadow-lg {
+    box-shadow: var(--shadow-lg);
+  }
+  
+  .hover-lift {
+    transition: all 0.2s ease;
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  /* Line Clamp Utilities */
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .section-spacing {
+    padding: 8rem 0;
+  }
+  
+  .section-spacing-lg {
+    padding: 12rem 0;
+  }
+  
+  .container-custom {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .container-wide {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 3rem;
+  }
+
+  /* Full Screen Section Utilities */
+  .full-screen-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .scrollable-content {
+    max-height: 100vh;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary) transparent;
+  }
+
+  .scrollable-content::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .scrollable-content::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollable-content::-webkit-scrollbar-thumb {
+    background-color: var(--primary);
+    border-radius: 3px;
+  }
+
+  .scrollable-content::-webkit-scrollbar-thumb:hover {
+    background-color: var(--primary-light);
+  }
+}
+
+/* Typography Enhancements */
+.heading-primary {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.heading-secondary {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.text-body {
+  font-family: var(--font-sans);
+  line-height: 1.8;
+  font-size: 1.1rem;
+}
+
+/* Button Styles */
+.btn-primary {
+  background: var(--primary);
+  color: var(--text-dark);
+  padding: 1rem 2.5rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  font-size: 1.1rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+}
+
+.btn-primary:hover {
+  background: var(--primary-light);
+}
+
+.btn-secondary {
+  background: var(--secondary);
+  color: white;
+  padding: 1rem 2.5rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  font-size: 1.1rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+}
+
+.btn-secondary:hover {
+  opacity: 0.9;
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--text-dark);
+  padding: 1rem 2.5rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  font-size: 1.1rem;
+  border: 2px solid var(--border);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+}
+
+.btn-outline:hover {
+  background: var(--primary);
+  border-color: var(--primary);
+}
+
+/* Form Styles */
+.form-input {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  border: 2px solid var(--border);
+  border-radius: 0.5rem;
+  font-size: 1.1rem;
+  transition: all 0.2s ease;
+  background: var(--card);
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container-custom {
+    padding: 0 1.5rem;
+  }
+  
+  .container-wide {
+    padding: 0 1.5rem;
+  }
+  
+  .section-spacing {
+    padding: 5rem 0;
+  }
+  
+  .section-spacing-lg {
+    padding: 7rem 0;
+  }
+}
+
+/* Backdrop blur utilities for glassmorphism effect */
+@supports (backdrop-filter: blur(0)) or (-webkit-backdrop-filter: blur(0)) {
+  .backdrop-blur-sm {
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+  }
+  
+  .backdrop-blur {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+  
+  .backdrop-blur-md {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  
+  .backdrop-blur-lg {
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+  
+  .backdrop-blur-xl {
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+  }
+}
+
+/* Fallback for browsers that don't support backdrop-filter */
+@supports not ((backdrop-filter: blur(0)) or (-webkit-backdrop-filter: blur(0))) {
+  .backdrop-blur-md {
+    background-color: rgba(255, 255, 255, 0.3);
   }
 }
