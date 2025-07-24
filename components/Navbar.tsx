@@ -7,7 +7,6 @@ export const Navbar = () => {
         <nav className="bg-primary shadow-sm p-4">
             <div className="container mx-auto flex justify-between items-center">
                 <Link href="/">
-                    {/* Assuming you have the logo image in /public/logo.png */}
                     <Image src="/logo.png" alt="We Social Workers UK Logo" width={80} height={80} />
                 </Link>
                 <div className="flex space-x-6 text-text-dark font-semibold">

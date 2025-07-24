@@ -1,12 +1,11 @@
 // src/pages/admin/dashboard.tsx
 import Link from 'next/link';
 import withAuth from '../../components/auth/withAuth';
+import { logout } from '../../utils/auth';
 
 const AdminDashboard = () => {
     const handleLogout = () => {
-        localStorage.removeItem('admin_token');
-        // You might want to use router.push('/admin/login') here as well
-        window.location.href = '/admin/login';
+        logout();
     };
 
     return (
