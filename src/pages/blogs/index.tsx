@@ -64,7 +64,7 @@ export default function BlogListPage({ blogs }: BlogListPageProps) {
             <section className="min-h-screen py-20">
                 <div className="container-wide h-full">
                     {safeBlogs.length > 0 ? (
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 h-full overflow-y-auto">
+                        <div className="grid grid-cols-3 gap-8 h-full overflow-y-auto">
                             {safeBlogs.map((blog) => (
                                 <div key={blog.id}>
                                     <BlogCard blog={blog} />
