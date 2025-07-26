@@ -1,7 +1,7 @@
 // src/pages/blogs/index.tsx
-import { GetStaticProps } from 'next';
+import { GetServerSideProps } from 'next';
 import Link from 'next/link';
-import { BlogCard } from '../../components/BlogCard';
+import Image from 'next/image';
 
 type Blog = {
     id: string;
@@ -20,10 +20,63 @@ export default function BlogListPage({ blogs }: BlogListPageProps) {
     // Ensure blogs is always an array
     const safeBlogs = Array.isArray(blogs) ? blogs : [];
     
+    // Fixed positions (hardcoded)
+    const headingHorizontal = 11;
+    const headingVertical = -100;
+    const gridHorizontal = 21;
+    const gridVertical = -49;
+
+    // Calculate transforms for positioning
+    const calculateGridTransform = (horizontal: number, vertical: number) => {
+        const horizontalPercentage = horizontal * 0.5;
+        const verticalPercentage = vertical * 0.3;
+        return `translate(${horizontalPercentage}%, ${verticalPercentage}%)`;
+    };
+
+    const calculateHeadingTransform = (horizontal: number, vertical: number) => {
+        const horizontalPercentage = horizontal * 0.5;
+        const verticalPercentage = vertical * 0.3;
+        return `translate(${horizontalPercentage}%, ${verticalPercentage}%)`;
+    };
+    
+    // Helper function to get snippet
+    const getSnippet = (content: string) => {
+        return content.substring(0, 140) + '...';
+    };
+
+    // Helper function to format date
+    const formatDate = (dateString: string) => {
+        return new Date(dateString).toLocaleDateString('en-UK', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+        });
+    };
+
+    // Helper function to calculate reading time
+    const getReadingTime = (content: string) => {
+        return Math.ceil(content.length / 200);
+    };
+
+    // Array of professional fallback images
+    const fallbackImages = [
+        "/Friendly Medical Professional Illustration-Photoroom.png",
+        "/Cartoon Hotel Receptionist Illustration-Photoroom.png",
+        "/Guided Tour-Photoroom.png",
+        "/Professional Cartoon Man in Suit-Photoroom.png",
+        "/Confident Professional Woman Illustration-Photoroom.png",
+        "/Confident Woman Illustration-Photoroom.png"
+    ];
+
+    // Helper function to get fallback image
+    const getFallbackImage = (blogId: string) => {
+        return fallbackImages[parseInt(blogId) % fallbackImages.length];
+    };
+    
     return (
         <div>
-            {/* Header Section - Full Screen */}
-            <section className="min-h-screen flex items-center bg-gradient-hero py-20 relative overflow-hidden">
+            {/* Header Section - Reduced Height */}
+            <section className="min-h-[60vh] flex items-center bg-gradient-hero py-20 relative overflow-hidden">
                 {/* Background Elements */}
                 <div className="absolute inset-0">
                     <div className="absolute inset-0 bg-caring-pattern opacity-40"></div>
@@ -32,58 +85,149 @@ export default function BlogListPage({ blogs }: BlogListPageProps) {
                 </div>
 
                 <div className="relative container-wide w-full z-10">
-                    <div className="grid lg:grid-cols-2 gap-16 items-center">
-                        {/* Content Section */}
-                        <div className="text-center lg:text-left space-y-8">
-                            {/* Badge */}
-                            <div className="inline-flex items-center px-8 py-4 glass-trust rounded-full border border-white/30 shadow-peaceful">
-                                <svg className="w-6 h-6 text-primary mr-4" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fillRule="evenodd" d="M12 2C13.1 2 14 2.9 14 4V5H16C17.1 5 18 5.9 18 7V19C18 20.1 17.1 21 16 21H4C2.9 21 2 20.1 2 19V7C2 5.9 2.9 5 4 5H6V4C6 2.9 6.9 2 8 2H12ZM8 4V5H12V4H8ZM4 7V19H16V7H4ZM8 9H12V11H8V9ZM8 13H16V15H8V13Z" clipRule="evenodd" />
-                                </svg>
-                                <span className="text-lg font-semibold text-primary font-body lexend-semibold">Professional Insights</span>
-                            </div>
-
-                            <h1 className="heading-primary text-4xl md:text-5xl lg:text-6xl text-black font-display">
-                                <span className="autour-one-regular">Expert Knowledge for</span>
-                                <span className="block text-gradient-warm autour-one-regular">Modern Practice</span>
-                            </h1>
-                            <p className="text-body text-black/90 max-w-2xl lg:mx-0 mx-auto leading-relaxed font-body lexend-regular">
-                                Expert articles, professional guidance, and insights from the UK social work community. Stay informed with the latest trends, best practices, and technology-enhanced approaches to social work.
-                            </p>
-
-                            {/* Stats */}
-                            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-8">
-                                <div className="text-center glass-trust rounded-2xl p-6 border border-white/20">
-                                    <div className="text-3xl font-semibold text-black mb-2 autour-one-regular">{safeBlogs.length}+</div>
-                                    <div className="text-black/80 lexend-regular">Expert Articles</div>
-                                </div>
-                                <div className="text-center glass-trust rounded-2xl p-6 border border-white/20">
-                                    <div className="text-3xl font-semibold text-black mb-2 autour-one-regular">25+</div>
-                                    <div className="text-black/80 lexend-regular">Professional Authors</div>
-                                </div>
-                                <div className="text-center glass-trust rounded-2xl p-6 border border-white/20">
-                                    <div className="text-3xl font-semibold text-black mb-2 autour-one-regular">5k+</div>
-                                    <div className="text-black/80 lexend-regular">Monthly Readers</div>
-                                </div>
-                            </div>
-                        </div>
+                    <div 
+                        className="text-center transition-transform duration-500 ease-in-out"
+                        style={{ transform: calculateHeadingTransform(headingHorizontal, headingVertical) }}
+                    >
+                        <h1 className="heading-primary text-4xl md:text-5xl lg:text-6xl text-black font-display">
+                            <span className="emilys-candy-regular text-primary">Expert Knowledge for</span>
+                            <span className="block text-gradient-warm emilys-candy-regular">Modern Practice</span>
+                        </h1>
                     </div>
                 </div>
             </section>
 
-            {/* Blog Grid Section - Scrollable Full Screen */}
-            <section className="min-h-screen py-20">
-                <div className="container-wide h-full">
+            {/* Blog Grid Section - HomePage Style */}
+            <section className="py-20 bg-background">
+                <div className="w-full py-32 overflow-visible" style={{ minHeight: '120vh' }}>
                     {safeBlogs.length > 0 ? (
-                        <div className="grid grid-cols-3 gap-8 h-full overflow-y-auto">
+                        <div 
+                            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto transition-transform duration-500 ease-in-out"
+                            style={{ 
+                                transform: calculateGridTransform(gridHorizontal, gridVertical)
+                            }}
+                        >
                             {safeBlogs.map((blog) => (
-                                <div key={blog.id}>
-                                    <BlogCard blog={blog} />
+                                <Link key={blog.id} href={`/blogs/${blog.id}`} className="group block">
+                                    <article className="relative bg-white rounded-3xl overflow-hidden shadow-peaceful hover:shadow-caring transition-all duration-500 group-hover:-translate-y-2 border border-white/20 backdrop-blur-sm h-full">
+                                        {/* Caring accent line */}
+                                        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-warm"></div>
+                                        
+                                        {/* Image Section with overlay */}
+                                        <div className="relative h-56 overflow-hidden">
+                                            {blog.imageUrl ? (
+                                                <>
+                                                    <Image 
+                                                        src={blog.imageUrl.startsWith('http') ? blog.imageUrl : `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001'}${blog.imageUrl}`} 
+                                                        alt={blog.title} 
+                                                        fill
+                                                        className="object-cover object-center group-hover:scale-110 transition-transform duration-700"
+                                                        style={{ objectPosition: 'center 20%' }}
+                                                    />
+                                                    {/* Caring overlay */}
+                                                    <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-secondary/20 group-hover:from-primary/30 group-hover:to-secondary/30 transition-all duration-500"></div>
+                                                </>
+                                            ) : (
+                                                <div className="relative w-full h-full bg-gradient-to-br from-surface-warm via-primary/5 to-secondary/10">
+                                                    {/* Caring pattern overlay */}
+                                                    <div className="absolute inset-0 bg-caring-pattern opacity-10"></div>
+                                                    <div className="flex items-center justify-center h-full p-6 relative z-10">
+                                                        <div className="text-center space-y-4">
+                                                            <Image
+                                                                src={getFallbackImage(blog.id)}
+                                                                alt="Professional social worker illustration"
+                                                                width={100}
+                                                                height={120}
+                                                                className="w-auto h-24 object-contain mx-auto group-hover:scale-110 transition-transform duration-500"
+                                                            />
+                                                            <div className="w-12 h-1 bg-gradient-peaceful rounded-full mx-auto opacity-60"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            )}
+                                            
+                                            {/* Floating expertise badge */}
+                                            <div className="absolute top-4 right-4">
+                                                <div className="glass-trust px-4 py-2 rounded-2xl border border-white/30 shadow-soft">
+                                                    <div className="flex items-center gap-2">
+                                                        <div className="w-2 h-2 bg-gradient-warm rounded-full animate-pulse"></div>
+                                                        <span className="text-xs font-semibold text-primary font-body emilys-candy-regular">Expert Insight</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            {/* Reading time badge */}
+                                            <div className="absolute bottom-4 left-4">
+                                                <div className="flex items-center gap-2 glass-trust px-3 py-1.5 rounded-xl border border-white/20">
+                                                    <svg className="w-3 h-3 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                                                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
+                                                    </svg>
+                                                    <span className="text-xs font-medium text-primary font-body">{getReadingTime(blog.content)} min read</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                                                {/* Content Section with caring spacing */}
+                        <div className="p-8 space-y-6 flex flex-col flex-grow">
+                            {/* Author section with warmth */}
+                            <div className="flex items-center gap-3">
+                                <div className="w-10 h-10 bg-gradient-peaceful rounded-2xl flex items-center justify-center shadow-soft">
+                                    <svg className="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
+                                    </svg>
                                 </div>
+                                <div className="flex-1">
+                                    <p className="font-semibold text-primary text-sm font-body emilys-candy-regular">{blog.author}</p>
+                                    <p className="text-xs text-text-muted font-body">{formatDate(blog.createdAt)}</p>
+                                </div>
+                            </div>
+
+                            {/* Title with caring emphasis */}
+                            <div className="space-y-3 flex-grow">
+                                <h3 className="text-xl font-bold text-primary group-hover:text-accent transition-colors duration-300 line-clamp-2 leading-tight font-display emilys-candy-regular">
+                                    {blog.title}
+                                </h3>
+                                
+                                {/* Caring divider */}
+                                <div className="flex items-center gap-3">
+                                    <div className="h-0.5 flex-1 bg-gradient-to-r from-primary/20 via-secondary/30 to-transparent rounded-full"></div>
+                                    <div className="w-2 h-2 bg-gradient-warm rounded-full"></div>
+                                </div>
+                                
+                                {/* Excerpt with breathing room */}
+                                <p className="text-text-secondary line-clamp-3 leading-relaxed text-sm font-body">
+                                    {getSnippet(blog.content)}
+                                </p>
+                            </div>
+
+                            {/* Action section with personality */}
+                            <div className="flex items-center justify-between pt-4">
+                                <div className="flex items-center gap-3 text-text-secondary group-hover:text-primary transition-all duration-300">
+                                    <span className="font-semibold text-sm font-body emilys-candy-regular">Discover More</span>
+                                    <div className="w-8 h-8 bg-gradient-to-br from-surface-warm to-primary/10 rounded-xl flex items-center justify-center group-hover:from-gradient-secondary group-hover:to-accent shadow-soft group-hover:shadow-caring transition-all duration-300">
+                                        <svg className="w-4 h-4 group-hover:text-white group-hover:translate-x-0.5 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                                        </svg>
+                                    </div>
+                                </div>
+                                
+                                {/* Caring indicator */}
+                                <div className="flex items-center gap-1">
+                                    <div className="w-1 h-1 bg-gradient-warm rounded-full animate-pulse"></div>
+                                    <div className="w-1 h-1 bg-gradient-peaceful rounded-full animate-pulse" style={{ animationDelay: '0.2s' }}></div>
+                                    <div className="w-1 h-1 bg-gradient-secondary rounded-full animate-pulse" style={{ animationDelay: '0.4s' }}></div>
+                                </div>
+                            </div>
+                        </div>
+
+                                        {/* Subtle caring glow effect */}
+                                        <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-primary/0 via-transparent to-secondary/0 group-hover:from-primary/5 group-hover:to-secondary/5 transition-all duration-500 pointer-events-none"></div>
+                                    </article>
+                                </Link>
                             ))}
                         </div>
                     ) : (
-                        <div className="text-center py-20 flex items-center justify-center h-full">
+                        <div className="text-center py-20">
                             <div className="max-w-md mx-auto space-y-8">
                                 <div className="w-24 h-24 mx-auto bg-primary-light rounded-2xl flex items-center justify-center">
                                     <svg className="w-12 h-12 text-text-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -106,118 +250,35 @@ export default function BlogListPage({ blogs }: BlogListPageProps) {
                 </div>
             </section>
 
-            {/* Newsletter CTA */}
-            <section className="section-spacing bg-primary-light">
-                <div className="container-wide">
-                    <div className="max-w-5xl mx-auto bg-card rounded-3xl p-12 md:p-16 card-shadow-lg border border-border">
-                        <div className="grid md:grid-cols-2 gap-12 items-center">
-                            <div className="space-y-6">
-                                <h3 className="heading-secondary text-3xl md:text-4xl text-text-dark autour-one-regular">
-                                    Never Miss an Update
-                                </h3>
-                                <p className="text-body text-text-medium lexend-regular">
-                                    Subscribe to our newsletter for the latest social work insights, job opportunities, and professional development resources.
-                                </p>
-                            </div>
-                            <div className="space-y-6">
-                                <form className="space-y-4">
-                                    <input
-                                        type="email"
-                                        placeholder="Enter your email address"
-                                        className="form-input"
-                                    />
-                                    <button type="submit" className="btn-primary w-full justify-center">
-                                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-                                        </svg>
-                                        Subscribe Now
-                                    </button>
-                                </form>
-                                <p className="text-sm text-text-muted">
-                                    By subscribing, you agree to our privacy policy and terms of service.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            {/* Footer Boundary */}
+            <div className="h-px bg-gradient-to-r from-transparent via-black/30 to-transparent"></div>
         </div>
     );
 }
 
-export const getStaticProps: GetStaticProps = async () => {
-    // Mock blog data with thumbnails
-    const mockBlogs: Blog[] = [
-        {
-            id: '1',
-            title: 'Social Work England Registration: Complete Guide for 2024',
-            author: 'Dr. Sarah Johnson',
-            content: 'Navigating the Social Work England registration process can be complex for both domestic and international social workers. This comprehensive guide covers everything you need to know about the registration requirements, documentation needed, and step-by-step process to ensure your application is successful. We explore the new updates for 2024, including changes to CPD requirements and the assessment process for international applicants.',
-            imageUrl: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-            createdAt: '2024-01-15T10:00:00Z'
-        },
-        {
-            id: '2',
-            title: 'Building Resilience in Social Work Practice',
-            author: 'Mark Thompson',
-            content: 'Social work can be emotionally demanding, making resilience a crucial skill for practitioners. This article explores evidence-based strategies for building personal and professional resilience, including mindfulness techniques, peer support systems, and organizational approaches to prevent burnout. Learn how to maintain your well-being while providing effective support to vulnerable populations.',
-            imageUrl: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-            createdAt: '2024-01-12T14:30:00Z'
-        },
-        {
-            id: '3',
-            title: 'International Social Workers: UK Pathway Guide',
-            author: 'Dr. Priya Patel',
-            content: 'Are you an international social worker looking to practice in the UK? This detailed guide outlines the pathways available for qualified social workers from overseas, including the assessment process, required documentation, and tips for successful integration into the UK social work system. We also cover the latest policy changes and support available for international practitioners.',
-            imageUrl: 'https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-            createdAt: '2024-01-10T09:15:00Z'
-        },
-        {
-            id: '4',
-            title: 'Mental Health First Aid for Social Workers',
-            author: 'Lisa Chen',
-            content: 'Mental health challenges are prevalent among the populations social workers serve. This article provides essential guidance on mental health first aid, recognizing signs of mental health crises, and appropriate intervention strategies. Learn about the latest approaches to supporting individuals experiencing mental health difficulties and when to refer to specialist services.',
-            imageUrl: 'https://images.unsplash.com/photo-1559757175-0eb30cd8c063?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-            createdAt: '2024-01-08T11:45:00Z'
-        },
-        {
-            id: '5',
-            title: 'Safeguarding Best Practices in Children\'s Services',
-            author: 'James Wilson',
-            content: 'Effective safeguarding is at the heart of children\'s social work. This comprehensive article reviews current best practices in safeguarding, including risk assessment tools, multi-agency working, and the latest research on child protection. We examine case studies and provide practical guidance for social workers at all levels of experience.',
-            imageUrl: 'https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-            createdAt: '2024-01-05T16:20:00Z'
-        },
-        {
-            id: '6',
-            title: 'Professional Development: CPD Requirements Explained',
-            author: 'Dr. Emma Roberts',
-            content: 'Continuing Professional Development (CPD) is essential for maintaining your social work registration. This article breaks down the CPD requirements, provides examples of qualifying activities, and offers strategies for planning your professional development. Discover how to make the most of your CPD opportunities and advance your career.',
-            imageUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-            createdAt: '2024-01-03T13:10:00Z'
-        },
-        {
-            id: '7',
-            title: 'Working with Vulnerable Adults: Key Considerations',
-            author: 'Michael Brown',
-            content: 'Adult social work presents unique challenges and rewards. This article explores best practices for working with vulnerable adults, including person-centered approaches, capacity assessments, and safeguarding procedures. Learn about the legal framework, ethical considerations, and effective intervention strategies for supporting adults at risk.',
-            imageUrl: 'https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-            createdAt: '2024-01-01T08:30:00Z'
-        },
-        {
-            id: '8',
-            title: 'Social Work Leadership in Times of Change',
-            author: 'Dr. Rachel Green',
-            content: 'Leadership in social work requires adaptability and vision, especially during periods of change and uncertainty. This article examines the qualities of effective social work leaders, strategies for leading teams through transitions, and the importance of advocacy in leadership roles. Explore how to develop your leadership skills and make a positive impact on your organization and the people you serve.',
-            imageUrl: 'https://images.unsplash.com/photo-1556761175-b413da4baf72?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-            createdAt: '2023-12-28T12:00:00Z'
+export const getServerSideProps: GetServerSideProps = async () => {
+    try {
+        const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+        const response = await fetch(`${baseUrl}/api/blogs`);
+        
+        if (!response.ok) {
+            throw new Error('Failed to fetch blogs');
         }
-    ];
-
-    return {
-        props: {
-            blogs: mockBlogs,
-        },
-        revalidate: 60,
-    };
+        
+        const blogs = await response.json();
+        
+        return {
+            props: {
+                blogs: blogs || [],
+            },
+        };
+    } catch (error) {
+        console.error('Error fetching blogs:', error);
+        // Return empty array if API fails - no more mock data fallback
+        return {
+            props: {
+                blogs: [],
+            },
+        };
+    }
 };

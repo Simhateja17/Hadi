@@ -86,7 +86,7 @@ export const BlogScroller = ({ blogs }: BlogScrollerProps) => {
                                 {blog.imageUrl ? (
                                     <>
                                         <Image 
-                                            src={blog.imageUrl} 
+                                            src={blog.imageUrl.startsWith('http') ? blog.imageUrl : `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001'}${blog.imageUrl}`} 
                                             alt={blog.title} 
                                             fill
                                             className="object-cover object-center group-hover:scale-110 transition-transform duration-700"
@@ -140,7 +140,7 @@ export const BlogScroller = ({ blogs }: BlogScrollerProps) => {
                                 {/* Author section with warmth */}
                                 <div className="flex items-center gap-3">
                                     <div className="w-10 h-10 bg-gradient-peaceful rounded-2xl flex items-center justify-center shadow-soft">
-                                        <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                        <svg className="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 20 20">
                                             <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
                                         </svg>
                                     </div>

@@ -40,7 +40,7 @@ export const BlogCard = ({ blog }: { blog: Blog }) => {
                 <div className="relative h-64 overflow-hidden bg-surface-muted">
                     {blog.imageUrl ? (
                         <Image 
-                            src={blog.imageUrl} 
+                            src={blog.imageUrl.startsWith('http') ? blog.imageUrl : `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001'}${blog.imageUrl}`} 
                             alt={blog.title} 
                             fill
                             className="object-cover"

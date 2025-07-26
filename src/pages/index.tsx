@@ -138,7 +138,7 @@ export default function Home({ blogs }: HomeProps) {
                                         style={{ animationDelay: feature.delay }}
                                     >
                                         <div className={`w-16 h-16 ${feature.gradient} rounded-2xl flex items-center justify-center group-hover:scale-110 transition-all duration-300 shadow-warm flex-shrink-0`}>
-                                            <div className="text-white">
+                                            <div className="text-black">
                                                 {feature.icon}
                                             </div>
                                         </div>
@@ -166,37 +166,37 @@ export default function Home({ blogs }: HomeProps) {
                         {/* Content Section */}
                         <div className="text-center lg:text-left order-2 lg:order-1">
                             <div className="max-w-2xl lg:mx-0 mx-auto">
-                                <h2 className="heading-2 text-white mb-8 animate-gentle-slide-up font-display">
+                                <h2 className="heading-2 text-black mb-8 animate-gentle-slide-up font-display">
                                     <span className="emilys-candy-regular" style={{ color: '#059669' }}>Ready</span>{' '}
                                     <span className="emilys-candy-regular" style={{ color: '#000000' }}>to Make a</span>{' '}
                                     <span className="emilys-candy-regular" style={{ color: '#dc2626' }}>Greater</span>{' '}
                                     <span className="block emilys-candy-regular" style={{ color: '#1e3a8a' }}>Impact Together?</span>
                                 </h2>
                                 
-                                <p className="body-xl text-white/90 mb-12 animate-gentle-slide-up leading-relaxed font-body" style={{ animationDelay: '0.2s' }}>
+                                <p className="body-xl text-black mb-12 animate-gentle-slide-up leading-relaxed font-body" style={{ animationDelay: '0.2s' }}>
                                     Join a community of dedicated professionals committed to positive change, 
                                     personal growth, and building stronger, healthier communities.
                                 </p>
                                 
                                 {/* Community Newsletter */}
-                                <div className="glass-trust rounded-3xl p-10 border border-white/30 shadow-peaceful hover-caring">
+                                <div className="glass-trust rounded-3xl p-10 border border-white/30 shadow-peaceful">
                                     <div className="max-w-2xl mx-auto">
                                         <div className="flex items-center justify-center gap-4 mb-6">
                                             <div className="w-16 h-16 bg-gradient-warm rounded-3xl flex items-center justify-center">
-                                                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <svg className="w-8 h-8 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                                                 </svg>
                                             </div>
-                                            <h3 className="heading-3 text-primary font-display">Stay Connected</h3>
+                                            <h3 className="heading-3 text-primary font-cartoon">Stay Connected</h3>
                                         </div>
-                                        <p className="text-text-secondary mb-8 leading-relaxed font-body">Join our caring community newsletter for inspiring stories, professional insights, and opportunities to make a difference.</p>
+                                        <p className="text-text-secondary mb-8 leading-relaxed font-cartoon">Join our caring community newsletter for inspiring stories, professional insights, and opportunities to make a difference.</p>
                                         <div className="flex flex-col sm:flex-row gap-4">
                                             <input
                                                 type="email"
-                                                placeholder="Enter your email address"
+                                                placeholder="  Enter your email address"
                                                 className="form-modern flex-1"
                                             />
-                                            <button className="btn-2025 btn-primary-2025 hover-caring hover-peaceful px-8 py-4">
+                                            <button className="btn-2025 btn-primary-2025 hover-caring hover-peaceful px-8 py-4 font-cartoon">
                                                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                                                 </svg>
@@ -226,67 +226,38 @@ export default function Home({ blogs }: HomeProps) {
                     </div>
                 </div>
             </section>
+
+            {/* Footer Boundary */}
+            <div className="h-px bg-gradient-to-r from-transparent via-black/30 to-transparent"></div>
         </div>
     );
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-    // Mock blog data with detailed information - same as blogs page
-    const mockBlogs: Blog[] = [
-        {
-            id: '1',
-            title: 'Social Work England Registration: Complete Guide for 2024',
-            author: 'Dr. Sarah Johnson',
-            content: 'Navigating the Social Work England registration process can be complex for both domestic and international social workers. This comprehensive guide covers everything you need to know about the registration requirements, documentation needed, and step-by-step process to ensure your application is successful. We explore the new updates for 2024, including changes to CPD requirements and the assessment process for international applicants.',
-            imageUrl: '/Business Meeting Illustration.png',
-            createdAt: '2024-01-15T10:00:00Z'
-        },
-        {
-            id: '2',
-            title: 'Building Resilience in Social Work Practice',
-            author: 'Mark Thompson',
-            content: 'Social work can be emotionally demanding, making resilience a crucial skill for practitioners. This article explores evidence-based strategies for building personal and professional resilience, including mindfulness techniques, peer support systems, and organizational approaches to prevent burnout. Learn how to maintain your well-being while providing effective support to vulnerable populations.',
-            imageUrl: '/Fashionable Young Woman Illustration.png',
-            createdAt: '2024-01-12T14:30:00Z'
-        },
-        {
-            id: '3',
-            title: 'International Social Workers: UK Pathway Guide',
-            author: 'Dr. Priya Patel',
-            content: 'Are you an international social worker looking to practice in the UK? This detailed guide outlines the pathways available for qualified social workers from overseas, including the assessment process, required documentation, and tips for successful integration into the UK social work system. We also cover the latest policy changes and support available for international practitioners.',
-            imageUrl: '/Unity in Activism.png',
-            createdAt: '2024-01-10T09:15:00Z'
-        },
-        {
-            id: '4',
-            title: 'Mental Health First Aid for Social Workers',
-            author: 'Lisa Chen',
-            content: 'Mental health challenges are prevalent among the populations social workers serve. This article provides essential guidance on mental health first aid, recognizing signs of mental health crises, and appropriate intervention strategies. Learn about the latest approaches to supporting individuals experiencing mental health difficulties and when to refer to specialist services.',
-            imageUrl: '/Meditative Pose by the Sea.png',
-            createdAt: '2024-01-08T11:45:00Z'
-        },
-        {
-            id: '5',
-            title: 'Safeguarding Best Practices in Children\'s Services',
-            author: 'James Wilson',
-            content: 'Effective safeguarding is at the heart of children\'s social work. This comprehensive article reviews current best practices in safeguarding, including risk assessment tools, multi-agency working, and the latest research on child protection. We examine case studies and provide practical guidance for social workers at all levels of experience.',
-            imageUrl: '/Joyful Family Outdoors Illustration.png',
-            createdAt: '2024-01-05T16:20:00Z'
-        },
-        {
-            id: '6',
-            title: 'Professional Development: CPD Requirements Explained',
-            author: 'Dr. Emma Roberts',
-            content: 'Continuing Professional Development (CPD) is essential for maintaining your social work registration. This article breaks down the CPD requirements, provides examples of qualifying activities, and offers strategies for planning your professional development. Discover how to make the most of your CPD opportunities and advance your career.',
-            imageUrl: '/Corporate Meeting Illustration.png',
-            createdAt: '2024-01-03T13:10:00Z'
+    try {
+        const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+        const response = await fetch(`${baseUrl}/api/blogs`);
+        
+        if (!response.ok) {
+            throw new Error('Failed to fetch blogs');
         }
-    ];
-
-    return {
-        props: {
-            blogs: mockBlogs,
-        },
-        revalidate: 60,
-    };
+        
+        const blogs = await response.json();
+        
+        return {
+            props: {
+                blogs: blogs || [],
+            },
+            revalidate: 60, // Revalidate every 60 seconds
+        };
+    } catch (error) {
+        console.error('Error fetching blogs:', error);
+        // Return empty array if API fails
+        return {
+            props: {
+                blogs: [],
+            },
+            revalidate: 60,
+        };
+    }
 };

@@ -26,7 +26,12 @@ export default function BlogPostPage({ post }: BlogPostPageProps) {
 
             {post.imageUrl && (
                 <div className="relative h-72 w-full rounded-lg overflow-hidden mb-8">
-                    <Image src={post.imageUrl} alt={post.title} layout="fill" objectFit="cover" />
+                    <Image 
+                        src={post.imageUrl.startsWith('http') ? post.imageUrl : `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001'}${post.imageUrl}`} 
+                        alt={post.title} 
+                        layout="fill" 
+                        objectFit="cover" 
+                    />
                 </div>
             )}
 
@@ -41,7 +46,8 @@ export default function BlogPostPage({ post }: BlogPostPageProps) {
 
 export const getStaticPaths: GetStaticPaths = async () => {
     try {
-        const res = await fetch('http://localhost:3001/api/blogs');
+        const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+        const res = await fetch(`${baseUrl}/api/blogs`);
         if (!res.ok) {
             console.error('Failed to fetch blogs:', res.status, res.statusText);
             return { paths: [], fallback: true };
@@ -72,7 +78,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
             return { notFound: true };
         }
         
-        const res = await fetch(`http://localhost:3001/api/blogs/${params.id}`);
+        const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+        const res = await fetch(`${baseUrl}/api/blogs/${params.id}`);
         if (!res.ok) {
             console.error(`Failed to fetch blog ${params.id}:`, res.status, res.statusText);
             return { notFound: true };

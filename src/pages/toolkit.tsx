@@ -20,16 +20,16 @@ export default function Toolkit() {
                                 {/* Section Badge */}
                                 <div className="inline-flex items-center gap-4 px-8 py-4 glass-trust rounded-full border border-white/30 mb-8 shadow-peaceful">
                                     <div className="w-3 h-3 bg-gradient-warm rounded-full"></div>
-                                    <span className="font-semibold text-white text-lg font-body">Professional Resources</span>
+                                    <span className="font-semibold text-black text-lg font-body">Professional Resources</span>
                                 </div>
                                 
-                                <h1 className="heading-1 text-white mb-8 animate-gentle-slide-up font-display">
+                                <h1 className="heading-1 text-black mb-8 animate-gentle-slide-up font-display">
                                     <span className="emilys-candy-regular" style={{ color: '#059669' }}>Professional</span>{' '}
                                     <span className="emilys-candy-regular" style={{ color: '#dc2626' }}>Toolkit</span>{' '}
                                     <span className="block emilys-candy-regular" style={{ color: '#1e3a8a' }}>for Social Workers</span>
                                 </h1>
                                 
-                                <p className="body-xl text-white/90 mb-12 animate-gentle-slide-up leading-relaxed font-body" style={{ animationDelay: '0.2s' }}>
+                                <p className="body-xl text-black mb-12 animate-gentle-slide-up leading-relaxed font-body" style={{ animationDelay: '0.2s' }}>
                                     Access comprehensive resources, tools, and templates designed to enhance your practice and support your professional growth in social work.
                                 </p>
                             </div>
@@ -127,6 +127,9 @@ export default function Toolkit() {
                     </div>
                 </div>
             </section>
+
+            {/* Footer Boundary */}
+            <div className="h-px bg-gradient-to-r from-transparent via-black/30 to-transparent"></div>
         </div>
     );
 }

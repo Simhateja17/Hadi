@@ -1,6 +1,5 @@
 // src/pages/jobs/index.tsx
 import { GetStaticProps } from 'next';
-import Image from 'next/image';
 import Link from 'next/link';
 
 type Job = {
@@ -39,7 +38,7 @@ export default function JobsPage({ jobs }: JobsPageProps) {
                             </div>
 
                             <h1 className="heading-primary text-4xl md:text-5xl lg:text-6xl text-black font-display">
-                                <span className="emilys-candy-regular">Find Your Perfect</span>
+                                <span className="emilys-candy-regular text-primary">Find Your Perfect</span>
                                 <span className="block text-gradient-warm emilys-candy-regular">Social Work Role</span>
                             </h1>
                             <p className="text-body text-black max-w-2xl mx-auto leading-relaxed font-body">
@@ -86,7 +85,7 @@ export default function JobsPage({ jobs }: JobsPageProps) {
                                                 <p className="text-text-muted font-semibold mb-4 font-body">{job.company} - {job.location}</p>
                                             </div>
                                             <div className="w-12 h-12 bg-primary-light rounded-2xl flex items-center justify-center ml-6">
-                                                <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                                <svg className="w-6 h-6 text-black" fill="currentColor" viewBox="0 0 20 20">
                                                     <path fillRule="evenodd" d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z" clipRule="evenodd" />
                                                 </svg>
                                             </div>
@@ -134,6 +133,9 @@ export default function JobsPage({ jobs }: JobsPageProps) {
                     </div>
                 </div>
             </section>
+
+            {/* Footer Boundary */}
+            <div className="h-px bg-gradient-to-r from-transparent via-black/30 to-transparent"></div>
         </div>
     );
 }

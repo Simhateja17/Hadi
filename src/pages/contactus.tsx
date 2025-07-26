@@ -103,7 +103,7 @@ export default function ContactUs() {
                                 <div className="space-y-6">
                                     <h3 className="heading-4 text-primary font-display emilys-candy-regular flex items-center gap-3">
                                         <div className="w-8 h-8 bg-gradient-warm rounded-2xl flex items-center justify-center">
-                                            <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                            <svg className="w-4 h-4 text-black" fill="currentColor" viewBox="0 0 20 20">
                                                 <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
                                             </svg>
                                         </div>
@@ -180,7 +180,7 @@ export default function ContactUs() {
                                 <div className="space-y-6">
                                     <h3 className="heading-4 text-primary font-display emilys-candy-regular flex items-center gap-3">
                                         <div className="w-8 h-8 bg-gradient-secondary rounded-2xl flex items-center justify-center">
-                                            <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                            <svg className="w-4 h-4 text-black" fill="currentColor" viewBox="0 0 20 20">
                                                 <path fillRule="evenodd" d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z" clipRule="evenodd" />
                                             </svg>
                                         </div>
@@ -231,7 +231,7 @@ export default function ContactUs() {
                                 <div className="space-y-6">
                                     <h3 className="heading-4 text-primary font-display emilys-candy-regular flex items-center gap-3">
                                         <div className="w-8 h-8 bg-gradient-peaceful rounded-2xl flex items-center justify-center">
-                                            <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <svg className="w-4 h-4 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
                                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                                             </svg>
@@ -280,7 +280,7 @@ export default function ContactUs() {
                                 <div className="space-y-6">
                                     <h3 className="heading-4 text-primary font-display emilys-candy-regular flex items-center gap-3">
                                         <div className="w-8 h-8 bg-gradient-warm rounded-2xl flex items-center justify-center">
-                                            <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <svg className="w-4 h-4 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                                             </svg>
                                         </div>
@@ -355,6 +355,33 @@ export default function ContactUs() {
                     </div>
                 </div>
             </section>
+
+            {/* Enhanced Footer Spacing Section */}
+            <section className="py-32 bg-gradient-to-br from-green-50/20 via-white to-blue-50/10 relative overflow-hidden">
+                <div className="container-custom relative z-10">
+                    <div className="text-center max-w-2xl mx-auto space-y-8">
+                        <div className="w-16 h-16 bg-gradient-warm rounded-full mx-auto flex items-center justify-center shadow-caring">
+                            <svg className="w-8 h-8 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                            </svg>
+                        </div>
+                        <h3 className="heading-3 text-primary font-display">We&apos;re Here to Help</h3>
+                        <p className="text-lg text-text-medium font-body leading-relaxed">
+                            Thank you for reaching out to us. Our team is committed to supporting your social work journey with personalized guidance and professional expertise.
+                        </p>
+                        <div className="flex justify-center">
+                            <div className="flex space-x-2">
+                                <div className="w-2 h-2 bg-gradient-warm rounded-full animate-pulse"></div>
+                                <div className="w-2 h-2 bg-gradient-peaceful rounded-full animate-pulse" style={{ animationDelay: '0.2s' }}></div>
+                                <div className="w-2 h-2 bg-gradient-secondary rounded-full animate-pulse" style={{ animationDelay: '0.4s' }}></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Footer Boundary */}
+            <div className="h-px bg-gradient-to-r from-transparent via-black/30 to-transparent"></div>
         </div>
     );
 } 

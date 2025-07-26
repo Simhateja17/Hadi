@@ -31,7 +31,7 @@ export const Footer = () => {
                                     />
                                 </div>
                                 <div>
-                                    <h3 className="heading-4 text-white font-bold">WE SOCIAL WORKERS</h3>
+                                    <h3 className="heading-4 text-black font-bold">WE SOCIAL WORKERS</h3>
                                     <p className="text-gray-300">UK</p>
                                 </div>
                             </Link>
@@ -64,7 +64,7 @@ export const Footer = () => {
                         
                         {/* Quick Links */}
                         <div>
-                            <h4 className="heading-4 text-white mb-6">Quick Links</h4>
+                            <h4 className="heading-4 text-black mb-6">Quick Links</h4>
                             <ul className="space-y-4">
                                 {[
                                     { href: '/', label: 'Home' },
@@ -86,7 +86,7 @@ export const Footer = () => {
                         
                         {/* Resources */}
                         <div>
-                            <h4 className="heading-4 text-white mb-6">Resources</h4>
+                            <h4 className="heading-4 text-black mb-6">Resources</h4>
                             <ul className="space-y-4">
                                 {[
                                     { href: '/contact', label: 'Contact Us' },
