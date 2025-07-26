@@ -40,7 +40,8 @@ const Header: React.FC = () => {
               { href: '/blogs', label: 'Resources' },
               { href: '/jobs', label: 'Opportunities' },
               { href: '/toolkit', label: 'Toolkit' },
-              { href: '/contact', label: 'Connect' }
+              { href: '/contact', label: 'Connect' },
+              { href: '/contactus', label: 'Contact' }
             ].map((item, index) => (
               <Link
                 key={item.href}
@@ -87,7 +88,8 @@ const Header: React.FC = () => {
               { href: '/blogs', label: 'Resources' },
               { href: '/jobs', label: 'Opportunities' },
               { href: '/toolkit', label: 'Toolkit' },
-              { href: '/contact', label: 'Connect' }
+              { href: '/contact', label: 'Connect' },
+              { href: '/contactus', label: 'Contact' }
             ].map((item, index) => (
               <Link
                 key={item.href}

@@ -40,19 +40,48 @@ export default function BlogPostPage({ post }: BlogPostPageProps) {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-    const res = await fetch('http://localhost:3001/api/blogs');
-    const blogs: Blog[] = await res.json();
-    const paths = blogs.map((blog) => ({ params: { id: blog.id } }));
-    return { paths, fallback: true }; // `fallback: true` allows for newly created blogs
+    try {
+        const res = await fetch('http://localhost:3001/api/blogs');
+        if (!res.ok) {
+            console.error('Failed to fetch blogs:', res.status, res.statusText);
+            return { paths: [], fallback: true };
+        }
+        
+        const data = await res.json();
+        console.log('API Response:', data); // Debug log
+        
+        // Check if data is an array
+        const blogs: Blog[] = Array.isArray(data) ? data : [];
+        
+        if (blogs.length === 0) {
+            console.warn('No blogs found or blogs is not an array');
+            return { paths: [], fallback: true };
+        }
+        
+        const paths = blogs.map((blog) => ({ params: { id: blog.id.toString() } }));
+        return { paths, fallback: true }; // `fallback: true` allows for newly created blogs
+    } catch (error) {
+        console.error('Error in getStaticPaths:', error);
+        return { paths: [], fallback: true };
+    }
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
     try {
-        const res = await fetch(`http://localhost:3001/api/blogs/${params?.id}`);
-        if (!res.ok) return { notFound: true };
+        if (!params?.id) {
+            return { notFound: true };
+        }
+        
+        const res = await fetch(`http://localhost:3001/api/blogs/${params.id}`);
+        if (!res.ok) {
+            console.error(`Failed to fetch blog ${params.id}:`, res.status, res.statusText);
+            return { notFound: true };
+        }
+        
         const post: Blog = await res.json();
         return { props: { post }, revalidate: 60 };
     } catch (error) {
+        console.error('Error in getStaticProps:', error);
         return { notFound: true };
     }
 };

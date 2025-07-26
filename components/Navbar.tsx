@@ -8,104 +8,131 @@ export const Navbar = () => {
 
     return (
         <>
-            {/* Glassmorphism Navbar */}
-            <nav className="fixed top-6 left-1/2 transform -translate-x-1/2 z-50 w-[90%] max-w-6xl px-6 py-3 rounded-2xl bg-white/10 backdrop-blur-md shadow-lg border border-white/20">
-                <div className="flex justify-between items-center">
-                    {/* Logo Section */}
-                    <Link href="/" className="flex items-center hover:opacity-80 transition-opacity">
-                        <div className="relative">
-                            <Image 
-                                src="/logo.png" 
-                                alt="We Social Workers UK Logo" 
-                                width={40} 
-                                height={40}
-                                className="rounded-lg"
-                            />
-                        </div>
-                    </Link>
+            {/* Traditional Navbar */}
+            <nav className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="flex justify-between items-center h-16">
+                        {/* Logo Section */}
+                        <Link href="/" className="flex items-center hover:opacity-80 transition-opacity">
+                            <div className="relative flex items-center gap-3">
+                                <Image 
+                                    src="/logo.png" 
+                                    alt="We Social Workers UK Logo" 
+                                    width={40} 
+                                    height={40}
+                                    className="rounded-lg"
+                                />
+                                <span className="text-xl font-bold text-gray-800 emilys-candy-regular">WE SOCIAL WORKERS</span>
+                            </div>
+                        </Link>
 
-                    {/* Desktop Navigation */}
-                    <div className="hidden md:flex items-center gap-6">
-                        <Link 
-                            href="/" 
-                            className="px-4 py-2 text-text-dark font-medium rounded-lg hover:bg-white/20 transition-all duration-200"
+                        {/* Desktop Navigation */}
+                        <div className="hidden md:flex items-center gap-12">
+                            <Link 
+                                href="/" 
+                                className="px-6 py-3 text-gray-700 font-medium hover:text-blue-600 transition-colors duration-200 emilys-candy-regular text-lg"
+                            >
+                                Home
+                            </Link>
+                            <Link 
+                                href="/blogs" 
+                                className="px-6 py-3 text-gray-700 font-medium hover:text-blue-600 transition-colors duration-200 emilys-candy-regular text-lg"
+                            >
+                                Blogs
+                            </Link>
+                            <Link 
+                                href="/opportunities" 
+                                className="px-6 py-3 text-gray-700 font-medium hover:text-blue-600 transition-colors duration-200 emilys-candy-regular text-lg"
+                            >
+                                Opportunities
+                            </Link>
+                            <Link 
+                                href="/toolkit" 
+                                className="px-6 py-3 text-gray-700 font-medium hover:text-blue-600 transition-colors duration-200 emilys-candy-regular text-lg"
+                            >
+                                Toolkit
+                            </Link>
+                            <Link 
+                                href="/contact" 
+                                className="px-6 py-3 text-gray-700 font-medium hover:text-blue-600 transition-colors duration-200 emilys-candy-regular text-lg"
+                            >
+                                Connect
+                            </Link>
+                            <Link 
+                                href="/contactus" 
+                                className="px-6 py-3 text-gray-700 font-medium hover:text-blue-600 transition-colors duration-200 emilys-candy-regular text-lg"
+                            >
+                                Contact
+                            </Link>
+                        </div>                        {/* Mobile Menu Button */}
+                        <button
+                            onClick={() => setIsMenuOpen(!isMenuOpen)}
+                            className="md:hidden p-2 rounded-md hover:bg-gray-100 transition-colors"
+                            aria-label="Toggle menu"
                         >
-                            Home
-                        </Link>
-                        <Link 
-                            href="/blogs" 
-                            className="px-4 py-2 text-text-dark font-medium rounded-lg hover:bg-white/20 transition-all duration-200"
-                        >
-                            Blog
-                        </Link>
-                        <Link 
-                            href="/jobs" 
-                            className="px-4 py-2 text-text-dark font-medium rounded-lg hover:bg-white/20 transition-all duration-200"
-                        >
-                            Jobs
-                        </Link>
-                        <Link 
-                            href="/toolkit" 
-                            className="px-4 py-2 text-text-dark font-medium rounded-lg hover:bg-white/20 transition-all duration-200"
-                        >
-                            Toolkit
-                        </Link>
+                            <svg 
+                                className={`w-6 h-6 text-gray-700 transition-transform duration-200 ${isMenuOpen ? 'rotate-90' : ''}`}
+                                fill="none" 
+                                stroke="currentColor" 
+                                viewBox="0 0 24 24"
+                            >
+                                {isMenuOpen ? (
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                                ) : (
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                                )}
+                            </svg>
+                        </button>
                     </div>
-
-                    {/* Mobile Menu Button */}
-                    <button
-                        onClick={() => setIsMenuOpen(!isMenuOpen)}
-                        className="md:hidden p-2 rounded-lg hover:bg-white/20 transition-colors"
-                        aria-label="Toggle menu"
-                    >
-                        <svg 
-                            className={`w-6 h-6 text-text-dark transition-transform duration-200 ${isMenuOpen ? 'rotate-90' : ''}`}
-                            fill="none" 
-                            stroke="currentColor" 
-                            viewBox="0 0 24 24"
-                        >
-                            {isMenuOpen ? (
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                            ) : (
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                            )}
-                        </svg>
-                    </button>
                 </div>
             </nav>
 
             {/* Mobile Navigation Dropdown */}
             {isMenuOpen && (
-                <div className="fixed top-20 left-1/2 transform -translate-x-1/2 z-40 w-[90%] max-w-6xl md:hidden">
-                    <div className="bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 shadow-lg p-4">
+                <div className="fixed top-16 left-0 right-0 z-40 md:hidden bg-white shadow-lg border-t">
+                    <div className="max-w-7xl mx-auto px-4 py-4">
                         <div className="space-y-2">
                             <Link 
                                 href="/" 
-                                className="block px-4 py-3 text-text-dark font-medium rounded-lg hover:bg-white/20 transition-all duration-200"
+                                className="block px-6 py-3 text-gray-700 font-medium hover:text-blue-600 hover:bg-gray-50 rounded-md transition-colors duration-200 emilys-candy-regular text-lg"
                                 onClick={() => setIsMenuOpen(false)}
                             >
                                 Home
                             </Link>
                             <Link 
                                 href="/blogs" 
-                                className="block px-4 py-3 text-text-dark font-medium rounded-lg hover:bg-white/20 transition-all duration-200"
+                                className="block px-6 py-3 text-gray-700 font-medium hover:text-blue-600 hover:bg-gray-50 rounded-md transition-colors duration-200 emilys-candy-regular text-lg"
                                 onClick={() => setIsMenuOpen(false)}
                             >
-                                Blog
+                                Blogs
                             </Link>
                             <Link 
-                                href="/jobs" 
-                                className="block px-4 py-3 text-text-dark font-medium rounded-lg hover:bg-white/20 transition-all duration-200"
+                                href="/opportunities" 
+                                className="block px-6 py-3 text-gray-700 font-medium hover:text-blue-600 hover:bg-gray-50 rounded-md transition-colors duration-200 emilys-candy-regular text-lg"
                                 onClick={() => setIsMenuOpen(false)}
                             >
-                                Jobs
+                                Opportunities
                             </Link>
                             <Link 
                                 href="/toolkit" 
-                                className="block px-4 py-3 text-text-dark font-medium rounded-lg hover:bg-white/20 transition-all duration-200"
+                                className="block px-6 py-3 text-gray-700 font-medium hover:text-blue-600 hover:bg-gray-50 rounded-md transition-colors duration-200 emilys-candy-regular text-lg"
                                 onClick={() => setIsMenuOpen(false)}
                             >
                                 Toolkit
+                            </Link>
+                            <Link 
+                                href="/contact" 
+                                className="block px-6 py-3 text-gray-700 font-medium hover:text-blue-600 hover:bg-gray-50 rounded-md transition-colors duration-200 emilys-candy-regular text-lg"
+                                onClick={() => setIsMenuOpen(false)}
+                            >
+                                Connect
+                            </Link>
+                            <Link 
+                                href="/contactus" 
+                                className="block px-6 py-3 text-gray-700 font-medium hover:text-blue-600 hover:bg-gray-50 rounded-md transition-colors duration-200 emilys-candy-regular text-lg"
+                                onClick={() => setIsMenuOpen(false)}
+                            >
+                                Contact
                             </Link>
                         </div>
                     </div>

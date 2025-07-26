@@ -14,25 +14,20 @@ export const Footer = () => {
                 </div>
             </div>
             
-            {/* Floating Elements */}
-            <div className="absolute top-10 right-10 hexagon opacity-10 animate-float"></div>
-            <div className="absolute bottom-10 left-10 hexagon opacity-10 animate-float" style={{ animationDelay: '1s' }}></div>
-            
             <div className="container-custom relative z-10">
                 {/* Main Footer Content */}
                 <div className="py-16 border-b border-white/10">
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
                         {/* Brand Section */}
                         <div className="lg:col-span-2">
-                            <Link href="/" className="flex items-center gap-3 mb-6 hover-scale group">
+                            <Link href="/" className="flex items-center gap-3 mb-6 group">
                                 <div className="relative">
-                                    <div className="hexagon-inner bg-gradient-secondary group-hover:animate-pulse-subtle"></div>
                                     <Image 
                                         src="/logo.png" 
                                         alt="WSW Logo" 
                                         width={50} 
                                         height={50}
-                                        className="absolute inset-0 w-full h-full object-cover rounded-lg"
+                                        className="rounded-lg"
                                     />
                                 </div>
                                 <div>
@@ -41,7 +36,7 @@ export const Footer = () => {
                                 </div>
                             </Link>
                             
-                            <p className="text-gray-300 mb-6 leading-relaxed max-w-md">
+                            <p className="text-black mb-6 leading-relaxed max-w-md">
                                 Empowering social workers across the UK with professional resources, 
                                 career opportunities, and a supportive community for growth and excellence.
                             </p>
@@ -80,7 +75,7 @@ export const Footer = () => {
                                     <li key={index}>
                                         <Link 
                                             href={link.href}
-                                            className="text-gray-300 hover:text-secondary transition-colors duration-300 hover:translate-x-1 transform inline-block"
+                                            className="text-black hover:text-secondary transition-colors duration-300 hover:translate-x-1 transform inline-block"
                                         >
                                             {link.label}
                                         </Link>
@@ -102,7 +97,7 @@ export const Footer = () => {
                                     <li key={index}>
                                         <Link 
                                             href={link.href}
-                                            className="text-gray-300 hover:text-secondary transition-colors duration-300 hover:translate-x-1 transform inline-block"
+                                            className="text-black hover:text-secondary transition-colors duration-300 hover:translate-x-1 transform inline-block"
                                         >
                                             {link.label}
                                         </Link>
@@ -116,17 +111,17 @@ export const Footer = () => {
                 {/* Bottom Bar */}
                 <div className="py-8">
                     <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-                        <div className="text-gray-400 text-center md:text-left">
+                        <div className="text-black text-center md:text-left">
                             <p>&copy; {new Date().getFullYear()} We Social Workers UK. All rights reserved.</p>
                         </div>
                         
                         <div className="flex items-center gap-6">
-                            <span className="text-gray-400 text-sm">Made with</span>
+                            <span className="text-black text-sm">Made with</span>
                             <div className="flex items-center gap-2">
-                                <svg className="w-4 h-4 text-red-400 animate-pulse" fill="currentColor" viewBox="0 0 20 20">
+                                <svg className="w-4 h-4 text-red-400" fill="currentColor" viewBox="0 0 20 20">
                                     <path fillRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clipRule="evenodd" />
                                 </svg>
-                                <span className="text-gray-400 text-sm">for social workers</span>
+                                <span className="text-black text-sm">for social workers</span>
                             </div>
                         </div>
                     </div>
