@@ -196,14 +196,21 @@ export const Hero = () => {
                                             transition: 'transform 0.2s ease-out'
                                         }}
                                     >
-                                        <Image
-                                            src={image.src}
-                                            alt={image.alt}
-                                            width={200}
-                                            height={300}
-                                            className="w-auto h-64 object-contain"
-                                            priority
-                                        />
+                                        <div 
+                                            className="animate-simple-float"
+                                            style={{
+                                                animationDelay: `${index * 0.5}s`
+                                            }}
+                                        >
+                                            <Image
+                                                src={image.src}
+                                                alt={image.alt}
+                                                width={200}
+                                                height={300}
+                                                className="w-auto h-64 object-contain"
+                                                priority
+                                            />
+                                        </div>
                                     </div>
                                 ))}
                             </div>
