@@ -99,12 +99,13 @@ export default function BlogListPage({ blogs }: BlogListPageProps) {
 
             {/* Blog Grid Section - HomePage Style */}
             <section className="py-20 bg-background">
-                <div className="w-full py-32 overflow-visible" style={{ minHeight: '120vh' }}>
+                <div className="w-full py-32" style={{ minHeight: '150vh', paddingBottom: '20rem' }}>
                     {safeBlogs.length > 0 ? (
                         <div 
-                            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto transition-transform duration-500 ease-in-out"
+                            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto transition-transform duration-500 ease-in-out pb-20"
                             style={{ 
-                                transform: calculateGridTransform(gridHorizontal, gridVertical)
+                                transform: calculateGridTransform(gridHorizontal, gridVertical),
+                                minHeight: '100vh'
                             }}
                         >
                             {safeBlogs.map((blog) => (
@@ -249,6 +250,9 @@ export default function BlogListPage({ blogs }: BlogListPageProps) {
                     )}
                 </div>
             </section>
+
+            {/* Extra spacing before footer */}
+            <div className="h-64 bg-background"></div>
 
             {/* Footer Boundary */}
             <div className="h-px bg-gradient-to-r from-transparent via-black/30 to-transparent"></div>

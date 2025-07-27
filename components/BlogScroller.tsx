@@ -75,7 +75,7 @@ export const BlogScroller = ({ blogs }: BlogScrollerProps) => {
     return (
         <div className="w-full py-12">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-                {blogsArray.slice(0, 6).map((blog, index) => (
+                {blogsArray.slice(0, 6).map((blog) => (
                     <Link key={blog.id} href={`/blogs/${blog.id}`} className="group block">
                         <article className="relative bg-white rounded-3xl overflow-hidden shadow-peaceful hover:shadow-caring transition-all duration-500 group-hover:-translate-y-2 border border-white/20 backdrop-blur-sm h-full">
                             {/* Caring accent line */}
