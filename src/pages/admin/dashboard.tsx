@@ -16,7 +16,7 @@ const AdminDashboard = () => {
                     Logout
                 </button>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <Link href="/admin/manage-blogs" className="block p-8 bg-primary rounded-lg shadow-md hover:shadow-lg transition-shadow">
                     <h2 className="text-2xl font-bold text-text-dark">Manage Blogs</h2>
                     <p className="text-text-light mt-2">Create, edit, and delete blog posts.</p>
@@ -24,6 +24,10 @@ const AdminDashboard = () => {
                 <Link href="/admin/manage-jobs" className="block p-8 bg-primary rounded-lg shadow-md hover:shadow-lg transition-shadow">
                     <h2 className="text-2xl font-bold text-text-dark">Manage Jobs</h2>
                     <p className="text-text-light mt-2">Create, edit, and delete job listings.</p>
+                </Link>
+                <Link href="/admin/opportunities-controls" className="block p-8 bg-secondary rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                    <h2 className="text-2xl font-bold text-white">Layout Controls</h2>
+                    <p className="text-gray-100 mt-2">Adjust position and size of opportunities page elements.</p>
                 </Link>
             </div>
         </div>

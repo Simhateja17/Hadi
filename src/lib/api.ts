@@ -12,6 +12,11 @@ export interface Layout2DPosition {
   lastUpdated: string;
 }
 
+export interface LayoutSize {
+  size: number;
+  lastUpdated: string;
+}
+
 export interface ApiResponse<T> {
   success: boolean;
   data?: T;
@@ -216,6 +221,68 @@ export const layoutApi = {
     
     if (!data.success || !data.data) {
       throw new Error(data.message || 'Failed to reset layout');
+    }
+    
+    return data.data;
+  },
+
+  // Get opportunities heading size
+  getOpportunitiesHeadingSize: async (): Promise<LayoutSize> => {
+    const response = await fetch(`${API_BASE_URL}/api/layout/opportunities-heading-size`);
+    const data: ApiResponse<LayoutSize> = await response.json();
+    
+    if (!data.success || !data.data) {
+      throw new Error(data.message || 'Failed to fetch opportunities heading size');
+    }
+    
+    return data.data;
+  },
+
+  // Update opportunities heading size
+  updateOpportunitiesHeadingSize: async (size: number): Promise<LayoutSize> => {
+    const response = await fetch(`${API_BASE_URL}/api/layout/opportunities-heading-size`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ size })
+    });
+    
+    const data: ApiResponse<LayoutSize> = await response.json();
+    
+    if (!data.success || !data.data) {
+      throw new Error(data.message || 'Failed to update opportunities heading size');
+    }
+    
+    return data.data;
+  },
+
+  // Get opportunities jobs size
+  getOpportunitiesJobsSize: async (): Promise<LayoutSize> => {
+    const response = await fetch(`${API_BASE_URL}/api/layout/opportunities-jobs-size`);
+    const data: ApiResponse<LayoutSize> = await response.json();
+    
+    if (!data.success || !data.data) {
+      throw new Error(data.message || 'Failed to fetch opportunities jobs size');
+    }
+    
+    return data.data;
+  },
+
+  // Update opportunities jobs size
+  updateOpportunitiesJobsSize: async (size: number): Promise<LayoutSize> => {
+    const response = await fetch(`${API_BASE_URL}/api/layout/opportunities-jobs-size`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ size })
+    });
+    
+    const data: ApiResponse<LayoutSize> = await response.json();
+    
+    if (!data.success || !data.data) {
+      throw new Error(data.message || 'Failed to update opportunities jobs size');
     }
     
     return data.data;
