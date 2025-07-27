@@ -19,11 +19,21 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: 'https',
+        hostname: 'hadi-backend-bke7c4hnexdmebdz.ukwest-01.azurewebsites.net',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
         hostname: 'oqiprhdplazbpkgqnpqz.supabase.co',
         port: '',
         pathname: '/storage/v1/object/public/**',
       },
     ],
+  },
+  env: {
+    NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL,
+    BACKEND_URL: process.env.BACKEND_URL,
   },
 };
 

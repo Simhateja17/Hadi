@@ -1,5 +1,6 @@
 // src/pages/api/auth/generate-otp.ts
 import type { NextApiRequest, NextApiResponse } from 'next';
+import { getBackendUrl } from '../../../utils/api';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'POST') {
@@ -7,7 +8,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   try {
-    const backendUrl = process.env.BACKEND_URL || 'http://localhost:3001';
+    const backendUrl = getBackendUrl();
     const response = await fetch(`${backendUrl}/api/auth/generate-otp`, {
       method: 'POST',
       headers: {

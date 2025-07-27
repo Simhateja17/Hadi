@@ -1,5 +1,6 @@
 // pages/index.tsx
 import { GetStaticProps } from 'next';
+import { getApiUrl } from '../utils/api';
 import Image from 'next/image';
 import { Hero } from '../../components/Hero';
 import { BlogScroller } from '../../components/BlogScroller';
@@ -235,8 +236,8 @@ export default function Home({ blogs }: HomeProps) {
 
 export const getStaticProps: GetStaticProps = async () => {
     try {
-        const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
-        const response = await fetch(`${baseUrl}/api/blogs`);
+        const apiUrl = getApiUrl('api/blogs');
+        const response = await fetch(apiUrl);
         
         if (!response.ok) {
             throw new Error('Failed to fetch blogs');

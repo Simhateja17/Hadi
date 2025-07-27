@@ -1,5 +1,6 @@
 // src/pages/jobs/index.tsx
 import { GetStaticProps } from 'next';
+import { getApiUrl } from '../../utils/api';
 import Link from 'next/link';
 
 type Job = {
@@ -142,7 +143,8 @@ export default function JobsPage({ jobs }: JobsPageProps) {
 
 export const getStaticProps: GetStaticProps = async () => {
     try {
-        const res = await fetch('http://localhost:3001/api/jobs');
+        const apiUrl = getApiUrl('api/jobs');
+        const res = await fetch(apiUrl);
         const jobs: Job[] = await res.json();
         return { props: { jobs }, revalidate: 300 }; // Revalidate every 5 minutes
     } catch {

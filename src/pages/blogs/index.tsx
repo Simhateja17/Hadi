@@ -1,5 +1,6 @@
 // src/pages/blogs/index.tsx
 import { GetServerSideProps } from 'next';
+import { getApiUrl, getImageUrl } from '../../utils/api';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -119,7 +120,7 @@ export default function BlogListPage({ blogs }: BlogListPageProps) {
                                             {blog.imageUrl ? (
                                                 <>
                                                     <Image 
-                                                        src={blog.imageUrl.startsWith('http') ? blog.imageUrl : `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001'}${blog.imageUrl}`} 
+                                                        src={getImageUrl(blog.imageUrl)} 
                                                         alt={blog.title} 
                                                         fill
                                                         className="object-cover object-center group-hover:scale-110 transition-transform duration-700"
@@ -262,8 +263,8 @@ export default function BlogListPage({ blogs }: BlogListPageProps) {
 
 export const getServerSideProps: GetServerSideProps = async () => {
     try {
-        const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
-        const response = await fetch(`${baseUrl}/api/blogs`);
+        const apiUrl = getApiUrl('api/blogs');
+        const response = await fetch(apiUrl);
         
         if (!response.ok) {
             throw new Error('Failed to fetch blogs');
