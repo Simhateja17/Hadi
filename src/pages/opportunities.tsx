@@ -1,8 +1,7 @@
 // src/pages/opportunities.tsx
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { GetStaticProps } from 'next';
 import { getApiUrl } from '../utils/api';
-import { layoutApi } from '../lib/api';
 import { Layout } from '../../components/Layout';
 
 type Job = {
@@ -20,50 +19,29 @@ type OpportunitiesPageProps = {
   jobs: Job[] 
 };
 
-interface LayoutState {
-  headingHorizontal: number;
-  headingVertical: number;
-  headingSize: number;
-  jobsHorizontal: number;
-  jobsVertical: number;
-  jobsSize: number;
-}
-
 const OpportunitiesPage = ({ jobs }: OpportunitiesPageProps) => {
-  const [layout, setLayout] = useState<LayoutState>({
-    headingHorizontal: 0,
-    headingVertical: 0,
-    headingSize: 100,
-    jobsHorizontal: 0,
-    jobsVertical: 0,
-    jobsSize: 100
-  });
-
-  useEffect(() => {
-    loadLayoutSettings();
-  }, []);
-
-  const loadLayoutSettings = async () => {
-    try {
-      const [headingPos, jobsPos, headingSize, jobsSize] = await Promise.all([
-        layoutApi.getOpportunitiesHeadingPosition(),
-        layoutApi.getOpportunitiesJobsPosition(),
-        layoutApi.getOpportunitiesHeadingSize(),
-        layoutApi.getOpportunitiesJobsSize()
-      ]);
-
-      setLayout({
-        headingHorizontal: headingPos.horizontal,
-        headingVertical: headingPos.vertical,
-        headingSize: headingSize.size,
-        jobsHorizontal: jobsPos.horizontal,
-        jobsVertical: jobsPos.vertical,
-        jobsSize: jobsSize.size
-      });
-    } catch (error) {
-      console.error('Failed to load layout settings:', error);
-      // Continue with default values if API fails
+  // Hardcoded layout values
+  const titleControls = {
+    position: {
+      horizontal: 4,   // Horizontal Position
+      vertical: 56     // Vertical Position
     }
+  };
+
+  const jobPostingsControls = {
+    position: {
+      horizontal: 0,   // Horizontal Position
+      vertical: 59     // Vertical Position
+    }
+  };
+
+  const layout = {
+    headingHorizontal: titleControls.position.horizontal,
+    headingVertical: titleControls.position.vertical,
+    headingSize: 100,
+    jobsHorizontal: jobPostingsControls.position.horizontal,
+    jobsVertical: jobPostingsControls.position.vertical,
+    jobsSize: 100
   };
     return (
         <Layout>

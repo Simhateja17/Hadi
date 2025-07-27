@@ -45,7 +45,12 @@ const OpportunitiesControls = () => {
       setHeadingPosition(headingPos);
       setJobsPosition(jobsPos);
     } catch (error) {
-      setMessage('Failed to load current positions');
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+      if (errorMessage.includes('JSON') || errorMessage.includes('DOCTYPE')) {
+        setMessage('⚠️ Backend server is not running. Please start the backend server first.');
+      } else {
+        setMessage('Failed to load current positions. Please check the backend connection.');
+      }
       console.error('Error loading positions:', error);
     } finally {
       setLoading(false);
@@ -62,7 +67,12 @@ const OpportunitiesControls = () => {
       setHeadingSize(headingSize.size);
       setJobsSize(jobsSize.size);
     } catch (error) {
-      setMessage('Failed to load current sizes');
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+      if (errorMessage.includes('JSON') || errorMessage.includes('DOCTYPE')) {
+        setMessage('⚠️ Backend server is not running. Please start the backend server first.');
+      } else {
+        setMessage('Failed to load current sizes. Please check the backend connection.');
+      }
       console.error('Error loading sizes:', error);
     }
   };

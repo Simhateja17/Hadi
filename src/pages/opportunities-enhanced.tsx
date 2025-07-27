@@ -90,10 +90,11 @@ export default function OpportunitiesEnhanced({ jobs }: OpportunitiesPageProps) 
             }}
           >
             <h2 className="text-2xl font-semibold text-primary mb-4">
-              
+              Find Your Next Career Move
             </h2>
             <p className="text-gray-700 mb-6">
-              
+              Explore exciting career opportunities in social work, healthcare, and community services. 
+              We connect talented professionals with meaningful positions that make a difference.
             </p>
             
             {jobs.length > 0 ? (
