@@ -1,6 +1,6 @@
 // pages/contact.tsx
-import React, { useState } from 'react';
-import Image from 'next/image';
+import { useState } from 'react';
+import Link from 'next/link';
 
 export default function Contact() {
     const [formData, setFormData] = useState({
@@ -10,104 +10,117 @@ export default function Contact() {
         message: ''
     });
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setIsSubmitting(true);
+        
+        try {
+            // Simulate form submission
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            setSubmitStatus('success');
+            setFormData({ name: '', email: '', subject: '', message: '' });
+        } catch (error) {
+            setSubmitStatus('error');
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
+
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         setFormData({
             ...formData,
             [e.target.name]: e.target.value
         });
     };
 
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-        // Handle form submission
-        console.log('Form submitted:', formData);
-    };
-
     return (
-        <div className="min-h-screen">
+        <div className="bg-white">
             {/* Hero Section */}
-            <section className="min-h-screen flex items-center justify-center bg-gradient-hero relative overflow-hidden">
-                {/* Background Pattern */}
-                <div className="absolute inset-0">
-                    <div className="absolute inset-0 bg-caring-pattern opacity-30"></div>
-                </div>
-                
-                <div className="container-custom relative z-10">
-                    <div className="grid lg:grid-cols-2 gap-20 items-center">
-                        {/* Content Section */}
-                        <div className="text-center lg:text-left order-2 lg:order-1">
-                            <div className="max-w-2xl lg:mx-0 mx-auto">
-                                {/* Section Badge */}
-                                <div className="inline-flex items-center gap-4 px-8 py-4 glass-trust rounded-full border border-white/30 mb-8 shadow-peaceful">
-                                    <div className="w-3 h-3 bg-gradient-warm rounded-full"></div>
-                                    <span className="font-semibold text-black text-lg font-body">Get in Touch</span>
+            <section className="section-padding-lg bg-gradient-to-br from-blue-50 via-white to-red-50">
+                <div className="container-custom">
+                    <div className="grid lg:grid-cols-2 gap-16 items-center">
+                        {/* Content */}
+                        <div className="text-center lg:text-left">
+                            <div className="mb-6">
+                                <span className="inline-block px-6 py-3 bg-british-red text-white rounded-full body-medium font-bold mb-6 shadow-smooth">
+                                    🇬🇧 Contact Us
+                                </span>
+                            </div>
+                            
+                            <h1 className="heading-xl mb-6 text-british-blue">
+                                Ready to Start Your
+                                <span className="text-gradient block">UK Journey?</span>
+                            </h1>
+                            
+                            <p className="body-xl mb-8 text-gray-700 leading-relaxed max-w-2xl lg:mx-0 mx-auto">
+                                Get in touch with our expert team for personalized guidance on your 
+                                social work career in the United Kingdom. We&apos;re here to help you succeed.
+                            </p>
+                            
+                            {/* Contact Info */}
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                                <div className="flex items-center gap-4 p-4 bg-white rounded-xl border-2 border-british-blue shadow-smooth">
+                                    <div className="w-12 h-12 bg-british-blue rounded-lg flex items-center justify-center">
+                                        <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                            <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                                            <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <h3 className="font-bold text-british-blue">Email</h3>
+                                        <p className="text-gray-600">info@wesocialworkersuk.com</p>
+                                    </div>
                                 </div>
                                 
-                                <h1 className="heading-1 text-black mb-8 animate-gentle-slide-up font-display">
-                                    <span className="emilys-candy-regular" style={{ color: '#059669' }}>Connect</span>{' '}
-                                    <span className="emilys-candy-regular" style={{ color: '#dc2626' }}>with Our</span>{' '}
-                                    <span className="block emilys-candy-regular" style={{ color: '#1e3a8a' }}>Community</span>
-                                </h1>
-                                
-                                {/* Social Media Icons */}
-                                <div className="flex justify-center lg:justify-start gap-4 mb-8">
-                                    {[
-                                        { 
-                                            name: 'Reddit', 
-                                            icon: 'M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z',
-                                            color: '#FF4500'
-                                        },
-                                        { 
-                                            name: 'Discord', 
-                                            icon: 'M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419-.0002 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9554 2.4189-2.1568 2.4189Z',
-                                            color: '#5865F2'
-                                        },
-                                        { 
-                                            name: 'Facebook', 
-                                            icon: 'M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z',
-                                            color: '#1877F2'
-                                        },
-                                        { 
-                                            name: 'YouTube', 
-                                            icon: 'M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z',
-                                            color: '#FF0000'
-                                        },
-                                        { 
-                                            name: 'Instagram', 
-                                            icon: 'M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z',
-                                            color: '#E4405F'
-                                        }
-                                    ].map((social, index) => (
-                                        <a
-                                            key={index}
-                                            href="#"
-                                            className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center transition-all duration-300 transform hover:scale-110 hover:shadow-lg backdrop-blur-sm border border-white/20 group"
-                                            aria-label={social.name}
-                                        >
-                                            <svg className="w-6 h-6 transition-all duration-300 group-hover:scale-110" fill={social.color} viewBox="0 0 24 24">
-                                                <path d={social.icon} />
-                                            </svg>
-                                        </a>
-                                    ))}
+                                <div className="flex items-center gap-4 p-4 bg-white rounded-xl border-2 border-british-red shadow-smooth">
+                                    <div className="w-12 h-12 bg-british-red rounded-lg flex items-center justify-center">
+                                        <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                            <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <h3 className="font-bold text-british-red">Phone</h3>
+                                        <p className="text-gray-600">+44 (0) 20 1234 5678</p>
+                                    </div>
                                 </div>
-                                
-                                <p className="body-xl text-black mb-12 animate-gentle-slide-up leading-relaxed font-body" style={{ animationDelay: '0.2s' }}>
-                                    Join our vibrant community of social workers. Whether you have questions, need support, or want to collaborate, we&apos;re here to connect with you.
-                                </p>
                             </div>
                         </div>
 
-                        {/* Illustration */}
+                        {/* Union Jack Design Element instead of character image */}
                         <div className="relative order-1 lg:order-2">
                             <div className="relative mx-auto max-w-md lg:max-w-full">
                                 <div className="relative">
-                                    <Image
-                                        src="/Cheerful Person Waving-Photoroom.png"
-                                        alt="Cheerful person waving hello"
-                                        width={400}
-                                        height={450}
-                                        className="w-full h-auto object-contain"
-                                    />
+                                    <div className="w-full max-w-sm mx-auto aspect-square">
+                                        {/* Union Jack Contact Design */}
+                                        <div className="relative w-full h-full bg-white rounded-3xl shadow-2xl border-4 border-british-blue overflow-hidden">
+                                            {/* Blue background */}
+                                            <div className="absolute inset-0 bg-british-blue"></div>
+                                            
+                                            {/* White cross */}
+                                            <div className="absolute top-0 bottom-0 left-1/2 w-12 bg-white transform -translate-x-1/2"></div>
+                                            <div className="absolute left-0 right-0 top-1/2 h-8 bg-white transform -translate-y-1/2"></div>
+                                            
+                                            {/* Red cross */}
+                                            <div className="absolute top-0 bottom-0 left-1/2 w-6 bg-british-red transform -translate-x-1/2"></div>
+                                            <div className="absolute left-0 right-0 top-1/2 h-4 bg-british-red transform -translate-y-1/2"></div>
+                                            
+                                            {/* Contact overlay */}
+                                            <div className="absolute inset-0 flex items-center justify-center">
+                                                <div className="bg-white bg-opacity-95 rounded-2xl p-6 text-center shadow-lg">
+                                                    <div className="w-16 h-16 bg-british-blue rounded-full flex items-center justify-center mx-auto mb-3">
+                                                        <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                                            <path fillRule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clipRule="evenodd" />
+                                                        </svg>
+                                                    </div>
+                                                    <h3 className="heading-5 text-british-blue mb-1">Get In Touch</h3>
+                                                    <p className="body-small text-british-red font-bold">🇬🇧 UK Support</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -115,166 +128,177 @@ export default function Contact() {
                 </div>
             </section>
 
-            {/* Spacer */}
-            <div className="h-40 bg-background"></div>
-
             {/* Contact Form Section */}
-            <section className="min-h-screen flex items-center justify-center bg-background relative overflow-hidden">
-                <div className="container-custom relative z-10">
-                    <div className="grid lg:grid-cols-2 gap-20 items-start">
-                        {/* Contact Information */}
-                        <div className="order-2 lg:order-1">
-                            <div className="mb-12">
-                                <h2 className="heading-2 text-primary mb-8 font-display">
-                                    <span className="emilys-candy-regular" style={{ color: '#1e3a8a' }}>Let&apos;s Start a</span>
-                                    <span className="block text-gradient emilys-candy-regular">Conversation</span>
-                                </h2>
-                                <p className="body-large text-text-secondary leading-relaxed font-body">
-                                    We&apos;re here to support your journey in social work. Reach out for collaboration opportunities, questions, or just to connect with fellow professionals.
-                                </p>
-                            </div>
-
-                            {/* Contact Cards */}
-                            <div className="grid gap-6">
-                                {[
-                                    {
-                                        icon: (
-                                            <svg className="w-8 h-8 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                                            </svg>
-                                        ),
-                                        title: "Email Us",
-                                        description: "contact@wesocialworkers.com",
-                                        gradient: "bg-gradient-warm"
-                                    },
-                                    {
-                                        icon: (
-                                            <svg className="w-8 h-8 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                                            </svg>
-                                        ),
-                                        title: "Call Us",
-                                        description: "+1 (555) 123-4567",
-                                        gradient: "bg-gradient-secondary"
-                                    },
-                                    {
-                                        icon: (
-                                            <svg className="w-8 h-8 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                                            </svg>
-                                        ),
-                                        title: "Visit Us",
-                                        description: "123 Community Street, Social Work City",
-                                        gradient: "bg-gradient-peaceful"
-                                    }
-                                ].map((contact, index) => (
-                                    <div
-                                        key={index}
-                                        className="flex items-center gap-6 p-6 glass-trust rounded-2xl border border-white/30 shadow-peaceful hover-caring hover-peaceful group animate-gentle-slide-up"
-                                        style={{ animationDelay: `${index * 0.1}s` }}
-                                    >
-                                        <div className={`w-16 h-16 ${contact.gradient} rounded-2xl flex items-center justify-center group-hover:scale-110 transition-all duration-300 shadow-warm flex-shrink-0`}>
-                                            {contact.icon}
-                                        </div>
-                                        <div>
-                                            <h3 className="heading-4 text-primary mb-2 font-display">{contact.title}</h3>
-                                            <p className="text-text-secondary font-body">{contact.description}</p>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
+            <section className="section-padding-lg bg-red-50">
+                <div className="container-custom">
+                    <div className="max-w-4xl mx-auto">
+                        <div className="text-center mb-16">
+                            <span className="inline-block px-6 py-3 bg-british-blue text-white rounded-full body-medium font-bold mb-6 shadow-smooth">
+                                📧 Send us a Message
+                            </span>
+                            <h2 className="heading-2 mb-6 text-british-blue">
+                                Let&apos;s Discuss Your
+                                <span className="text-gradient block">Career Goals</span>
+                            </h2>
+                            <p className="body-xl text-gray-700 leading-relaxed max-w-2xl mx-auto">
+                                Fill out the form below and our team will get back to you within 24 hours 
+                                to discuss how we can support your UK social work journey.
+                            </p>
                         </div>
 
-                        {/* Contact Form */}
-                        <div className="order-1 lg:order-2">
-                            <div className="glass-trust rounded-3xl p-10 border border-white/30 shadow-peaceful hover-caring">
-                                <h3 className="heading-3 text-primary mb-8 font-display text-center">Send us a Message</h3>
-                                
-                                <form onSubmit={handleSubmit} className="space-y-6">
-                                    <div className="grid md:grid-cols-2 gap-6">
-                                        <div>
-                                            <label htmlFor="name" className="block text-text-primary font-semibold mb-2 font-body">
-                                                Full Name
-                                            </label>
-                                            <input
-                                                type="text"
-                                                id="name"
-                                                name="name"
-                                                value={formData.name}
-                                                onChange={handleChange}
-                                                className="form-modern w-full"
-                                                placeholder="Your full name"
-                                                required
-                                            />
-                                        </div>
-                                        <div>
-                                            <label htmlFor="email" className="block text-text-primary font-semibold mb-2 font-body">
-                                                Email Address
-                                            </label>
-                                            <input
-                                                type="email"
-                                                id="email"
-                                                name="email"
-                                                value={formData.email}
-                                                onChange={handleChange}
-                                                className="form-modern w-full"
-                                                placeholder="your.email@example.com"
-                                                required
-                                            />
-                                        </div>
-                                    </div>
-                                    
+                        <div className="card card-elevated p-8 border-2 border-british-blue">
+                            <form onSubmit={handleSubmit} className="space-y-6">
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     <div>
-                                        <label htmlFor="subject" className="block text-text-primary font-semibold mb-2 font-body">
-                                            Subject
+                                        <label htmlFor="name" className="block text-british-blue font-bold mb-2">
+                                            Full Name *
                                         </label>
                                         <input
                                             type="text"
-                                            id="subject"
-                                            name="subject"
-                                            value={formData.subject}
-                                            onChange={handleChange}
-                                            className="form-modern w-full"
-                                            placeholder="What would you like to discuss?"
+                                            id="name"
+                                            name="name"
+                                            value={formData.name}
+                                            onChange={handleInputChange}
                                             required
+                                            className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-british-blue focus:outline-none transition-colors"
+                                            placeholder="Enter your full name"
                                         />
                                     </div>
                                     
                                     <div>
-                                        <label htmlFor="message" className="block text-text-primary font-semibold mb-2 font-body">
-                                            Message
+                                        <label htmlFor="email" className="block text-british-blue font-bold mb-2">
+                                            Email Address *
                                         </label>
-                                        <textarea
-                                            id="message"
-                                            name="message"
-                                            value={formData.message}
-                                            onChange={handleChange}
-                                            rows={6}
-                                            className="form-modern w-full resize-none"
-                                            placeholder="Tell us more about how we can help or connect with you..."
+                                        <input
+                                            type="email"
+                                            id="email"
+                                            name="email"
+                                            value={formData.email}
+                                            onChange={handleInputChange}
                                             required
-                                        ></textarea>
+                                            className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-british-blue focus:outline-none transition-colors"
+                                            placeholder="Enter your email"
+                                        />
                                     </div>
-                                    
+                                </div>
+                                
+                                <div>
+                                    <label htmlFor="subject" className="block text-british-blue font-bold mb-2">
+                                        Subject *
+                                    </label>
+                                    <input
+                                        type="text"
+                                        id="subject"
+                                        name="subject"
+                                        value={formData.subject}
+                                        onChange={handleInputChange}
+                                        required
+                                        className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-british-blue focus:outline-none transition-colors"
+                                        placeholder="What can we help you with?"
+                                    />
+                                </div>
+                                
+                                <div>
+                                    <label htmlFor="message" className="block text-british-blue font-bold mb-2">
+                                        Message *
+                                    </label>
+                                    <textarea
+                                        id="message"
+                                        name="message"
+                                        value={formData.message}
+                                        onChange={handleInputChange}
+                                        required
+                                        rows={6}
+                                        className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-british-blue focus:outline-none transition-colors resize-vertical"
+                                        placeholder="Tell us more about your goals and how we can help..."
+                                    />
+                                </div>
+                                
+                                <div className="text-center">
                                     <button
                                         type="submit"
-                                        className="btn-2025 btn-primary-2025 hover-caring hover-peaceful w-full"
+                                        disabled={isSubmitting}
+                                        className="btn btn-primary btn-large disabled:opacity-50 disabled:cursor-not-allowed"
                                     >
-                                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-                                        </svg>
-                                        Send Message
+                                        {isSubmitting ? (
+                                            <>
+                                                <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                                                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                                </svg>
+                                                Sending...
+                                            </>
+                                        ) : (
+                                            <>
+                                                Send Message 🇬🇧
+                                                <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                                                </svg>
+                                            </>
+                                        )}
                                     </button>
-                                </form>
-                            </div>
+                                </div>
+                            </form>
+                            
+                            {submitStatus === 'success' && (
+                                <div className="mt-6 p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg">
+                                    ✅ Thank you! Your message has been sent successfully. We&apos;ll get back to you soon.
+                                </div>
+                            )}
+                            
+                            {submitStatus === 'error' && (
+                                <div className="mt-6 p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg">
+                                    ❌ Sorry, there was an error sending your message. Please try again.
+                                </div>
+                            )}
                         </div>
                     </div>
                 </div>
             </section>
 
-            {/* Footer Boundary */}
-            <div className="h-px bg-gradient-to-r from-transparent via-black/30 to-transparent"></div>
+            {/* Additional Info Section */}
+            <section className="section-padding-lg bg-white">
+                <div className="container-custom">
+                    <div className="text-center mb-16">
+                        <h2 className="heading-2 mb-6 text-british-blue">
+                            Why Choose 
+                            <span className="text-gradient block">We Social Workers UK?</span>
+                        </h2>
+                    </div>
+                    
+                    <div className="grid md:grid-cols-3 gap-8">
+                        <div className="text-center p-6 card border-2 border-british-blue hover-lift">
+                            <div className="w-16 h-16 bg-british-blue rounded-lg flex items-center justify-center mx-auto mb-4">
+                                <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                                </svg>
+                            </div>
+                            <h3 className="heading-5 mb-3 text-british-blue">Expert Guidance</h3>
+                            <p className="body-medium text-gray-700">Professional advice from experienced UK social workers</p>
+                        </div>
+                        
+                        <div className="text-center p-6 card border-2 border-british-red hover-lift">
+                            <div className="w-16 h-16 bg-british-red rounded-lg flex items-center justify-center mx-auto mb-4">
+                                <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z" />
+                                </svg>
+                            </div>
+                            <h3 className="heading-5 mb-3 text-british-red">Personalized Support</h3>
+                            <p className="body-medium text-gray-700">Tailored assistance based on your unique background and goals</p>
+                        </div>
+                        
+                        <div className="text-center p-6 card border-2 border-british-blue hover-lift">
+                            <div className="w-16 h-16 bg-white border-2 border-british-blue rounded-lg flex items-center justify-center mx-auto mb-4">
+                                <svg className="w-8 h-8 text-british-blue" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                </svg>
+                            </div>
+                            <h3 className="heading-5 mb-3 text-british-blue">Proven Success</h3>
+                            <p className="body-medium text-gray-700">95% success rate in helping social workers achieve UK careers</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
     );
 }

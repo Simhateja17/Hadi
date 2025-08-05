@@ -1,6 +1,7 @@
 // pages/index.tsx
 import { GetStaticProps } from 'next';
 import { getApiUrl } from '../utils/api';
+import Link from 'next/link';
 import Image from 'next/image';
 import { Hero } from '../../components/Hero';
 import { BlogScroller } from '../../components/BlogScroller';
@@ -17,219 +18,247 @@ type HomeProps = { blogs: Blog[]; };
 
 export default function Home({ blogs }: HomeProps) {
     return (
-        <div>
+        <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-red-50">
             <Hero />
             
-            {/* Spacer */}
-            <div className="h-40 bg-background"></div>
-            
-            {/* Professional Resources Section */}
-            <section className="min-h-screen flex items-center justify-center bg-background relative overflow-hidden">
-                {/* Background Pattern */}
-                <div className="absolute inset-0">
-                    <div className="absolute inset-0 bg-caring-pattern opacity-40"></div>
-                </div>
-                
-                <div className="container-custom relative z-10">
-                    <div className="text-center animate-gentle-slide-up">
-                        {/* Section Badge */}
-                        <div className="inline-flex items-center gap-4 px-8 py-4 glass-trust rounded-full border border-tertiary/20 mb-8 shadow-peaceful">
-                            <div className="w-3 h-3 bg-gradient-peaceful rounded-full"></div>
-                            <span className="font-semibold text-primary text-lg font-body">Professional Growth & Learning</span>
+            {/* About Section */}
+            <section className="section-padding-lg bg-white/80 backdrop-blur-sm">
+                <div className="container-custom">
+                    <div className="grid lg:grid-cols-2 gap-16 items-center">
+                        {/* Content */}
+                        <div className="animate-fade-in-up">
+                            <div className="mb-6">
+                                <span className="inline-block px-6 py-3 bg-british-red text-white rounded-full body-medium font-bold shadow-smooth">
+                                    About Us
+                                </span>
+                            </div>
+                            
+                            <h2 className="heading-2 mb-6 text-british-blue">
+                                Empowering Social Workers to 
+                                <span className="text-gradient block">Thrive in the UK</span>
+                            </h2>
+                            
+                            <p className="body-large mb-8 text-gray-700 leading-relaxed">
+                                We Social Workers UK is run by a group of experienced social 
+                                workers with strong roots in both India and the UK. With years of 
+                                frontline and management experience, we guide international 
+                                social workers through every step of building a career in the UK.
+                            </p>
+                            
+                            <p className="body-large mb-8 text-gray-700 leading-relaxed">
+                                From degree recognition, registration, and visa requirements to 
+                                job readiness, training, CV and interview prep, we offer expert 
+                                support tailored to your journey. Our mission is simple: to help 
+                                you succeed as a confident, competent social worker in the UK.
+                            </p>
+                            
+                            <div className="grid grid-cols-3 gap-8 mb-8">
+                                <div className="text-center">
+                                    <div className="w-16 h-16 bg-british-blue rounded-lg flex items-center justify-center mx-auto mb-3">
+                                        <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                                        </svg>
+                                    </div>
+                                    <h3 className="heading-5 mb-2 text-british-blue">Global Experience</h3>
+                                    <p className="body-small text-gray-600">International perspective</p>
+                                </div>
+                                
+                                <div className="text-center">
+                                    <div className="w-16 h-16 bg-british-red rounded-lg flex items-center justify-center mx-auto mb-3">
+                                        <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                            <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z" />
+                                        </svg>
+                                    </div>
+                                    <h3 className="heading-5 mb-2 text-british-red">Expert Team</h3>
+                                    <p className="body-small text-gray-600">Experienced professionals</p>
+                                </div>
+                                
+                                <div className="text-center">
+                                    <div className="w-16 h-16 bg-white border-2 border-british-blue rounded-lg flex items-center justify-center mx-auto mb-3">
+                                        <svg className="w-8 h-8 text-british-blue" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fillRule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                                        </svg>
+                                    </div>
+                                    <h3 className="heading-5 mb-2 text-british-blue">Comprehensive Support</h3>
+                                    <p className="body-small text-gray-600">End-to-end guidance</p>
+                                </div>
+                            </div>
+                            
+                            <Link href="/about" className="btn btn-primary">
+                                Learn More About Us
+                            </Link>
                         </div>
                         
-                        <h2 className="heading-2 text-primary mb-8 font-display">
-                            <span className="emilys-candy-regular" style={{ color: '#1e3a8a' }}>Expert Knowledge for</span>
-                            <span className="block text-gradient emilys-candy-regular">Compassionate Care</span>
+                        {/* Replace Union Jack Design with Logo */}
+                        <div className="animate-scale-in">
+                            <div className="relative">
+                                <div className="w-full max-w-md mx-auto aspect-square">
+                                    {/* Logo container */}
+                                    <div className="relative w-full h-full bg-white rounded-2xl shadow-xl border-4 border-british-blue overflow-hidden flex items-center justify-center">
+                                        <Image 
+                                            src="/FInal Logo of the We Social Workersz-Photoroom.png" 
+                                            alt="We Social Workers UK Logo" 
+                                            width={300} 
+                                            height={300}
+                                            className="rounded-xl object-contain"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Services Section */}
+            <section className="section-padding-lg bg-white/70 backdrop-blur-sm">
+                <div className="container-custom">
+                    <div className="text-center mb-16 animate-fade-in-up">
+                        <span className="inline-block px-6 py-3 bg-british-blue text-white rounded-full body-medium font-bold mb-6 shadow-smooth">
+                            Our Services Include
+                        </span>
+                        <h2 className="heading-2 mb-6 text-british-blue">
+                            Comprehensive Support for Your 
+                            <span className="text-british-red block">Professional Journey</span>
                         </h2>
-                        
-                        <p className="body-large text-text-secondary max-w-2xl mx-auto leading-relaxed font-body mb-8">
-                            
+                        <p className="body-xl max-w-3xl mx-auto text-gray-700 leading-relaxed">
+                            We provide end-to-end support to help international social workers successfully 
+                            transition and thrive in the UK&apos;s professional landscape.
                         </p>
                     </div>
                     
-                    <div className="mt-16 overflow-hidden">
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        {[
+                            {
+                                title: "Degree Recognition & Validation",
+                                description: "Expert guidance through UK qualification recognition processes",
+                                icon: (
+                                    <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3z" />
+                                    </svg>
+                                ),
+                                color: "blue"
+                            },
+                            {
+                                title: "Visa Requirements & Guidance",
+                                description: "Navigate complex visa processes with confidence",
+                                icon: (
+                                    <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fillRule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zm0 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V8zm0 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1v-2z" clipRule="evenodd" />
+                                    </svg>
+                                ),
+                                color: "red"
+                            },
+                            {
+                                title: "Professional CV & Interview Coaching",
+                                description: "Stand out with professionally crafted applications",
+                                icon: (
+                                    <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
+                                    </svg>
+                                ),
+                                color: "white"
+                            },
+                            {
+                                title: "Social Work England Registration",
+                                description: "Seamless registration with regulatory bodies",
+                                icon: (
+                                    <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                                    </svg>
+                                ),
+                                color: "blue"
+                            },
+                            {
+                                title: "Job Readiness Training",
+                                description: "Comprehensive preparation for UK workplace culture",
+                                icon: (
+                                    <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fillRule="evenodd" d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z" clipRule="evenodd" />
+                                        <path d="M2 13.692V16a2 2 0 002 2h12a2 2 0 002-2v-2.308A24.974 24.974 0 0110 15c-2.796 0-5.487-.46-8-1.308z" />
+                                    </svg>
+                                ),
+                                color: "red"
+                            },
+                            {
+                                title: "Ongoing Mentorship & Support",
+                                description: "Continuous guidance throughout your career journey",
+                                icon: (
+                                    <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z" />
+                                    </svg>
+                                ),
+                                color: "white"
+                            }
+                        ].map((service, index) => {
+                            const colorClasses: Record<string, string> = {
+                                blue: "bg-british-blue text-white",
+                                red: "bg-british-red text-white",
+                                white: "bg-white text-british-blue border-2 border-british-blue"
+                            };
+                            
+                            return (
+                                <div key={index} className="card card-elevated hover-lift animate-fade-in-up bg-white/90 backdrop-blur-sm" style={{ animationDelay: `${index * 0.1}s` }}>
+                                    <div className="p-8">
+                                        <div className={`w-16 h-16 ${colorClasses[service.color]} rounded-xl flex items-center justify-center mb-6 shadow-smooth`}>
+                                            {service.icon}
+                                        </div>
+                                        <h3 className="heading-5 mb-4 text-british-blue">{service.title}</h3>
+                                        <p className="body-medium text-gray-700 leading-relaxed">
+                                            {service.description}
+                                        </p>
+                                    </div>
+                                </div>
+                            );
+                        })}
+                    </div>
+                </div>
+            </section>
+
+            {/* Resources Section */}
+            <section className="section-padding-lg bg-white/60 backdrop-blur-sm">
+                <div className="container-custom">
+                    <div className="text-center mb-16 animate-fade-in-up">
+                        <span className="inline-block px-6 py-3 bg-british-red text-white rounded-full body-medium font-bold mb-6 shadow-smooth">
+                            Professional Growth & Learning
+                        </span>
+                        <h2 className="heading-2 mb-6 text-british-blue">
+                            Expert Knowledge for
+                            <span className="text-british-red block">Compassionate Care</span>
+                        </h2>
+                        <p className="body-xl max-w-3xl mx-auto text-gray-700 leading-relaxed">
+                            Access our curated resources and insights to stay ahead in your professional development.
+                        </p>
+                    </div>
+                    
+                    <div className="overflow-hidden">
                         <BlogScroller blogs={blogs} />
                     </div>
                 </div>
             </section>
 
-            {/* Spacer */}
-            <div className="h-0 bg-surface-warm"></div>
-
-            {/* Community Values Section */}
-            <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-surface-warm">
-                {/* Background Pattern */}
-                <div className="absolute inset-0">
-                    <div className="absolute inset-0 bg-community-dots opacity-20"></div>
-                </div>
-                
-                <div className="container-custom relative z-10">
-                    <div className="grid lg:grid-cols-2 gap-20 items-center">
-                        {/* Community Illustration */}
-                        <div className="relative order-2 lg:order-1">
-                            <div className="relative mx-auto max-w-md lg:max-w-full">
-                                {/* Main illustration */}
-                                <div className="relative">
-                                    <Image
-                                        src="/Group Discussion Circle-Photoroom.png"
-                                        alt="Group discussion representing collaboration and community support"
-                                        width={400}
-                                        height={350}
-                                        className="w-full h-auto object-contain"
-                                    />
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Content Section */}
-                        <div className="text-center lg:text-left order-1 lg:order-2">
-                            <div className="mb-12">
-                                <h2 className="heading-2 mb-8 font-display">
-                                    <span className="emilys-candy-regular" style={{ color: '#dc2626' }}>Why Choose </span>
-                                    <span className="emilys-candy-regular" style={{ color: '#059669' }}>Our </span>
-                                    <span className="emilys-candy-regular" style={{ color: '#7C3AED' }}>Community</span>
-                                    <span className="emilys-candy-regular" style={{ color: '#7C3AED' }}>?</span>
-                                </h2>
-                                <p className="body-large text-text-secondary max-w-2xl lg:mx-0 mx-auto font-body">
-                                    Join a vibrant community of dedicated professionals who share your passion for creating positive change and supporting those in need.
-                                </p>
-                            </div>
-                            
-                            <div className="grid gap-8 max-w-2xl lg:mx-0 mx-auto">
-                                {[
-                                    {
-                                        icon: (
-                                            <svg className="w-8 h-8 transition-all duration-300" fill="#dc2626" stroke="#dc2626" viewBox="0 0 24 24">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                                            </svg>
-                                        ),
-                                        title: "Compassionate Expertise",
-                                        description: "Learn from seasoned professionals who understand the heart of social work and the challenges you face every day.",
-                                        gradient: "bg-gradient-warm",
-                                        delay: "0s"
-                                    },
-                                    {
-                                        icon: (
-                                            <svg className="w-8 h-8 transition-all duration-300" fill="#059669" viewBox="0 0 24 24">
-                                                <path d="M20 6h-3V4c0-1.1-.9-2-2-2H9c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zM9 4h6v2H9V4zm11 15H4V8h16v11z"/>
-                                                <path d="M9 10h6v2H9z"/>
-                                            </svg>
-                                        ),
-                                        title: "Meaningful Opportunities",
-                                        description: "Find roles that align with your values and passion for making a difference in people's lives.",
-                                        gradient: "bg-gradient-secondary",
-                                        delay: "0.2s"
-                                    },
-                                    {
-                                        icon: (
-                                            <svg className="w-8 h-8 transition-all duration-300" fill="#7c3aed" stroke="#7c3aed" viewBox="0 0 24 24">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                                            </svg>
-                                        ),
-                                        title: "Supportive Network",
-                                        description: "Connect with caring professionals who share your commitment to healing and community building.",
-                                        gradient: "bg-gradient-peaceful",
-                                        delay: "0.4s"
-                                    }
-                                ].map((feature, index) => (
-                                    <div
-                                        key={index}
-                                        className="flex items-start gap-6 p-6 glass-trust rounded-2xl border border-white/30 shadow-peaceful hover-caring hover-peaceful group animate-gentle-slide-up"
-                                        style={{ animationDelay: feature.delay }}
-                                    >
-                                        <div className={`w-16 h-16 ${feature.gradient} rounded-2xl flex items-center justify-center group-hover:scale-110 transition-all duration-300 shadow-warm flex-shrink-0`}>
-                                            <div className="text-black">
-                                                {feature.icon}
-                                            </div>
-                                        </div>
-                                        <div className="text-left">
-                                            <h3 className="heading-4 text-primary mb-2 font-display">{feature.title}</h3>
-                                            <p className="text-text-secondary leading-relaxed font-body text-sm">{feature.description}</p>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
+            {/* CTA Section */}
+            <section className="section-padding-lg bg-white/50 backdrop-blur-sm">
+                <div className="container-custom text-center">
+                    <div className="max-w-4xl mx-auto animate-fade-in-up">
+                        <h2 className="heading-2 mb-6 text-british-blue">
+                            Ready to Start Your UK Journey?
+                        </h2>
+                        <p className="body-xl mb-8 text-gray-700 leading-relaxed">
+                            Join hundreds of successful social workers who have transformed their careers with our guidance. 
+                            Let&apos;s build your path to success in the United Kingdom together.
+                        </p>
+                        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                            <Link href="/contact" className="btn btn-primary btn-large">
+                                Get Started Today
+                            </Link>
+                            <Link href="/toolkit" className="btn btn-outline border-2 border-british-blue text-british-blue hover:bg-british-blue hover:text-white btn-large">
+                                Explore Toolkit
+                            </Link>
                         </div>
                     </div>
                 </div>
             </section>
-
-            {/* Join Our Mission Section */}
-            <section className="flex items-center justify-center bg-gradient-hero relative overflow-hidden -mt-300 py-70">
-                {/* Background Pattern */}
-                <div className="absolute inset-0 opacity-30">
-                    <div className="absolute inset-0 bg-caring-pattern"></div>
-                </div>
-                
-                <div className="container-custom relative z-10">
-                    <div className="grid lg:grid-cols-2 gap-20 items-center">
-                        {/* Content Section */}
-                        <div className="text-center lg:text-left order-2 lg:order-1">
-                            <div className="max-w-2xl lg:mx-0 mx-auto">
-                                <h2 className="heading-2 text-black mb-8 animate-gentle-slide-up font-display">
-                                    <span className="emilys-candy-regular" style={{ color: '#059669' }}>Ready</span>{' '}
-                                    <span className="emilys-candy-regular" style={{ color: '#000000' }}>to Make a</span>{' '}
-                                    <span className="emilys-candy-regular" style={{ color: '#dc2626' }}>Greater</span>{' '}
-                                    <span className="block emilys-candy-regular" style={{ color: '#1e3a8a' }}>Impact Together?</span>
-                                </h2>
-                                
-                                <p className="body-xl text-black mb-12 animate-gentle-slide-up leading-relaxed font-body" style={{ animationDelay: '0.2s' }}>
-                                    Join a community of dedicated professionals committed to positive change, 
-                                    personal growth, and building stronger, healthier communities.
-                                </p>
-                                
-                                {/* Community Newsletter */}
-                                <div className="glass-trust rounded-3xl p-10 border border-white/30 shadow-peaceful">
-                                    <div className="max-w-2xl mx-auto">
-                                        <div className="flex items-center justify-center gap-4 mb-6">
-                                            <div className="w-16 h-16 bg-gradient-warm rounded-3xl flex items-center justify-center">
-                                                <svg className="w-8 h-8 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                                                </svg>
-                                            </div>
-                                            <h3 className="heading-3 text-primary font-cartoon">Stay Connected</h3>
-                                        </div>
-                                        <p className="text-text-secondary mb-8 leading-relaxed font-cartoon">Join our caring community newsletter for inspiring stories, professional insights, and opportunities to make a difference.</p>
-                                        <div className="flex flex-col sm:flex-row gap-4">
-                                            <input
-                                                type="email"
-                                                placeholder="  Enter your email address"
-                                                className="form-modern flex-1"
-                                            />
-                                            <button className="btn-2025 btn-primary-2025 hover-caring hover-peaceful px-8 py-4 font-cartoon">
-                                                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                                                </svg>
-                                                Join Community
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Professional Progress Illustration */}
-                        <div className="relative order-1 lg:order-2">
-                            <div className="relative mx-auto max-w-md lg:max-w-full">
-                                {/* Main illustration */}
-                                <div className="relative">
-                                    <Image
-                                        src="/Stylish Woman Walking Illustration-Photoroom.png"
-                                        alt="Stylish professional woman walking forward representing career progress and advancement"
-                                        width={300}
-                                        height={400}
-                                        className="w-full h-auto object-contain"
-                                    />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* Footer Boundary */}
-            <div className="h-px bg-gradient-to-r from-transparent via-black/30 to-transparent"></div>
         </div>
     );
 }
@@ -240,20 +269,19 @@ export const getStaticProps: GetStaticProps = async () => {
         const response = await fetch(apiUrl);
         
         if (!response.ok) {
-            throw new Error('Failed to fetch blogs');
+            throw new Error(`Failed to fetch blogs: ${response.status}`);
         }
         
-        const blogs = await response.json();
+        const blogs: Blog[] = await response.json();
         
         return {
             props: {
                 blogs: blogs || [],
             },
-            revalidate: 60, // Revalidate every 60 seconds
+            revalidate: 60,
         };
     } catch (error) {
         console.error('Error fetching blogs:', error);
-        // Return empty array if API fails
         return {
             props: {
                 blogs: [],

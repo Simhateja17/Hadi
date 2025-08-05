@@ -16,11 +16,11 @@ export const Navbar = () => {
                         <Link href="/" className="flex items-center hover:opacity-80 transition-opacity">
                             <div className="relative flex items-center gap-3">
                                 <Image 
-                                    src="/logo.png" 
+                                    src="/FInal Logo of the We Social Workersz-Photoroom.png" 
                                     alt="We Social Workers UK Logo" 
-                                    width={40} 
-                                    height={40}
-                                    className="rounded-lg"
+                                    width={56} 
+                                    height={56}
+                                    className="rounded-lg object-contain"
                                 />
                                 <span className="text-xl font-bold text-gray-800 emilys-candy-regular">WE SOCIAL WORKERS</span>
                             </div>
