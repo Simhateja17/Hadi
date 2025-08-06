@@ -2,6 +2,7 @@
 import { useState, FormEvent, useEffect } from 'react';
 import emailjs from '@emailjs/browser';
 import { useRouter } from 'next/router';
+import { logConfiguration } from '../../utils/configChecker';
 
 const AdminLoginPage = () => {
     const [email, setEmail] = useState('');
@@ -16,6 +17,9 @@ const AdminLoginPage = () => {
     // Set the admin email on component mount
     useEffect(() => {
         setEmail(process.env.NEXT_PUBLIC_ADMIN_EMAIL || '');
+        
+        // Log configuration for debugging
+        logConfiguration();
         
         // Check if user is already logged in
         const token = localStorage.getItem('admin_token');
@@ -32,6 +36,9 @@ const AdminLoginPage = () => {
 
         try {
             // Step 1: Call your backend to generate and get the OTP
+            console.log('🔄 Requesting OTP for email:', email);
+            console.log('🌐 API URL:', process.env.NEXT_PUBLIC_API_URL);
+            
             const res = await fetch('/api/auth/generate-otp', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -39,28 +46,62 @@ const AdminLoginPage = () => {
             });
 
             const data = await res.json();
-            if (!res.ok) throw new Error(data.error || 'Failed to generate OTP');
+            console.log('📝 Backend response:', data);
+            
+            if (!res.ok) {
+                console.error('❌ Backend error:', data);
+                throw new Error(data.error || 'Failed to generate OTP');
+            }
 
             const generatedOtp = data.otp;
+            console.log('🔢 Generated OTP:', generatedOtp);
 
             // Step 2: Use EmailJS to send the OTP to the admin email
+            console.log('📧 Attempting to send email with EmailJS...');
+            console.log('📧 EmailJS Config:', {
+                serviceId: process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
+                templateId: process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
+                publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY ? 'SET' : 'NOT SET',
+                toEmail: email
+            });
+            
             const templateParams = {
                 to_email: email, // This will always be the admin email
                 passcode: generatedOtp, // Match this key to the variable in your EmailJS template
             };
 
-            await emailjs.send(
+            const emailResult = await emailjs.send(
                 process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
                 process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
                 templateParams,
                 process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
             );
+            
+            console.log('✅ EmailJS Success:', emailResult);
 
             setShowOtpInput(true); // Show the OTP input field on success
             setSuccessMessage('OTP has been sent to your email address!');
 
         } catch (err) {
-            setError(err instanceof Error ? err.message : 'An error occurred');
+            console.error('❌ Full error details:', err);
+            console.error('❌ Error message:', err instanceof Error ? err.message : 'Unknown error');
+            console.error('❌ Error stack:', err instanceof Error ? err.stack : 'No stack trace');
+            
+            // Provide more specific error messages
+            let errorMessage = 'An error occurred';
+            if (err instanceof Error) {
+                if (err.message.includes('fetch')) {
+                    errorMessage = 'Network error: Could not connect to server. Please check your internet connection.';
+                } else if (err.message.includes('generate-otp')) {
+                    errorMessage = 'Failed to generate OTP. Please try again.';
+                } else if (err.message.includes('EmailJS') || err.message.includes('email')) {
+                    errorMessage = 'Failed to send email. Please check your email configuration or try again later.';
+                } else {
+                    errorMessage = err.message;
+                }
+            }
+            
+            setError(errorMessage);
         } finally {
             setIsLoading(false);
         }
