@@ -1,6 +1,7 @@
 // src/pages/blogs/index.tsx
 import { GetStaticProps } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import { getApiUrl } from '../../utils/api';
 
 type Blog = {
@@ -136,28 +137,23 @@ export default function BlogListPage({ blogs }: BlogListPageProps) {
                                 <Link key={blog.id} href={`/blogs/${blog.id}`} className="group block">
                                     <article className="card card-elevated hover-lift h-full animate-fade-in-up border-2 border-british-blue" style={{ animationDelay: `${index * 0.1}s` }}>
                                         {/* Header Image */}
-                                        <div className="relative h-56 overflow-hidden rounded-t-lg">
-                                            {blog.imageUrl ? (
-                                                // Keep actual blog images but add Union Jack overlay
-                                                <div className="relative w-full h-full">
-                                                    <div className="absolute inset-0 bg-gradient-to-br from-british-blue/20 to-british-red/20 z-10"></div>
-                                                    <div className="w-full h-full bg-gray-100 flex items-center justify-center">
-                                                        <div className="text-center">
-                                                            <div className="w-16 h-16 bg-british-blue rounded-full flex items-center justify-center mx-auto mb-2">
-                                                                <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                                                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                                                </svg>
-                                                            </div>
-                                                            <p className="text-british-blue font-bold">🇬🇧 UK Insight</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            ) : (
-                                                // Union Jack themed background instead of character photos
-                                                getUnionJackBackground(index)
-                                            )}
-                                            
-                                            {/* Reading time badge */}
+                        <div className="relative h-56 overflow-hidden rounded-t-lg">
+                            {blog.imageUrl ? (
+                                // Display actual blog thumbnail image
+                                <div className="relative w-full h-full">
+                                    <Image 
+                                        src={blog.imageUrl.startsWith('http') ? blog.imageUrl : `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001'}${blog.imageUrl}`} 
+                                        alt={blog.title} 
+                                        fill
+                                        className="object-cover"
+                                    />
+                                    {/* Optional subtle UK themed overlay */}
+                                    <div className="absolute inset-0 bg-gradient-to-br from-british-blue/10 to-british-red/10"></div>
+                                </div>
+                            ) : (
+                                // Union Jack themed background instead of character photos
+                                getUnionJackBackground(index)
+                            )}                                            {/* Reading time badge */}
                                             <div className="absolute top-4 right-4">
                                                 <div className="flex items-center gap-2 bg-white bg-opacity-95 px-3 py-1.5 rounded-lg shadow-sm border border-british-blue">
                                                     <svg className="w-3 h-3 text-british-red" fill="currentColor" viewBox="0 0 20 20">

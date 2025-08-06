@@ -1,6 +1,7 @@
 
 // components/BlogScroller.tsx
 import Link from 'next/link';
+import Image from 'next/image';
 
 type Blog = {
     id: string;
@@ -99,19 +100,16 @@ export const BlogScroller = ({ blogs }: BlogScrollerProps) => {
                             {/* Union Jack themed header instead of image */}
                             <div className="relative h-56 overflow-hidden rounded-t-lg">
                                 {blog.imageUrl ? (
-                                    // Keep actual blog images but add Union Jack overlay
+                                    // Display actual blog thumbnail image
                                     <div className="relative w-full h-full">
-                                        <div className="absolute inset-0 bg-gradient-to-br from-british-blue/20 to-british-red/20 z-10"></div>
-                                        <div className="w-full h-full bg-gray-100 flex items-center justify-center">
-                                            <div className="text-center">
-                                                <div className="w-16 h-16 bg-british-blue rounded-full flex items-center justify-center mx-auto mb-2">
-                                                    <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                                        <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                                    </svg>
-                                                </div>
-                                                <p className="text-british-blue font-bold">🇬🇧 UK Resources</p>
-                                            </div>
-                                        </div>
+                                        <Image 
+                                            src={blog.imageUrl.startsWith('http') ? blog.imageUrl : `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001'}${blog.imageUrl}`} 
+                                            alt={blog.title} 
+                                            fill
+                                            className="object-cover"
+                                        />
+                                        {/* Optional subtle UK themed overlay */}
+                                        <div className="absolute inset-0 bg-gradient-to-br from-british-blue/10 to-british-red/10"></div>
                                     </div>
                                 ) : (
                                     // Union Jack themed background instead of character photos
