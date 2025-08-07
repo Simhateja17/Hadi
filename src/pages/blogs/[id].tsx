@@ -1,6 +1,7 @@
 // src/pages/blogs/[id].tsx
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Image from 'next/image';
+import CommentSection from '../../../components/CommentSection';
 
 type Blog = {
     id: string;
@@ -108,15 +109,13 @@ export default function BlogPostPage({ post }: BlogPostPageProps) {
             lineHeight: settings.content.lineHeight,
             zIndex: 3,
             width: `${Math.min(100 - settings.content.x, 80)}%`, // Ensure it doesn't overflow
-            paddingBottom: '8rem' // Add bottom padding for better spacing from footer
         };
     };
 
     return (
-        <div className="bg-white" style={{ minHeight: 'calc(100vh + 300px)' }}>
-
-            {/* Main Container - Relative positioning for absolute children */}
-            <div className="relative w-full bg-white shadow-sm" style={{ minHeight: 'calc(100vh + 500px)' }}>
+        <div className="min-h-screen bg-white">
+            {/* Main Container - Changed to allow natural scrolling */}
+            <div className="relative w-full bg-white shadow-sm" style={{ minHeight: '80vh', paddingBottom: '2rem' }}>
                 {/* Thumbnail */}
                 {post.imageUrl ? (
                     <div 
@@ -224,11 +223,14 @@ export default function BlogPostPage({ post }: BlogPostPageProps) {
                     </div>
 
                     {/* Main Body Content */}
-                    <div className="max-w-none">
+                    <div className="max-w-none mb-12">
                         <div dangerouslySetInnerHTML={{ __html: post.content }} />
                     </div>
                 </div>
             </div>
+
+            {/* Comment Section - Outside absolute positioning */}
+            <CommentSection blogId={post.id} />
         </div>
     );
 }
