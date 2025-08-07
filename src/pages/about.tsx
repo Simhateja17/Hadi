@@ -231,7 +231,7 @@ export default function About() {
                                     <div className="lg:col-span-1">
                                         <div className="w-full h-64 rounded-lg overflow-hidden shadow-lg relative">
                                             <Image 
-                                                src="/ali-azam-profile.jpg" 
+                                                src="/ali-azam-profile-new.jpg" 
                                                 alt="Ali Azam - Co-Founder and Mentor"
                                                 fill
                                                 className="object-cover"
