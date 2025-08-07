@@ -1,5 +1,6 @@
 // pages/about.tsx
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState, useEffect } from 'react';
 
 export default function About() {
@@ -226,22 +227,22 @@ export default function About() {
                             {/* Ali's Profile */}
                             <div className="bg-gradient-to-br from-british-blue/5 to-british-red/5 p-8 rounded-lg">
                                 <div className="grid lg:grid-cols-3 gap-8 items-start">
-                                    {/* Profile Image Placeholder */}
+                                    {/* Profile Image */}
                                     <div className="lg:col-span-1">
-                                        <div className="w-full h-64 bg-gradient-to-br from-british-blue/20 to-british-red/20 rounded-lg flex items-center justify-center">
-                                            <div className="text-center">
-                                                <div className="w-20 h-20 bg-british-blue rounded-full mx-auto mb-4 flex items-center justify-center">
-                                                    <span className="text-white text-2xl font-bold">AA</span>
-                                                </div>
-                                                <p className="body-small text-gray-600">Profile Photo</p>
-                                            </div>
+                                        <div className="w-full h-64 rounded-lg overflow-hidden shadow-lg relative">
+                                            <Image 
+                                                src="/ali-azam-profile.jpg" 
+                                                alt="Ali Azam - Co-Founder and Mentor"
+                                                fill
+                                                className="object-cover"
+                                            />
                                         </div>
                                     </div>
                                     
                                     {/* Profile Content */}
                                     <div className="lg:col-span-2">
                                         <h3 className="heading-3 mb-2 text-british-blue">Meet Ali</h3>
-                                        <h4 className="heading-5 mb-4 text-british-red">Md Ali Azam – Co-Founder, We Social Workers UK</h4>
+                                        <h4 className="heading-5 mb-4 text-british-red">Md Ali Azam – Co-Founder and Mentor, We Social Workers UK</h4>
                                         <p className="body-medium mb-4 text-gray-600 font-semibold">PhD, MA, BA (Social Work)</p>
                                         
                                         <p className="body-medium mb-6 text-gray-700 leading-relaxed">
@@ -258,6 +259,46 @@ export default function About() {
                                         
                                         <p className="body-medium text-gray-700 leading-relaxed">
                                             Outside of work, Ali enjoys travelling, meeting new people, reading, cooking, and driving. His curiosity, warmth, and academic grounding make him a thoughtful and approachable mentor to many aspiring social workers.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            {/* Mayel's Profile */}
+                            <div className="bg-gradient-to-br from-british-red/5 to-british-blue/5 p-8 rounded-lg mt-12">
+                                <div className="grid lg:grid-cols-3 gap-8 items-start">
+                                    {/* Profile Image */}
+                                    <div className="lg:col-span-1">
+                                        <div className="w-full h-64 rounded-lg overflow-hidden shadow-lg relative">
+                                            <Image 
+                                                src="/mayel-hadi-profile.jpg" 
+                                                alt="Mayel Hadi - Co-Founder and Mentor"
+                                                fill
+                                                className="object-cover"
+                                            />
+                                        </div>
+                                    </div>
+                                    
+                                    {/* Profile Content */}
+                                    <div className="lg:col-span-2">
+                                        <h3 className="heading-3 mb-2 text-british-blue">Meet Mayel</h3>
+                                        <h4 className="heading-5 mb-4 text-british-red">Mayel Hadi – Co-Founder and Mentor, We Social Workers UK</h4>
+                                        <p className="body-medium mb-4 text-gray-600 font-semibold">BSW (Jamia Millia Islamia) | MSW (University of Delhi) | MSc (Comparative Social Change – Trinity College Dublin & University College Dublin)</p>
+                                        
+                                        <p className="body-medium mb-6 text-gray-700 leading-relaxed">
+                                            Mayel is a committed social work professional with international academic and practice background. With his education and experience in different countries, he brings a comparative and cross-cultural lens to social policy, inclusion, and grassroots impact.
+                                        </p>
+                                        
+                                        <p className="body-medium mb-6 text-gray-700 leading-relaxed">
+                                            He has worked across the corporate sector and nonprofit organisations in both India and Ireland, contributing to initiatives focused on children, youth, social development, equity, and community engagement. His work reflects a strong blend of practical insight, strategic thinking, and a deep commitment to social justice.
+                                        </p>
+                                        
+                                        <p className="body-medium mb-6 text-gray-700 leading-relaxed">
+                                            Mayel holds a Bachelor&apos;s in Social Work from Jamia Millia Islamia, a Master&apos;s in Social Work from the University of Delhi, and an MSc in Comparative Social Change jointly awarded by Trinity College Dublin and University College Dublin. His education and experience have equipped him with analytical skills and a passion for system-level change.
+                                        </p>
+                                        
+                                        <p className="body-medium text-gray-700 leading-relaxed">
+                                            Beyond his professional life, Mayel enjoys reading, playing badminton, and connecting with people from diverse walks of life. A strong believer in giving back, he is dedicated to supporting others and creating spaces where aspiring social workers can thrive.
                                         </p>
                                     </div>
                                 </div>
