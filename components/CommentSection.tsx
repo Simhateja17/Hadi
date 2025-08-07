@@ -17,8 +17,6 @@ const CommentSection: React.FC<CommentSectionProps> = ({ blogId }) => {
     const [loading, setLoading] = useState(true);
     const [submitting, setSubmitting] = useState(false);
     const [formData, setFormData] = useState({
-        name: '',
-        email: '',
         content: ''
     });
     const [showForm, setShowForm] = useState(false);
@@ -55,13 +53,17 @@ const CommentSection: React.FC<CommentSectionProps> = ({ blogId }) => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(formData),
+                body: JSON.stringify({
+                    name: 'Anonymous',
+                    email: 'anonymous@example.com',
+                    content: formData.content
+                }),
             });
 
             if (response.ok) {
                 const newComment = await response.json();
                 setComments(prev => [newComment, ...prev]);
-                setFormData({ name: '', email: '', content: '' });
+                setFormData({ content: '' });
                 setShowForm(false);
                 setMessage({ type: 'success', text: 'Comment posted successfully!' });
             } else {
@@ -118,36 +120,6 @@ const CommentSection: React.FC<CommentSectionProps> = ({ blogId }) => {
                 {showForm && (
                     <div className="bg-gray-50 p-6 rounded-lg mb-8 border">
                         <form onSubmit={handleSubmit} className="space-y-4">
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                <div>
-                                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
-                                        Name *
-                                    </label>
-                                    <input
-                                        type="text"
-                                        id="name"
-                                        value={formData.name}
-                                        onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
-                                        required
-                                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-british-blue focus:border-transparent"
-                                        placeholder="Your name"
-                                    />
-                                </div>
-                                <div>
-                                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-                                        Email *
-                                    </label>
-                                    <input
-                                        type="email"
-                                        id="email"
-                                        value={formData.email}
-                                        onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
-                                        required
-                                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-british-blue focus:border-transparent"
-                                        placeholder="your.email@example.com"
-                                    />
-                                </div>
-                            </div>
                             <div>
                                 <label htmlFor="content" className="block text-sm font-medium text-gray-700 mb-1">
                                     Comment *
@@ -171,7 +143,7 @@ const CommentSection: React.FC<CommentSectionProps> = ({ blogId }) => {
                                     {submitting ? 'Posting...' : 'Post Comment'}
                                 </button>
                                 <p className="text-sm text-gray-500">
-                                    Your email will not be published
+                                    Your comment will be posted anonymously
                                 </p>
                             </div>
                         </form>

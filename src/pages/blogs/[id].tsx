@@ -56,7 +56,7 @@ export default function BlogPostPage({ post }: BlogPostPageProps) {
         },
         content: {
             x: 15, // X position as percentage
-            y: 57, // Y position as percentage (moved up from 93% to give more space)
+            y: 59, // Y position as percentage (moved down for better spacing)
             size: 85, // Size as percentage
             fontSize: 18,
             lineHeight: 1.6
@@ -113,9 +113,9 @@ export default function BlogPostPage({ post }: BlogPostPageProps) {
     };
 
     return (
-        <div className="min-h-screen bg-white">
-            {/* Main Container - Changed to allow natural scrolling */}
-            <div className="relative w-full bg-white shadow-sm" style={{ minHeight: '80vh', paddingBottom: '2rem' }}>
+        <div className="bg-white" style={{ minHeight: '200vh' }}>
+            {/* Main Container - Fixed height container for absolute positioning */}
+            <div className="relative w-full bg-white shadow-sm" style={{ height: '150vh', paddingBottom: '2rem' }}>
                 {/* Thumbnail */}
                 {post.imageUrl ? (
                     <div 
@@ -230,7 +230,9 @@ export default function BlogPostPage({ post }: BlogPostPageProps) {
             </div>
 
             {/* Comment Section - Outside absolute positioning */}
-            <CommentSection blogId={post.id} />
+            <div style={{ marginTop: '4rem' }}>
+                <CommentSection blogId={post.id} />
+            </div>
         </div>
     );
 }
