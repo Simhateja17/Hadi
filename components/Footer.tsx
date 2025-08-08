@@ -30,7 +30,7 @@ export const Footer = () => {
                                 <div className="relative">
                                     <div className="w-16 h-16 bg-white rounded-lg flex items-center justify-center border-2 border-british-red">
                                         <Image 
-                                            src="/FInal Logo of the We Social Workersz-Photoroom.png" 
+                                            src="/final-logo.png" 
                                             alt="We Social Workers UK Logo" 
                                             width={55} 
                                             height={55}

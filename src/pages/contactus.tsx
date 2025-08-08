@@ -63,7 +63,7 @@ export default function ContactUs() {
                         {/* Content */}
                         <div className="text-center lg:text-left animate-fade-in-up">
                             <div className="mb-6">
-                                <span className="inline-block px-6 py-3 bg-british-red text-white rounded-full body-medium font-bold mb-6 shadow-smooth">
+                                <span className="inline-block px-8 py-4 bg-british-red text-white rounded-full body-medium font-bold mb-6 shadow-smooth">
                                     🇬🇧 Contact Us
                                 </span>
                             </div>
@@ -153,7 +153,7 @@ export default function ContactUs() {
                     <div className="max-w-4xl mx-auto">
                         {/* Section Header */}
                         <div className="text-center mb-16">
-                            <span className="inline-block px-6 py-3 bg-british-blue text-white rounded-full body-medium font-bold mb-6 shadow-smooth">
+                            <span className="inline-block px-8 py-4 bg-british-blue text-white rounded-full body-medium font-bold mb-6 shadow-smooth">
                                 📧 Professional Contact Form
                             </span>
                             

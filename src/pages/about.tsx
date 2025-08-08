@@ -17,7 +17,7 @@ export default function About() {
                 <div className="container-custom">
                     <div className="text-center">
                         <div className="mb-6">
-                            <span className="inline-block px-6 py-3 bg-british-red text-white rounded-full body-medium font-bold mb-6 shadow-smooth">
+                            <span className="inline-block px-8 py-4 bg-british-red text-white rounded-full body-medium font-bold mb-6 shadow-smooth">
                                 🇬🇧 About Us
                             </span>
                         </div>

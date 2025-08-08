@@ -45,7 +45,7 @@ export default function Contact() {
                         {/* Content */}
                         <div className="text-center lg:text-left">
                             <div className="mb-6">
-                                <span className="inline-block px-6 py-3 bg-british-red text-white rounded-full body-medium font-bold mb-6 shadow-smooth">
+                                <span className="inline-block px-8 py-4 bg-british-red text-white rounded-full body-medium font-bold mb-6 shadow-smooth">
                                     🇬🇧 Contact Us
                                 </span>
                             </div>
@@ -133,7 +133,7 @@ export default function Contact() {
                 <div className="container-custom">
                     <div className="max-w-4xl mx-auto">
                         <div className="text-center mb-16">
-                            <span className="inline-block px-6 py-3 bg-british-blue text-white rounded-full body-medium font-bold mb-6 shadow-smooth">
+                            <span className="inline-block px-8 py-4 bg-british-blue text-white rounded-full body-medium font-bold mb-6 shadow-smooth">
                                 📧 Send us a Message
                             </span>
                             <h2 className="heading-2 mb-6 text-british-blue">

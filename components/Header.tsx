@@ -16,7 +16,7 @@ const Header: React.FC = () => {
             <div className="relative">
               <div className="w-14 h-14 bg-white rounded-lg flex items-center justify-center shadow-smooth border-2 border-british-blue">
                 <Image 
-                  src="/FInal Logo of the We Social Workersz-Photoroom.png" 
+                  src="/final-logo.png" 
                   alt="We Social Workers UK Logo" 
                   width={48} 
                   height={48}

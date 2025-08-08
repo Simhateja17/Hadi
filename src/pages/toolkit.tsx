@@ -13,7 +13,7 @@ export default function Toolkit() {
                         {/* Content */}
                         <div className="text-center lg:text-left order-2 lg:order-1">
                             <div className="mb-6">
-                                <span className="inline-block px-6 py-3 bg-british-red text-white rounded-full body-medium font-bold mb-6 shadow-smooth">
+                                <span className="inline-block px-8 py-4 bg-british-red text-white rounded-full body-medium font-bold mb-6 shadow-smooth">
                                     🛠️ Professional Toolkit
                                 </span>
                             </div>
@@ -94,7 +94,7 @@ export default function Toolkit() {
             <section className="section-padding-lg bg-red-50">
                 <div className="container-custom">
                     <div className="text-center mb-16">
-                        <span className="inline-block px-6 py-3 bg-british-blue text-white rounded-full body-medium font-bold mb-6 shadow-smooth">
+                        <span className="inline-block px-8 py-4 bg-british-blue text-white rounded-full body-medium font-bold mb-6 shadow-smooth">
                             📚 Essential Resources
                         </span>
                         <h2 className="heading-2 mb-6 text-british-blue">

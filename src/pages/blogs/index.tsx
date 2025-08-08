@@ -98,7 +98,7 @@ export default function BlogListPage({ blogs }: BlogListPageProps) {
             <section className="section-padding-lg bg-gradient-to-br from-blue-50 via-white to-red-50">
                 <div className="container-custom text-center">
                     <div className="mb-6">
-                        <span className="inline-block px-6 py-3 bg-british-red text-white rounded-full body-medium font-bold mb-6 shadow-smooth">
+                        <span className="inline-block px-8 py-4 bg-british-red text-white rounded-full body-medium font-bold mb-6 shadow-smooth">
                             📚 Professional Resources
                         </span>
                     </div>
