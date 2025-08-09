@@ -48,7 +48,7 @@ export default function Home({ blogs }: HomeProps) {
         learnMoreButton: { x: 120, y: 0 },
         image: { 
             size: { width: 400, height: 400 },
-            position: { x: 20, y: 0 }
+            position: { x: -85, y: 0 }
         },
         ctaSection: {
             position: { x: 0, y: 0 },
