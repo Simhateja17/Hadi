@@ -28,7 +28,7 @@ export default function Home({ blogs }: HomeProps) {
     // Desktop Controls
     const DESKTOP_CONFIG = {
         aboutUsBubble: { x: 180, y: 0 },
-        learnMoreButton: { x: 165, y: 0 },
+        learnMoreButton: { x: 158, y: 0 },
         image: { 
             size: { width: 1000, height: 1000 },
             position: { x: 100, y: 0 }
