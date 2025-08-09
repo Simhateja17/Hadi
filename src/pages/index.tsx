@@ -28,7 +28,7 @@ export default function Home({ blogs }: HomeProps) {
     // Desktop Controls
     const DESKTOP_CONFIG = {
         aboutUsBubble: { x: 180, y: 0 },
-        learnMoreButton: { x: 0, y: 0 },
+        learnMoreButton: { x: 165, y: 0 },
         image: { 
             size: { width: 1000, height: 1000 },
             position: { x: 100, y: 0 }
@@ -65,10 +65,52 @@ export default function Home({ blogs }: HomeProps) {
         position: { x: 30, y: 0 }
     };
 
+    // Services Icons Controls (affects service icons positioning)
+    const SERVICES_ICON_CONFIG = {
+        desktop: {
+            position: { x: 0, y: 0 } // Position offset in pixels
+        },
+        mobile: {
+            position: { x: 0, y: 0 } // Position offset in pixels  
+        }
+    };
+
     // ===== END OF DESIGN CONTROLS =====
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-red-50">
+            <style jsx global>{`
+                .services-icon-desktop {
+                    transform: translate(${SERVICES_ICON_CONFIG.mobile.position.x}px, ${SERVICES_ICON_CONFIG.mobile.position.y}px);
+                }
+                .about-us-bubble {
+                    padding-left: ${BUBBLE_SIZE.horizontal * 0.25}rem;
+                    padding-right: ${BUBBLE_SIZE.horizontal * 0.25}rem;
+                    padding-top: ${BUBBLE_SIZE.vertical * 0.25}rem;
+                    padding-bottom: ${BUBBLE_SIZE.vertical * 0.25}rem;
+                    transform: translate(${MOBILE_CONFIG.aboutUsBubble.x}px, ${MOBILE_CONFIG.aboutUsBubble.y}px);
+                }
+                .learn-more-button {
+                    transform: translate(${MOBILE_CONFIG.learnMoreButton.x}px, ${MOBILE_CONFIG.learnMoreButton.y}px);
+                }
+                .services-grid {
+                    margin-top: ${MOBILE_CONFIG.servicesSection.headingToBoxesGap * 0.25}rem;
+                }
+                @media (min-width: 768px) {
+                    .services-icon-desktop {
+                        transform: translate(${SERVICES_ICON_CONFIG.desktop.position.x}px, ${SERVICES_ICON_CONFIG.desktop.position.y}px) !important;
+                    }
+                    .about-us-bubble {
+                        transform: translate(${DESKTOP_CONFIG.aboutUsBubble.x}px, ${DESKTOP_CONFIG.aboutUsBubble.y}px) !important;
+                    }
+                    .learn-more-button {
+                        transform: translate(${DESKTOP_CONFIG.learnMoreButton.x}px, ${DESKTOP_CONFIG.learnMoreButton.y}px) !important;
+                    }
+                    .services-grid {
+                        margin-top: ${DESKTOP_CONFIG.servicesSection.headingToBoxesGap * 0.25}rem !important;
+                    }
+                }
+            `}</style>
             <Hero />
             
             {/* About Section */}
@@ -80,26 +122,8 @@ export default function Home({ blogs }: HomeProps) {
                             <div className="mb-6">
                                 {/* Single About Us Bubble with Responsive Positioning */}
                                 <span 
-                                    className="inline-block bg-british-red text-white rounded-full body-medium font-bold shadow-smooth transition-transform duration-300"
-                                    style={{ 
-                                        paddingLeft: `${BUBBLE_SIZE.horizontal * 0.25}rem`, 
-                                        paddingRight: `${BUBBLE_SIZE.horizontal * 0.25}rem`,
-                                        paddingTop: `${BUBBLE_SIZE.vertical * 0.25}rem`,
-                                        paddingBottom: `${BUBBLE_SIZE.vertical * 0.25}rem`,
-                                        '--desktop-x': `${DESKTOP_CONFIG.aboutUsBubble.x}px`,
-                                        '--desktop-y': `${DESKTOP_CONFIG.aboutUsBubble.y}px`,
-                                        '--mobile-x': `${MOBILE_CONFIG.aboutUsBubble.x}px`,
-                                        '--mobile-y': `${MOBILE_CONFIG.aboutUsBubble.y}px`,
-                                        transform: `translate(var(--mobile-x), var(--mobile-y))`,
-                                    } as React.CSSProperties & { [key: string]: string }}
+                                    className="inline-block bg-british-red text-white rounded-full body-medium font-bold shadow-smooth transition-transform duration-300 about-us-bubble"
                                 >
-                                    <style jsx>{`
-                                        @media (min-width: 768px) {
-                                            span {
-                                                transform: translate(var(--desktop-x), var(--desktop-y)) !important;
-                                            }
-                                        }
-                                    `}</style>
                                     About Us
                                 </span>
                             </div>
@@ -197,22 +221,8 @@ export default function Home({ blogs }: HomeProps) {
                             {/* Single Learn More Button with Responsive Positioning */}
                             <Link 
                                 href="/about" 
-                                className="btn btn-primary transition-transform duration-300"
-                                style={{
-                                    '--desktop-x': `${DESKTOP_CONFIG.learnMoreButton.x}px`,
-                                    '--desktop-y': `${DESKTOP_CONFIG.learnMoreButton.y}px`,
-                                    '--mobile-x': `${MOBILE_CONFIG.learnMoreButton.x}px`,
-                                    '--mobile-y': `${MOBILE_CONFIG.learnMoreButton.y}px`,
-                                    transform: `translate(var(--mobile-x), var(--mobile-y))`,
-                                } as React.CSSProperties & { [key: string]: string }}
+                                className="btn btn-primary transition-transform duration-300 learn-more-button"
                             >
-                                <style jsx>{`
-                                    @media (min-width: 768px) {
-                                        a {
-                                            transform: translate(var(--desktop-x), var(--desktop-y)) !important;
-                                        }
-                                    }
-                                `}</style>
                                 Learn More About Us
                             </Link>
                         </div>
@@ -285,20 +295,8 @@ export default function Home({ blogs }: HomeProps) {
                     </div>
                     
                     <div 
-                        className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
-                        style={{
-                            '--desktop-gap': `${DESKTOP_CONFIG.servicesSection.headingToBoxesGap * 0.25}rem`,
-                            '--mobile-gap': `${MOBILE_CONFIG.servicesSection.headingToBoxesGap * 0.25}rem`,
-                            marginTop: `var(--mobile-gap)`,
-                        } as React.CSSProperties & { [key: string]: string }}
+                        className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 services-grid"
                     >
-                        <style jsx>{`
-                            @media (min-width: 768px) {
-                                div {
-                                    margin-top: var(--desktop-gap) !important;
-                                }
-                            }
-                        `}</style>
                         {[
                             {
                                 title: "Degree Recognition & Validation",
@@ -372,7 +370,9 @@ export default function Home({ blogs }: HomeProps) {
                             return (
                                 <div key={index} className="card card-elevated hover-lift animate-fade-in-up bg-white/90 backdrop-blur-sm" style={{ animationDelay: `${index * 0.1}s` }}>
                                     <div className="p-8 text-center">
-                                        <div className={`w-16 h-16 ${colorClasses[service.color]} rounded-xl flex items-center justify-center mx-auto mb-6 shadow-smooth`}>
+                                        <div 
+                                            className={`w-16 h-16 ${colorClasses[service.color]} rounded-xl flex items-center justify-center mx-auto mb-6 shadow-smooth transition-transform duration-300 services-icon-desktop`}
+                                        >
                                             {service.icon}
                                         </div>
                                         <h3 className="heading-5 mb-4 text-british-blue">{service.title}</h3>
