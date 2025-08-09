@@ -27,15 +27,18 @@ export default function Home({ blogs }: HomeProps) {
 
     // Desktop Controls
     const DESKTOP_CONFIG = {
-        aboutUsBubble: { x: 0, y: 0 },
+        aboutUsBubble: { x: 180, y: 0 },
         learnMoreButton: { x: 0, y: 0 },
         image: { 
-            size: { width: 300, height: 300 },
-            position: { x: -20, y: 0 }
+            size: { width: 1000, height: 1000 },
+            position: { x: 100, y: 0 }
         },
         ctaSection: {
             position: { x: 120, y: 0 },
             size: { width: 100, height: 100 } // percentage
+        },
+        servicesSection: {
+            headingToBoxesGap: 7 // Gap between heading and service boxes in rem units (16 = 4rem = 64px by default)
         }
     };
 
@@ -50,6 +53,9 @@ export default function Home({ blogs }: HomeProps) {
         ctaSection: {
             position: { x: 0, y: 0 },
             size: { width: 100, height: 100 } // percentage
+        },
+        servicesSection: {
+            headingToBoxesGap: 16 // Gap between heading and service boxes in rem units (same as desktop by default)
         }
     };
 
@@ -98,7 +104,7 @@ export default function Home({ blogs }: HomeProps) {
                                 </span>
                             </div>
                             
-                            <h2 className="heading-2 mb-6 text-british-blue">
+                            <h2 className="heading-2 mb-6 text-british-blue text-center font-bold">
                                 Empowering Social Workers to 
                                 <span className="text-gradient block">Thrive in the UK</span>
                             </h2>
@@ -269,17 +275,30 @@ export default function Home({ blogs }: HomeProps) {
                         >
                             Our Services Include
                         </span>
-                        <h2 className="heading-2 mb-6 text-british-blue">
+                        <h2 className="heading-2 mb-6 text-british-blue font-bold">
                             Comprehensive Support for Your 
                             <span className="text-british-red block">Professional Journey</span>
                         </h2>
                         <p className="body-xl max-w-3xl mx-auto text-gray-700 leading-relaxed">
-                            We provide end-to-end support to help international social workers successfully 
-                            transition and thrive in the UK&apos;s professional landscape.
+                            
                         </p>
                     </div>
                     
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div 
+                        className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+                        style={{
+                            '--desktop-gap': `${DESKTOP_CONFIG.servicesSection.headingToBoxesGap * 0.25}rem`,
+                            '--mobile-gap': `${MOBILE_CONFIG.servicesSection.headingToBoxesGap * 0.25}rem`,
+                            marginTop: `var(--mobile-gap)`,
+                        } as React.CSSProperties & { [key: string]: string }}
+                    >
+                        <style jsx>{`
+                            @media (min-width: 768px) {
+                                div {
+                                    margin-top: var(--desktop-gap) !important;
+                                }
+                            }
+                        `}</style>
                         {[
                             {
                                 title: "Degree Recognition & Validation",
@@ -291,16 +310,7 @@ export default function Home({ blogs }: HomeProps) {
                                 ),
                                 color: "blue"
                             },
-                            {
-                                title: "Visa Requirements & Guidance",
-                                description: "Navigate complex visa processes with confidence",
-                                icon: (
-                                    <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fillRule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zm0 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V8zm0 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1v-2z" clipRule="evenodd" />
-                                    </svg>
-                                ),
-                                color: "red"
-                            },
+
                             {
                                 title: "Professional CV & Interview Coaching",
                                 description: "Stand out with professionally crafted applications",
@@ -341,6 +351,16 @@ export default function Home({ blogs }: HomeProps) {
                                     </svg>
                                 ),
                                 color: "white"
+                            },
+                            {
+                                title: "UK Workplace Culture Training",
+                                description: "Learn UK professional practices and workplace expectations",
+                                icon: (
+                                    <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fillRule="evenodd" d="M2 5a2 2 0 012-2h12a2 2 0 012 2v2a2 2 0 01-2 2H4a2 2 0 01-2-2V5zm14 1a1 1 0 11-2 0 1 1 0 012 0zM2 13a2 2 0 012-2h12a2 2 0 012 2v2a2 2 0 01-2 2H4a2 2 0 01-2-2v-2zm14 1a1 1 0 11-2 0 1 1 0 012 0z" clipRule="evenodd" />
+                                    </svg>
+                                ),
+                                color: "blue"
                             }
                         ].map((service, index) => {
                             const colorClasses: Record<string, string> = {
@@ -351,8 +371,8 @@ export default function Home({ blogs }: HomeProps) {
                             
                             return (
                                 <div key={index} className="card card-elevated hover-lift animate-fade-in-up bg-white/90 backdrop-blur-sm" style={{ animationDelay: `${index * 0.1}s` }}>
-                                    <div className="p-8">
-                                        <div className={`w-16 h-16 ${colorClasses[service.color]} rounded-xl flex items-center justify-center mb-6 shadow-smooth`}>
+                                    <div className="p-8 text-center">
+                                        <div className={`w-16 h-16 ${colorClasses[service.color]} rounded-xl flex items-center justify-center mx-auto mb-6 shadow-smooth`}>
                                             {service.icon}
                                         </div>
                                         <h3 className="heading-5 mb-4 text-british-blue">{service.title}</h3>
@@ -382,7 +402,7 @@ export default function Home({ blogs }: HomeProps) {
                         >
                             Professional Growth & Learning
                         </span>
-                        <h2 className="heading-2 mb-6 text-british-blue">
+                        <h2 className="heading-2 mb-6 text-british-blue font-bold">
                             Expert Knowledge for
                             <span className="text-british-red block">Compassionate Care</span>
                         </h2>
@@ -407,7 +427,7 @@ export default function Home({ blogs }: HomeProps) {
                             transform: `translate(${DESKTOP_CONFIG.ctaSection.position.x}px, ${DESKTOP_CONFIG.ctaSection.position.y}px) scale(${DESKTOP_CONFIG.ctaSection.size.width / 100}, ${DESKTOP_CONFIG.ctaSection.size.height / 100})`
                         }}
                     >
-                        <h2 className="heading-2 mb-6 text-british-blue">
+                        <h2 className="heading-2 mb-6 text-british-blue font-bold">
                             Ready to Start Your UK Journey?
                         </h2>
                         <p className="body-xl mb-8 text-gray-700 leading-relaxed">
@@ -431,7 +451,7 @@ export default function Home({ blogs }: HomeProps) {
                             transform: `translate(${MOBILE_CONFIG.ctaSection.position.x}px, ${MOBILE_CONFIG.ctaSection.position.y}px) scale(${MOBILE_CONFIG.ctaSection.size.width / 100}, ${MOBILE_CONFIG.ctaSection.size.height / 100})`
                         }}
                     >
-                        <h2 className="heading-2 mb-6 text-british-blue">
+                        <h2 className="heading-2 mb-6 text-british-blue font-bold">
                             Ready to Start Your UK Journey?
                         </h2>
                         <p className="body-xl mb-8 text-gray-700 leading-relaxed">
