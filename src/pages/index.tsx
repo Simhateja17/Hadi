@@ -44,11 +44,11 @@ export default function Home({ blogs }: HomeProps) {
 
     // Mobile Controls
     const MOBILE_CONFIG = {
-        aboutUsBubble: { x: 150, y: 0 },
-        learnMoreButton: { x: 120, y: 0 },
+        aboutUsBubble: { x: 0, y: 0 },
+        learnMoreButton: { x: 125, y: 0 },
         image: { 
-            size: { width: 400, height: 400 },
-            position: { x: -85, y: 0 }
+            size: { width: 300, height: 300 },
+            position: { x: 0, y: 0 }
         },
         ctaSection: {
             position: { x: 0, y: 0 },
@@ -78,8 +78,12 @@ export default function Home({ blogs }: HomeProps) {
     // ===== END OF DESIGN CONTROLS =====
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-red-50">
+        <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-red-50 overflow-x-hidden">
             <style jsx global>{`
+                html, body {
+                    overflow-x: hidden;
+                    max-width: 100%;
+                }
                 .services-icon-desktop {
                     transform: translate(${SERVICES_ICON_CONFIG.mobile.position.x}px, ${SERVICES_ICON_CONFIG.mobile.position.y}px);
                 }
@@ -108,6 +112,25 @@ export default function Home({ blogs }: HomeProps) {
                     }
                     .services-grid {
                         margin-top: ${DESKTOP_CONFIG.servicesSection.headingToBoxesGap * 0.25}rem !important;
+                    }
+                }
+                @media (max-width: 767px) {
+                    .container-custom {
+                        max-width: 100%;
+                        padding-left: 1rem;
+                        padding-right: 1rem;
+                    }
+                    .grid {
+                        gap: 1rem;
+                    }
+                    .lg\\:grid-cols-2 {
+                        grid-template-columns: 1fr;
+                    }
+                    .md\\:grid-cols-2 {
+                        grid-template-columns: 1fr;
+                    }
+                    .lg\\:grid-cols-3 {
+                        grid-template-columns: 1fr;
                     }
                 }
             `}</style>
@@ -147,7 +170,7 @@ export default function Home({ blogs }: HomeProps) {
                                 you succeed as a confident, competent social worker in the UK.
                             </p>
                             
-                            <div className="grid grid-cols-3 gap-8 mb-8">
+                            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 lg:gap-8 mb-8">
                                 <div className="text-center">
                                     <div 
                                         className="w-16 h-16 bg-british-blue rounded-lg flex items-center justify-center mx-auto mb-3 transition-transform duration-300"
@@ -233,35 +256,35 @@ export default function Home({ blogs }: HomeProps) {
                                 <div className="w-full max-w-md mx-auto aspect-square">
                                     {/* Image container without boundary - responsive positioning and sizing */}
                                     <div 
-                                        className="relative w-full h-full flex items-center justify-center transition-transform duration-300"
+                                        className="relative w-full h-full flex items-center justify-center transition-transform duration-300 hidden md:block"
                                         style={{
                                             transform: `translate(${DESKTOP_CONFIG.image.position.x}px, ${DESKTOP_CONFIG.image.position.y}px)`
                                         }}
                                     >
-                                        {/* Desktop Image - hidden on mobile */}
+                                        {/* Desktop Image */}
                                         <Image 
                                             src="/gemini-generated-image.png" 
                                             alt="We Social Workers UK" 
                                             width={DESKTOP_CONFIG.image.size.width} 
                                             height={DESKTOP_CONFIG.image.size.height}
-                                            className="rounded-xl object-contain hidden md:block"
+                                            className="rounded-xl object-contain"
                                         />
-                                        
-                                        {/* Mobile Image - hidden on desktop */}
-                                        <div 
-                                            className="block md:hidden transition-transform duration-300"
-                                            style={{
-                                                transform: `translate(${MOBILE_CONFIG.image.position.x}px, ${MOBILE_CONFIG.image.position.y}px)`
-                                            }}
-                                        >
-                                            <Image 
-                                                src="/gemini-generated-image.png" 
-                                                alt="We Social Workers UK" 
-                                                width={MOBILE_CONFIG.image.size.width} 
-                                                height={MOBILE_CONFIG.image.size.height}
-                                                className="rounded-xl object-contain"
-                                            />
-                                        </div>
+                                    </div>
+                                    
+                                    {/* Mobile Image - properly constrained */}
+                                    <div 
+                                        className="block md:hidden w-full max-w-xs mx-auto transition-transform duration-300"
+                                        style={{
+                                            transform: `translate(${MOBILE_CONFIG.image.position.x}px, ${MOBILE_CONFIG.image.position.y}px)`
+                                        }}
+                                    >
+                                        <Image 
+                                            src="/gemini-generated-image.png" 
+                                            alt="We Social Workers UK" 
+                                            width={MOBILE_CONFIG.image.size.width} 
+                                            height={MOBILE_CONFIG.image.size.height}
+                                            className="rounded-xl object-contain w-full h-auto"
+                                        />
                                     </div>
                                 </div>
                             </div>

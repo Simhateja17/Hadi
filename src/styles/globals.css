@@ -76,6 +76,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  max-width: 100vw;
 }
 
 /* Typography System */
@@ -286,12 +287,14 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1.5rem;
+  width: 100%;
 }
 
 .container-wide {
   max-width: 1400px;
   margin: 0 auto;
   padding: 0 1.5rem;
+  width: 100%;
 }
 
 .section-padding {
@@ -487,6 +490,8 @@ body {
   .container-custom,
   .container-wide {
     padding: 0 1rem;
+    max-width: 100%;
+    overflow-x: hidden;
   }
   
   .section-padding {
@@ -500,6 +505,33 @@ body {
   .section-padding-xl {
     padding: 5rem 0;
   }
+
+  /* Ensure grid containers don't overflow */
+  .grid {
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  /* Force single column on mobile for grids */
+  .lg\\:grid-cols-2,
+  .md\\:grid-cols-2,
+  .lg\\:grid-cols-3,
+  .md\\:grid-cols-3 {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+
+  /* Ensure images don't exceed container width */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Prevent any element from causing horizontal overflow */
+  * {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
 }
 
 /* Print Styles */
@@ -510,4 +542,5 @@ body {
     box-shadow: none !important;
   }
 }
+
 

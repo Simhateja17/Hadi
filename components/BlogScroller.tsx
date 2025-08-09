@@ -1,4 +1,5 @@
 
+
 // components/BlogScroller.tsx
 import Link from 'next/link';
 import Image from 'next/image';
@@ -92,8 +93,8 @@ export const BlogScroller = ({ blogs }: BlogScrollerProps) => {
     };
 
     return (
-        <div className="w-full py-12">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+        <div className="w-full py-12 overflow-hidden">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {blogsArray.slice(0, 6).map((blog, index) => (
                     <Link key={blog.id} href={`/blogs/${blog.id}`} className="group block">
                         <article className="card card-elevated hover-lift h-full animate-fade-in-up border-2 border-british-blue" style={{ animationDelay: `${index * 0.1}s` }}>
