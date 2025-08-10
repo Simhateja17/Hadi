@@ -87,6 +87,22 @@ export default function Home({ blogs }: HomeProps) {
         }
     } as const;
 
+    // Choose Your Path icon offsets (x/y in pixels)
+    const PATH_ICON_OFFSETS = {
+        desktop: {
+            exploring: { x: 0, y: 0 },
+            registering: { x: 0, y: 0 },
+            jobHunting: { x: 0, y: 0 },
+            relocating: { x: 0, y: 0 },
+        },
+        mobile: {
+            exploring: { x: 0, y: 0 },
+            registering: { x: 0, y: 0 },
+            jobHunting: { x: 0, y: 0 },
+            relocating: { x: 0, y: 0 },
+        }
+    } as const;
+
     // Our Values icon position controls (x/y in pixels)
     const VALUES_ICON_OFFSETS = {
         desktop: {
@@ -101,6 +117,12 @@ export default function Home({ blogs }: HomeProps) {
             community: { x: 0, y: 0 },
             perspective: { x: 0, y: 0 },
         }
+    } as const;
+
+    // Our Services header description position controls
+    const OUR_SERVICES_DESCRIPTION_OFFSET = {
+        desktop: { x: 115, y: 0 },
+        mobile: { x: -10, y: 0 },
     } as const;
 
     // Our Story Section Controls
@@ -563,7 +585,15 @@ export default function Home({ blogs }: HomeProps) {
                     {/* Header */}
                     <div className="text-center" style={{ marginBottom: '48px' }}>
                         <h2 className="heading-1 text-gradient font-bold" style={{ marginBottom: '16px' }}>Our Services</h2>
-                        <p className="body-xl text-gray-700 max-w-4xl mx-auto">
+                        <p
+                            className="body-xl text-gray-700 max-w-4xl mx-auto"
+                            style={{
+                                transform:
+                                    typeof window !== 'undefined' && window.innerWidth >= 1024
+                                        ? `translate(${OUR_SERVICES_DESCRIPTION_OFFSET.desktop.x}px, ${OUR_SERVICES_DESCRIPTION_OFFSET.desktop.y}px)`
+                                        : `translate(${OUR_SERVICES_DESCRIPTION_OFFSET.mobile.x}px, ${OUR_SERVICES_DESCRIPTION_OFFSET.mobile.y}px)`
+                            }}
+                        >
                             Comprehensive support for every stage of your journey to working as a social worker in the UK.
                         </p>
                     </div>
@@ -575,7 +605,15 @@ export default function Home({ blogs }: HomeProps) {
                     <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-14 xl:gap-16 max-w-7xl mx-auto" style={{ marginBottom: '80px' }}>
                         {/* Exploring */}
                         <div className="group rounded-2xl p-10 text-center bg-blue-50/60 border border-blue-200 shadow-[0_10px_30px_rgba(2,6,23,0.06)] hover:shadow-[0_14px_36px_rgba(2,6,23,0.12)] transition-all">
-                            <div className="w-16 h-16 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center shadow-md ring-1 ring-white/40">
+                            <div
+                                className="w-16 h-16 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center shadow-md ring-1 ring-white/40"
+                                style={{
+                                    transform:
+                                        typeof window !== 'undefined' && window.innerWidth >= 1024
+                                            ? `translate(${PATH_ICON_OFFSETS.desktop.exploring.x}px, ${PATH_ICON_OFFSETS.desktop.exploring.y}px)`
+                                            : `translate(${PATH_ICON_OFFSETS.mobile.exploring.x}px, ${PATH_ICON_OFFSETS.mobile.exploring.y}px)`
+                                }}
+                            >
                                 <svg className="w-8 h-8 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                                     <circle cx="11" cy="11" r="7"/>
                                     <line x1="21" y1="21" x2="16.65" y2="16.65"/>
@@ -586,7 +624,15 @@ export default function Home({ blogs }: HomeProps) {
                         </div>
                         {/* Registering */}
                         <div className="group rounded-2xl p-10 text-center bg-green-50/60 border border-green-200 shadow-[0_10px_30px_rgba(2,6,23,0.06)] hover:shadow-[0_14px_36px_rgba(2,6,23,0.12)] transition-all">
-                            <div className="w-16 h-16 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-emerald-500 to-green-600 flex items-center justify-center shadow-md ring-1 ring-white/40">
+                            <div
+                                className="w-16 h-16 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-emerald-500 to-green-600 flex items-center justify-center shadow-md ring-1 ring-white/40"
+                                style={{
+                                    transform:
+                                        typeof window !== 'undefined' && window.innerWidth >= 1024
+                                            ? `translate(${PATH_ICON_OFFSETS.desktop.registering.x}px, ${PATH_ICON_OFFSETS.desktop.registering.y}px)`
+                                            : `translate(${PATH_ICON_OFFSETS.mobile.registering.x}px, ${PATH_ICON_OFFSETS.mobile.registering.y}px)`
+                                }}
+                            >
                                 <svg className="w-8 h-8 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                                     <path d="M9 12h6"/><path d="M9 16h6"/><rect x="7" y="4" width="10" height="16" rx="2"/>
                                 </svg>
@@ -596,7 +642,15 @@ export default function Home({ blogs }: HomeProps) {
                         </div>
                         {/* Job Hunting */}
                         <div className="group rounded-2xl p-10 text-center bg-purple-50/60 border border-purple-200 shadow-[0_10px_30px_rgba(2,6,23,0.06)] hover:shadow-[0_14px_36px_rgba(2,6,23,0.12)] transition-all">
-                            <div className="w-16 h-16 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-purple-500 to-violet-600 flex items-center justify-center shadow-md ring-1 ring-white/40">
+                            <div
+                                className="w-16 h-16 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-purple-500 to-violet-600 flex items-center justify-center shadow-md ring-1 ring-white/40"
+                                style={{
+                                    transform:
+                                        typeof window !== 'undefined' && window.innerWidth >= 1024
+                                            ? `translate(${PATH_ICON_OFFSETS.desktop.jobHunting.x}px, ${PATH_ICON_OFFSETS.desktop.jobHunting.y}px)`
+                                            : `translate(${PATH_ICON_OFFSETS.mobile.jobHunting.x}px, ${PATH_ICON_OFFSETS.mobile.jobHunting.y}px)`
+                                }}
+                            >
                                 <svg className="w-8 h-8 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                                     <rect x="3" y="7" width="18" height="13" rx="2"/>
                                     <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
@@ -607,7 +661,15 @@ export default function Home({ blogs }: HomeProps) {
                         </div>
                         {/* Relocating */}
                         <div className="group rounded-2xl p-10 text-center bg-rose-50/60 border border-rose-200 shadow-[0_10px_30px_rgba(2,6,23,0.06)] hover:shadow-[0_14px_36px_rgba(2,6,23,0.12)] transition-all">
-                            <div className="w-16 h-16 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-rose-500 to-red-600 flex items-center justify-center shadow-md ring-1 ring-white/40">
+                            <div
+                                className="w-16 h-16 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-rose-500 to-red-600 flex items-center justify-center shadow-md ring-1 ring-white/40"
+                                style={{
+                                    transform:
+                                        typeof window !== 'undefined' && window.innerWidth >= 1024
+                                            ? `translate(${PATH_ICON_OFFSETS.desktop.relocating.x}px, ${PATH_ICON_OFFSETS.desktop.relocating.y}px)`
+                                            : `translate(${PATH_ICON_OFFSETS.mobile.relocating.x}px, ${PATH_ICON_OFFSETS.mobile.relocating.y}px)`
+                                }}
+                            >
                                 <svg className="w-8 h-8 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                                     <path d="M10.5 7.5l-6 6m9-3L21 3m-1.5 6L12 16.5"/>
                                 </svg>

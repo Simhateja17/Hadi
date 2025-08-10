@@ -47,7 +47,7 @@ export default function ContactUs() {
                 preferredContact: 'email',
                 urgency: 'medium'
             });
-        } catch (error) {
+        } catch {
             setSubmitStatus('error');
         } finally {
             setIsSubmitting(false);

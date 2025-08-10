@@ -66,8 +66,9 @@ function ManageToolkits() {
       setDescription('');
       setPdfFile(null);
       (document.getElementById('pdf') as HTMLInputElement).value = '';
-    } catch (e: any) {
-      alert(e.message);
+    } catch (err: unknown) {
+      const message = err instanceof Error ? err.message : 'Failed to create toolkit';
+      alert(message);
     } finally {
       setSubmitting(false);
     }

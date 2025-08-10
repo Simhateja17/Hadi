@@ -1,6 +1,5 @@
 // pages/contact.tsx
 import { useState } from 'react';
-import Link from 'next/link';
 
 export default function Contact() {
     const [formData, setFormData] = useState({
@@ -22,7 +21,7 @@ export default function Contact() {
             await new Promise(resolve => setTimeout(resolve, 1000));
             setSubmitStatus('success');
             setFormData({ name: '', email: '', subject: '', message: '' });
-        } catch (error) {
+        } catch {
             setSubmitStatus('error');
         } finally {
             setIsSubmitting(false);
