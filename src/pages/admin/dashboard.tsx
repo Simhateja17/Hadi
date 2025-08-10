@@ -21,6 +21,10 @@ const AdminDashboard = () => {
                     <h2 className="text-2xl font-bold text-text-dark">Manage Blogs</h2>
                     <p className="text-text-light mt-2">Create, edit, and delete blog posts.</p>
                 </Link>
+                <Link href="/admin/manage-submissions" className="block p-8 bg-blue-500 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                    <h2 className="text-2xl font-bold text-white">Blog Submissions</h2>
+                    <p className="text-blue-100 mt-2">Review and manage submitted articles from contributors.</p>
+                </Link>
                 <Link href="/admin/manage-jobs" className="block p-8 bg-primary rounded-lg shadow-md hover:shadow-lg transition-shadow">
                     <h2 className="text-2xl font-bold text-text-dark">Manage Jobs</h2>
                     <p className="text-text-light mt-2">Create, edit, and delete job listings.</p>

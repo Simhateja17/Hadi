@@ -39,7 +39,7 @@ export const Navbar = () => {
                                 </div>
                             </div>
                             <Link
-                                href="/contact"
+                                href="/schedule-call"
                                 aria-label="Schedule a Call"
                                 className="inline-flex items-center pl-2 pr-6 py-3 rounded-full text-white font-semibold shadow-lg hover:shadow-xl transition-all bg-gradient-to-r from-[var(--british-blue)] via-[var(--british-blue)] to-[var(--british-red)]"
                             >
@@ -99,7 +99,7 @@ export const Navbar = () => {
                                 Toolkit
                             </Link>
                             <Link 
-                                href="/contact" 
+                                href="/contactus" 
                                 className="px-6 py-3 text-gray-700 font-medium hover:text-blue-600 transition-colors duration-200 emilys-candy-regular text-lg"
                             >
                                 Connect
@@ -109,6 +109,18 @@ export const Navbar = () => {
                                 className="px-6 py-3 text-gray-700 font-medium hover:text-blue-600 transition-colors duration-200 emilys-candy-regular text-lg"
                             >
                                 Contact
+                            </Link>
+                            <Link
+                                href="/write-for-us"
+                                className="inline-flex items-center pl-2 pr-6 py-3 rounded-full text-white font-semibold shadow-lg hover:shadow-xl transition-all bg-gradient-to-r from-[var(--british-blue)] via-[var(--british-blue)] to-[var(--british-red)]"
+                            >
+                                <span className="flex items-center justify-center w-10 h-10 rounded-full border-2 border-white/90 bg-white/10 mr-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 text-white">
+                                        <path d="M16.862 3.487a1.75 1.75 0 0 1 2.475 2.475l-9.193 9.193a6 6 0 0 1-2.53 1.51l-2.16.62a.75.75 0 0 1-.927-.927l.62-2.16a6 6 0 0 1 1.51-2.53l9.205-9.205z"/>
+                                        <path d="M5.25 19.5h13.5a.75.75 0 0 1 0 1.5H5.25a.75.75 0 0 1 0-1.5z"/>
+                                    </svg>
+                                </span>
+                                <span className="text-[0.95rem]">Write for Us</span>
                             </Link>
                         </div>                        {/* Mobile Menu Button */}
                         <button
@@ -169,7 +181,7 @@ export const Navbar = () => {
                                 Toolkit
                             </Link>
                             <Link 
-                                href="/contact" 
+                                href="/contactus" 
                                 className="block px-6 py-3 text-gray-700 font-medium hover:text-blue-600 hover:bg-gray-50 rounded-md transition-colors duration-200 emilys-candy-regular text-lg"
                                 onClick={() => setIsMenuOpen(false)}
                             >
@@ -183,7 +195,18 @@ export const Navbar = () => {
                                 Contact
                             </Link>
                             <Link 
-                                href="/contact"
+                                href="/write-for-us" 
+                                className="mt-2 flex items-center justify-center gap-2 px-7 py-3 rounded-full text-white font-semibold bg-gradient-to-r from-[var(--british-blue)] via-[var(--british-blue)] to-[var(--british-red)] shadow-md"
+                                onClick={() => setIsMenuOpen(false)}
+                            >
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
+                                    <path d="M16.862 3.487a1.75 1.75 0 0 1 2.475 2.475l-9.193 9.193a6 6 0 0 1-2.53 1.51l-2.16.62a.75.75 0 0 1-.927-.927l.62-2.16a6 6 0 0 1 1.51-2.53l9.205-9.205z"/>
+                                    <path d="M5.25 19.5h13.5a.75.75 0 0 1 0 1.5H5.25a.75.75 0 0 1 0-1.5z"/>
+                                </svg>
+                                <span>Write for Us</span>
+                            </Link>
+                            <Link 
+                                href="/schedule-call"
                                 aria-label="Schedule a Call"
                                 className="mt-2 flex items-center justify-center gap-2 px-7 py-3 rounded-full text-white font-semibold bg-gradient-to-r from-[var(--british-blue)] via-[var(--british-blue)] to-[var(--british-red)] shadow-md"
                                 onClick={() => setIsMenuOpen(false)}

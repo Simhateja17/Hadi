@@ -55,7 +55,7 @@ const Header: React.FC = () => {
 
           {/* CTA Button */}
           <div className="hidden md:block">
-            <Link href="/contact" className="btn btn-primary btn-small">
+            <Link href="/contactus" className="btn btn-primary btn-small">
               Get Started
             </Link>
           </div>
@@ -113,7 +113,7 @@ const Header: React.FC = () => {
                 </Link>
               ))}
               <div className="px-4 pt-4">
-                <Link href="/contact" className="btn btn-primary w-full">
+                <Link href="/contactus" className="btn btn-primary w-full">
                   Get Started
                 </Link>
               </div>

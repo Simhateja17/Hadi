@@ -36,7 +36,7 @@ export default function ToolkitsPage({ toolkits }: Props) {
       )}
 
       <div className="text-center">
-        <Link href="/contact" className="inline-block bg-blue-600 text-white px-5 py-3 rounded">Need personalized guidance?</Link>
+        <Link href="/contactus" className="inline-block bg-blue-600 text-white px-5 py-3 rounded">Need personalized guidance?</Link>
       </div>
     </div>
   );

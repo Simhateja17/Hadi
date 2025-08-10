@@ -29,7 +29,7 @@ export default function Toolkit() {
                             </p>
                             
                             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                                <Link href="/contact" className="btn btn-primary btn-large">
+                               <Link href="/contactus" className="btn btn-primary btn-large">
                                     Get Full Access 🇬🇧
                                 </Link>
                                 <Link href="/blogs" className="btn btn-secondary btn-large">
@@ -211,7 +211,7 @@ export default function Toolkit() {
                             Everything you need to succeed as a social worker in the United Kingdom.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                            <Link href="/contact" className="btn btn-secondary btn-large">
+                           <Link href="/contactus" className="btn btn-secondary btn-large">
                                 Get Full Access Now
                             </Link>
                             <Link href="/blogs" className="btn btn-outline border-2 border-white text-white hover:bg-white hover:text-british-blue btn-large">

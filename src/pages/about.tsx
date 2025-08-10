@@ -317,7 +317,7 @@ export default function About() {
                             Join our community of international social workers and get the support you need to succeed in the UK.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                            <Link href="/contact" className="btn bg-white text-british-blue hover:bg-gray-100 px-8 py-4 rounded-lg font-semibold transition-colors">
+                            <Link href="/contactus" className="btn bg-white text-british-blue hover:bg-gray-100 px-8 py-4 rounded-lg font-semibold transition-colors">
                                 Get Started Today
                             </Link>
                             <Link href="/" className="btn border-2 border-white text-white hover:bg-white hover:text-british-blue px-8 py-4 rounded-lg font-semibold transition-colors">

@@ -1,7 +1,15 @@
 // pages/contactus.tsx
 import React, { useState } from 'react';
+import emailjs from '@emailjs/browser';
 
 export default function ContactUs() {
+    const MAX_MESSAGE_WORDS = 100;
+    const countWords = (text: string): number => {
+        const trimmed = text.trim();
+        if (!trimmed) return 0;
+        return trimmed.split(/\s+/).length;
+    };
+
     const [formData, setFormData] = useState({
         firstName: '',
         lastName: '',
@@ -17,12 +25,24 @@ export default function ContactUs() {
 
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+    const [messageWords, setMessageWords] = useState<number>(0);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-        setFormData({
-            ...formData,
-            [e.target.name]: e.target.value
-        });
+        const { name, value } = e.target;
+
+        // Enforce 100-word limit on the message field
+        if (name === 'message') {
+            const words = value.trim().length ? value.trim().split(/\s+/) : [];
+            let limited = value;
+            if (words.length > MAX_MESSAGE_WORDS) {
+                limited = words.slice(0, MAX_MESSAGE_WORDS).join(' ');
+            }
+            setMessageWords(countWords(limited));
+            setFormData(prev => ({ ...prev, message: limited }));
+            return;
+        }
+
+        setFormData(prev => ({ ...prev, [name]: value }));
     };
 
     const handleSubmit = async (e: React.FormEvent) => {
@@ -30,11 +50,47 @@ export default function ContactUs() {
         setIsSubmitting(true);
         
         try {
-            // Simulate form submission
-            await new Promise(resolve => setTimeout(resolve, 2000));
-            console.log('Form submitted:', formData);
+            const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID as string;
+            // Use a dedicated contact template; fallback to generic template id only if needed
+            const templateId = (process.env.NEXT_PUBLIC_EMAILJS_CONTACT_TEMPLATE_ID || process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID) as string;
+            const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY as string;
+
+            if (!serviceId || !templateId || !publicKey) {
+                console.warn('EmailJS env vars missing. Please set NEXT_PUBLIC_EMAILJS_SERVICE_ID, NEXT_PUBLIC_EMAILJS_TEMPLATE_ID, NEXT_PUBLIC_EMAILJS_PUBLIC_KEY.');
+                throw new Error('Email service not configured');
+            }
+
+            type TemplateParams = {
+                firstName: string;
+                lastName: string;
+                email: string;
+                phone: string;
+                organization: string;
+                role: string;
+                subject: string;
+                message: string;
+                preferredContact: string;
+                urgency: string;
+                site_name: string;
+            };
+
+            const templateParams: TemplateParams = {
+                firstName: formData.firstName,
+                lastName: formData.lastName,
+                email: formData.email,
+                phone: formData.phone,
+                organization: formData.organization,
+                role: formData.role,
+                subject: formData.subject,
+                message: formData.message,
+                preferredContact: formData.preferredContact,
+                urgency: formData.urgency,
+                site_name: 'We Social Workers UK'
+            };
+
+            await emailjs.send(serviceId, templateId, templateParams, { publicKey });
+
             setSubmitStatus('success');
-            // Reset form on success
             setFormData({
                 firstName: '',
                 lastName: '',
@@ -59,7 +115,7 @@ export default function ContactUs() {
             {/* Hero Section */}
             <section className="section-padding-lg bg-gradient-to-br from-blue-50 via-white to-red-50">
                 <div className="container-custom">
-                    <div className="grid lg:grid-cols-2 gap-16 items-center">
+                    <div className="grid grid-cols-1 gap-16 items-center">
                         {/* Content */}
                         <div className="text-center lg:text-left animate-fade-in-up">
                             <div className="mb-6">
@@ -108,41 +164,7 @@ export default function ContactUs() {
                             </div>
                         </div>
 
-                        {/* Union Jack Design Element */}
-                        <div className="relative animate-scale-in">
-                            <div className="relative mx-auto max-w-md lg:max-w-full">
-                                <div className="relative">
-                                    <div className="w-full max-w-sm mx-auto aspect-square">
-                                        {/* Union Jack Contact Design */}
-                                        <div className="relative w-full h-full bg-white rounded-3xl shadow-2xl border-4 border-british-blue overflow-hidden">
-                                            {/* Blue background */}
-                                            <div className="absolute inset-0 bg-british-blue"></div>
-                                            
-                                            {/* White cross */}
-                                            <div className="absolute top-0 bottom-0 left-1/2 w-12 bg-white transform -translate-x-1/2"></div>
-                                            <div className="absolute left-0 right-0 top-1/2 h-8 bg-white transform -translate-y-1/2"></div>
-                                            
-                                            {/* Red cross */}
-                                            <div className="absolute top-0 bottom-0 left-1/2 w-6 bg-british-red transform -translate-x-1/2"></div>
-                                            <div className="absolute left-0 right-0 top-1/2 h-4 bg-british-red transform -translate-y-1/2"></div>
-                                            
-                                            {/* Contact overlay */}
-                                            <div className="absolute inset-0 flex items-center justify-center">
-                                                <div className="bg-white bg-opacity-95 rounded-2xl p-6 text-center shadow-lg">
-                                                    <div className="w-16 h-16 bg-british-blue rounded-full flex items-center justify-center mx-auto mb-3">
-                                                        <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                                            <path fillRule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clipRule="evenodd" />
-                                                        </svg>
-                                                    </div>
-                                                    <h3 className="heading-5 text-british-blue mb-1">Professional Contact</h3>
-                                                    <p className="body-small text-british-red font-bold">🇬🇧 UK Support</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        {/* Removed decorative flag element */}
                     </div>
                 </div>
             </section>
@@ -405,9 +427,14 @@ export default function ContactUs() {
                                     </div>
                                     
                                     <div>
-                                        <label htmlFor="message" className="block text-british-blue font-bold mb-3">
-                                            Message *
-                                        </label>
+                                        <div className="flex items-center justify-between mb-1">
+                                            <label htmlFor="message" className="block text-british-blue font-bold">
+                                                Message *
+                                            </label>
+                                            <span className={`text-sm ${messageWords > MAX_MESSAGE_WORDS ? 'text-red-600' : 'text-gray-500'}`}>
+                                                {messageWords}/{MAX_MESSAGE_WORDS} words
+                                            </span>
+                                        </div>
                                         <textarea
                                             id="message"
                                             name="message"
@@ -418,6 +445,7 @@ export default function ContactUs() {
                                             placeholder="Please provide details about your inquiry, questions, or how we can support you in your social work journey..."
                                             required
                                         ></textarea>
+                                        <p className="mt-1 text-xs text-gray-500">Up to {MAX_MESSAGE_WORDS} words.</p>
                                     </div>
                                 </div>
                                 

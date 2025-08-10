@@ -622,7 +622,7 @@ export default function Home({ blogs }: HomeProps) {
                             Let&apos;s build your path to success in the United Kingdom together.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                            <Link href="/contact" className="btn btn-primary btn-large">
+                            <Link href="/contactus" className="btn btn-primary btn-large">
                                 Get Started Today
                             </Link>
                             <Link href="/toolkits" className="btn btn-outline border-2 border-british-blue text-british-blue hover:bg-british-blue hover:text-white btn-large">
@@ -646,7 +646,7 @@ export default function Home({ blogs }: HomeProps) {
                             Let&apos;s build your path to success in the United Kingdom together.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                            <Link href="/contact" className="btn btn-primary btn-large">
+                            <Link href="/contactus" className="btn btn-primary btn-large">
                                 Get Started Today
                             </Link>
                             <Link href="/toolkits" className="btn btn-outline border-2 border-british-blue text-british-blue hover:bg-british-blue hover:text-white btn-large">
