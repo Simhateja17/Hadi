@@ -14,7 +14,7 @@ export const Hero = () => {
     // Adjust these values to move ONLY the main heading (h1)
     // Positive X moves right, negative X moves left; positive Y moves down, negative Y moves up
     const HEADING_OFFSET_MOBILE = { x: 0, y: 0 };
-    const HEADING_OFFSET_DESKTOP = { x: 0, y: 14 };
+    const HEADING_OFFSET_DESKTOP = { x: 0, y: 30 };
     // ==========================================
 
     // ===== HERO IMAGE POSITION & SIZE CONTROLS =====
@@ -46,6 +46,12 @@ export const Hero = () => {
                     }
                 }
 
+                /* Desktop-only offset for description + buttons */
+                .hero-subcontent-offset { transform: translateY(0); }
+                @media (min-width: 1024px) {
+                    .hero-subcontent-offset { transform: translateY(20px) !important; }
+                }
+
                 /* Image position and size controls */
                 .hero-image-control {
                     width: ${IMAGE_WIDTH_MOBILE};
@@ -65,33 +71,31 @@ export const Hero = () => {
                 <div className="grid gap-10 lg:grid-cols-2 items-center">
                     {/* Left: Content */}
                     <div className={`${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>
-                        <div className="mb-6">
-                            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/90 border border-[var(--border)] shadow-smooth text-british-blue body-small font-semibold">
-                                Supporting International Social Workers
-                            </span>
-                        </div>
+                        {/* Tagline removed as requested */}
 
                         <h1 className="heading-xl mb-6 leading-tight hero-heading-offset text-center">
                             <span className="text-british-blue">Your Gateway to</span>
                             <span className="block text-gradient mt-2">UK Social Work</span>
                         </h1>
 
-                        <p className="body-xl text-gray-700 mb-10 max-w-2xl mx-auto text-center">
-                            Navigate Social Work England registration, find opportunities, and build
-                            your career in the UK. We provide guidance, resources, and community
-                            support for international social workers.
-                        </p>
+                        <div className="hero-subcontent-offset">
+                            <p className="body-xl text-gray-700 mb-10 max-w-2xl mx-auto text-center">
+                                Navigate Social Work England registration, find opportunities, and build
+                                your career in the UK. We provide guidance, resources, and community
+                                support for international social workers.
+                            </p>
 
-                        <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
-                            <Link href="/contact" className="btn btn-primary btn-large">
-                                Get Started Today
-                                <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                                </svg>
-                            </Link>
-                            <Link href="/toolkits" className="btn btn-outline btn-large">
-                                Download Free Toolkit
-                            </Link>
+                            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
+                                <Link href="/contact" className="btn btn-primary btn-large">
+                                    Get Started Today
+                                    <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                    </svg>
+                                </Link>
+                                <Link href="/toolkits" className="btn btn-outline btn-large">
+                                    Download Free Toolkit
+                                </Link>
+                            </div>
                         </div>
                     </div>
 
