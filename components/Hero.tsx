@@ -95,8 +95,8 @@ export const Hero = () => {
                         </div>
                     </div>
 
-                    {/* Right: Visual */}
-                    <div className={`${isVisible ? 'animate-scale-in' : 'opacity-0'}`}>
+                    {/* Right: Visual - hidden on mobile, shown on md+ */}
+                    <div className={`${isVisible ? 'animate-scale-in' : 'opacity-0'} hidden md:block`}>
                         <div className="hero-image-control relative rounded-xl overflow-hidden shadow-smooth-lg border border-[var(--border-light)] bg-white">
                             <Image
                                 src="/Corporate Meeting Illustration.png"
