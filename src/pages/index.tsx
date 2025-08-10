@@ -90,10 +90,10 @@ export default function Home({ blogs }: HomeProps) {
     // Our Values icon position controls (x/y in pixels)
     const VALUES_ICON_OFFSETS = {
         desktop: {
-            compassionate: { x: 88, y: 0 },
-            guidance: { x: 88, y: 0 },
-            community: { x: 88, y: 0 },
-            perspective: { x: 88, y: 0 },
+            compassionate: { x: 87, y: 0 },
+            guidance: { x: 87, y: 0 },
+            community: { x: 87, y: 0 },
+            perspective: { x: 87, y: 0 },
         },
         mobile: {
             compassionate: { x: 0, y: 0 },
@@ -296,9 +296,9 @@ export default function Home({ blogs }: HomeProps) {
                     {/* Values Grid */}
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 xl:gap-16 max-w-7xl mx-auto">
                         {/* Compassionate Support */}
-                        <div className="bg-white rounded-none shadow-lg p-12 text-center hover-lift border border-gray-100 transition-all duration-300 min-h-[320px] flex flex-col">
+                        <div className="bg-white rounded-3xl shadow-lg p-12 text-center hover-lift border border-gray-100 transition-all duration-300 min-h-[320px] flex flex-col">
                             <div
-                                className="w-20 h-20 rounded-none bg-gradient-to-br from-blue-100 via-indigo-100 to-rose-100 ring-1 ring-blue-200 flex items-center justify-center mx-auto mb-8"
+                                className="w-20 h-20 rounded-2xl bg-gradient-to-br from-blue-100 via-indigo-100 to-rose-100 ring-1 ring-blue-200 flex items-center justify-center mx-auto mb-8"
                                 style={{
                                     transform: typeof window !== 'undefined' && window.innerWidth >= 1024
                                         ? `translate(${VALUES_ICON_OFFSETS.desktop.compassionate.x}px, ${VALUES_ICON_OFFSETS.desktop.compassionate.y}px)`
@@ -318,9 +318,9 @@ export default function Home({ blogs }: HomeProps) {
                         </div>
 
                         {/* Clear Guidance */}
-                        <div className="bg-white rounded-none shadow-lg p-12 text-center hover-lift border border-gray-100 transition-all duration-300 min-h-[320px] flex flex-col">
+                        <div className="bg-white rounded-3xl shadow-lg p-12 text-center hover-lift border border-gray-100 transition-all duration-300 min-h-[320px] flex flex-col">
                             <div
-                                className="w-20 h-20 rounded-none bg-gradient-to-br from-blue-100 via-indigo-100 to-rose-100 ring-1 ring-blue-200 flex items-center justify-center mx-auto mb-8"
+                                className="w-20 h-20 rounded-2xl bg-gradient-to-br from-blue-100 via-indigo-100 to-rose-100 ring-1 ring-blue-200 flex items-center justify-center mx-auto mb-8"
                                 style={{
                                     transform: typeof window !== 'undefined' && window.innerWidth >= 1024
                                         ? `translate(${VALUES_ICON_OFFSETS.desktop.guidance.x}px, ${VALUES_ICON_OFFSETS.desktop.guidance.y}px)`
@@ -340,9 +340,9 @@ export default function Home({ blogs }: HomeProps) {
                         </div>
 
                         {/* Community Focus */}
-                        <div className="bg-white rounded-none shadow-lg p-12 text-center hover-lift border border-gray-100 transition-all duration-300 min-h-[320px] flex flex-col">
+                        <div className="bg-white rounded-3xl shadow-lg p-12 text-center hover-lift border border-gray-100 transition-all duration-300 min-h-[320px] flex flex-col">
                             <div
-                                className="w-20 h-20 rounded-none bg-gradient-to-br from-blue-100 via-indigo-100 to-rose-100 ring-1 ring-blue-200 flex items-center justify-center mx-auto mb-8"
+                                className="w-20 h-20 rounded-2xl bg-gradient-to-br from-blue-100 via-indigo-100 to-rose-100 ring-1 ring-blue-200 flex items-center justify-center mx-auto mb-8"
                                 style={{
                                     transform: typeof window !== 'undefined' && window.innerWidth >= 1024
                                         ? `translate(${VALUES_ICON_OFFSETS.desktop.community.x}px, ${VALUES_ICON_OFFSETS.desktop.community.y}px)`
@@ -362,9 +362,9 @@ export default function Home({ blogs }: HomeProps) {
                         </div>
 
                         {/* Global Perspective */}
-                        <div className="bg-white rounded-none shadow-lg p-12 text-center hover-lift border border-gray-100 transition-all duration-300 min-h-[320px] flex flex-col">
+                        <div className="bg-white rounded-3xl shadow-lg p-12 text-center hover-lift border border-gray-100 transition-all duration-300 min-h-[320px] flex flex-col">
                             <div
-                                className="w-20 h-20 rounded-none bg-gradient-to-br from-blue-100 via-indigo-100 to-rose-100 ring-1 ring-blue-200 flex items-center justify-center mx-auto mb-8"
+                                className="w-20 h-20 rounded-2xl bg-gradient-to-br from-blue-100 via-indigo-100 to-rose-100 ring-1 ring-blue-200 flex items-center justify-center mx-auto mb-8"
                                 style={{
                                     transform: typeof window !== 'undefined' && window.innerWidth >= 1024
                                         ? `translate(${VALUES_ICON_OFFSETS.desktop.perspective.x}px, ${VALUES_ICON_OFFSETS.desktop.perspective.y}px)`
@@ -627,12 +627,12 @@ export default function Home({ blogs }: HomeProps) {
                                 </svg>
                             </div>
                             <h4 className="text-[28px] font-semibold tracking-tight text-gray-900 mb-4">SWE Registration Support</h4>
-                            <p className="text-gray-600 mb-8">Complete guidance through Social Work England registration process, document preparation, and application submission.</p>
-                            <ul className="space-y-4 mb-6 text-gray-700">
-                                <li className="flex items-center gap-3"><span className="w-2.5 h-2.5 rounded-full bg-blue-600"/>Document checklist</li>
-                                <li className="flex items-center gap-3"><span className="w-2.5 h-2.5 rounded-full bg-blue-600"/>Application review</li>
-                                <li className="flex items-center gap-3"><span className="w-2.5 h-2.5 rounded-full bg-blue-600"/>Process timeline</li>
-                                <li className="flex items-center gap-3"><span className="w-2.5 h-2.5 rounded-full bg-blue-600"/>Expert guidance</li>
+                            <p className="text-gray-600 mb-8 leading-8 tracking-[0.01em]">Complete guidance through Social Work England registration process, document preparation, and application submission.</p>
+                            <ul className="space-y-5 mb-8 text-gray-700">
+                                <li className="flex items-center gap-3 text-[17px] leading-8"><span className="w-3 h-3 rounded-full bg-blue-600"/>Document checklist</li>
+                                <li className="flex items-center gap-3 text-[17px] leading-8"><span className="w-3 h-3 rounded-full bg-blue-600"/>Application review</li>
+                                <li className="flex items-center gap-3 text-[17px] leading-8"><span className="w-3 h-3 rounded-full bg-blue-600"/>Process timeline</li>
+                                <li className="flex items-center gap-3 text-[17px] leading-8"><span className="w-3 h-3 rounded-full bg-blue-600"/>Expert guidance</li>
                             </ul>
                         </div>
 
@@ -644,12 +644,12 @@ export default function Home({ blogs }: HomeProps) {
                                 </svg>
                             </div>
                             <h4 className="text-[28px] font-semibold tracking-tight text-gray-900 mb-4">English Language Preparation</h4>
-                            <p className="text-gray-600 mb-8">IELTS and OET preparation specifically tailored for social work professionals.</p>
-                            <ul className="space-y-4 mb-6 text-gray-700">
-                                <li className="flex items-center gap-3"><span className="w-2.5 h-2.5 rounded-full bg-green-600"/>Practice tests</li>
-                                <li className="flex items-center gap-3"><span className="w-2.5 h-2.5 rounded-full bg-green-600"/>Speaking sessions</li>
-                                <li className="flex items-center gap-3"><span className="w-2.5 h-2.5 rounded-full bg-green-600"/>Writing support</li>
-                                <li className="flex items-center gap-3"><span className="w-2.5 h-2.5 rounded-full bg-green-600"/>Score improvement</li>
+                            <p className="text-gray-600 mb-8 leading-8 tracking-[0.01em]">IELTS and OET preparation specifically tailored for social work professionals.</p>
+                            <ul className="space-y-5 mb-8 text-gray-700">
+                                <li className="flex items-center gap-3 text-[17px] leading-8"><span className="w-3 h-3 rounded-full bg-green-600"/>Practice tests</li>
+                                <li className="flex items-center gap-3 text-[17px] leading-8"><span className="w-3 h-3 rounded-full bg-green-600"/>Speaking sessions</li>
+                                <li className="flex items-center gap-3 text-[17px] leading-8"><span className="w-3 h-3 rounded-full bg-green-600"/>Writing support</li>
+                                <li className="flex items-center gap-3 text-[17px] leading-8"><span className="w-3 h-3 rounded-full bg-green-600"/>Score improvement</li>
                             </ul>
                         </div>
 
@@ -661,12 +661,12 @@ export default function Home({ blogs }: HomeProps) {
                                 </svg>
                             </div>
                             <h4 className="text-[28px] font-semibold tracking-tight text-gray-900 mb-4">Job Search Assistance</h4>
-                            <p className="text-gray-600 mb-8">CV optimization, interview preparation, and job matching services for UK social work positions.</p>
-                            <ul className="space-y-4 mb-6 text-gray-700">
-                                <li className="flex items-center gap-3"><span className="w-2.5 h-2.5 rounded-full bg-purple-600"/>CV writing</li>
-                                <li className="flex items-center gap-3"><span className="w-2.5 h-2.5 rounded-full bg-purple-600"/>Interview prep</li>
-                                <li className="flex items-center gap-3"><span className="w-2.5 h-2.5 rounded-full bg-purple-600"/>Job alerts</li>
-                                <li className="flex items-center gap-3"><span className="w-2.5 h-2.5 rounded-full bg-purple-600"/>Employer connections</li>
+                            <p className="text-gray-600 mb-8 leading-8 tracking-[0.01em]">CV optimization, interview preparation, and job matching services for UK social work positions.</p>
+                            <ul className="space-y-5 mb-8 text-gray-700">
+                                <li className="flex items-center gap-3 text-[17px] leading-8"><span className="w-3 h-3 rounded-full bg-purple-600"/>CV writing</li>
+                                <li className="flex items-center gap-3 text-[17px] leading-8"><span className="w-3 h-3 rounded-full bg-purple-600"/>Interview prep</li>
+                                <li className="flex items-center gap-3 text-[17px] leading-8"><span className="w-3 h-3 rounded-full bg-purple-600"/>Job alerts</li>
+                                <li className="flex items-center gap-3 text-[17px] leading-8"><span className="w-3 h-3 rounded-full bg-purple-600"/>Employer connections</li>
                             </ul>
                         </div>
 
@@ -678,12 +678,12 @@ export default function Home({ blogs }: HomeProps) {
                                 </svg>
                             </div>
                             <h4 className="text-[28px] font-semibold tracking-tight text-gray-900 mb-4">Relocation Support</h4>
-                            <p className="text-gray-600 mb-8">Practical guidance for moving to the UK, including housing, banking, and settling-in support.</p>
-                            <ul className="space-y-4 mb-6 text-gray-700">
-                                <li className="flex items-center gap-3"><span className="w-2.5 h-2.5 rounded-full bg-red-600"/>Housing guidance</li>
-                                <li className="flex items-center gap-3"><span className="w-2.5 h-2.5 rounded-full bg-red-600"/>Banking setup</li>
-                                <li className="flex items-center gap-3"><span className="w-2.5 h-2.5 rounded-full bg-red-600"/>NHS registration</li>
-                                <li className="flex items-center gap-3"><span className="w-2.5 h-2.5 rounded-full bg-red-600"/>Local orientation</li>
+                            <p className="text-gray-600 mb-8 leading-8 tracking-[0.01em]">Practical guidance for moving to the UK, including housing, banking, and settling-in support.</p>
+                            <ul className="space-y-5 mb-8 text-gray-700">
+                                <li className="flex items-center gap-3 text-[17px] leading-8"><span className="w-3 h-3 rounded-full bg-red-600"/>Housing guidance</li>
+                                <li className="flex items-center gap-3 text-[17px] leading-8"><span className="w-3 h-3 rounded-full bg-red-600"/>Banking setup</li>
+                                <li className="flex items-center gap-3 text-[17px] leading-8"><span className="w-3 h-3 rounded-full bg-red-600"/>NHS registration</li>
+                                <li className="flex items-center gap-3 text-[17px] leading-8"><span className="w-3 h-3 rounded-full bg-red-600"/>Local orientation</li>
                             </ul>
                         </div>
 
@@ -695,12 +695,12 @@ export default function Home({ blogs }: HomeProps) {
                                 </svg>
                             </div>
                             <h4 className="text-[28px] font-semibold tracking-tight text-gray-900 mb-4">Community Network</h4>
-                            <p className="text-gray-600 mb-8">Connect with fellow international social workers and build professional relationships.</p>
-                            <ul className="space-y-4 mb-6 text-gray-700">
-                                <li className="flex items-center gap-3"><span className="w-2.5 h-2.5 rounded-full bg-indigo-600"/>Networking events</li>
-                                <li className="flex items-center gap-3"><span className="w-2.5 h-2.5 rounded-full bg-indigo-600"/>Mentorship program</li>
-                                <li className="flex items-center gap-3"><span className="w-2.5 h-2.5 rounded-full bg-indigo-600"/>Online community</li>
-                                <li className="flex items-center gap-3"><span className="w-2.5 h-2.5 rounded-full bg-indigo-600"/>Success stories</li>
+                            <p className="text-gray-600 mb-8 leading-8 tracking-[0.01em]">Connect with fellow international social workers and build professional relationships.</p>
+                            <ul className="space-y-5 mb-8 text-gray-700">
+                                <li className="flex items-center gap-3 text-[17px] leading-8"><span className="w-3 h-3 rounded-full bg-indigo-600"/>Networking events</li>
+                                <li className="flex items-center gap-3 text-[17px] leading-8"><span className="w-3 h-3 rounded-full bg-indigo-600"/>Mentorship program</li>
+                                <li className="flex items-center gap-3 text-[17px] leading-8"><span className="w-3 h-3 rounded-full bg-indigo-600"/>Online community</li>
+                                <li className="flex items-center gap-3 text-[17px] leading-8"><span className="w-3 h-3 rounded-full bg-indigo-600"/>Success stories</li>
                             </ul>
                         </div>
 
@@ -712,12 +712,12 @@ export default function Home({ blogs }: HomeProps) {
                                 </svg>
                             </div>
                             <h4 className="text-[28px] font-semibold tracking-tight text-gray-900 mb-4">Ongoing Support</h4>
-                            <p className="text-gray-600 mb-8">Continuous guidance and support throughout your journey to working in the UK.</p>
-                            <ul className="space-y-4 mb-6 text-gray-700">
-                                <li className="flex items-center gap-3"><span className="w-2.5 h-2.5 rounded-full bg-orange-600"/>24/7 chat support</li>
-                                <li className="flex items-center gap-3"><span className="w-2.5 h-2.5 rounded-full bg-orange-600"/>Regular check-ins</li>
-                                <li className="flex items-center gap-3"><span className="w-2.5 h-2.5 rounded-full bg-orange-600"/>Resource updates</li>
-                                <li className="flex items-center gap-3"><span className="w-2.5 h-2.5 rounded-full bg-orange-600"/>Career guidance</li>
+                            <p className="text-gray-600 mb-8 leading-8 tracking-[0.01em]">Continuous guidance and support throughout your journey to working in the UK.</p>
+                            <ul className="space-y-5 mb-8 text-gray-700">
+                                <li className="flex items-center gap-3 text-[17px] leading-8"><span className="w-3 h-3 rounded-full bg-orange-600"/>24/7 chat support</li>
+                                <li className="flex items-center gap-3 text-[17px] leading-8"><span className="w-3 h-3 rounded-full bg-orange-600"/>Regular check-ins</li>
+                                <li className="flex items-center gap-3 text-[17px] leading-8"><span className="w-3 h-3 rounded-full bg-orange-600"/>Resource updates</li>
+                                <li className="flex items-center gap-3 text-[17px] leading-8"><span className="w-3 h-3 rounded-full bg-orange-600"/>Career guidance</li>
                             </ul>
                         </div>
                     </div>
