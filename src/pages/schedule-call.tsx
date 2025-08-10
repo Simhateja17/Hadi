@@ -1,11 +1,16 @@
 // pages/schedule-call.tsx
 import React from 'react';
+import Head from 'next/head';
 
 const ScheduleCallPage: React.FC = () => {
-  const calendlyUrl = process.env.NEXT_PUBLIC_CALENDLY_URL || 'https://calendly.com/';
+  const calendlyUrl = 'https://calendly.com/couture-founders/30min';
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-red-50">
+      <Head>
+        <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
+        <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+      </Head>
       <section className="section-padding-lg">
         <div className="container-custom">
           <div className="text-center mb-10">
@@ -19,19 +24,18 @@ const ScheduleCallPage: React.FC = () => {
           </div>
 
           <div className="bg-white rounded-2xl shadow-lg border-2 border-british-blue overflow-hidden">
-            <div className="w-full" style={{ height: '850px' }}>
-              <iframe
-                title="Calendly Scheduling"
-                src={`${calendlyUrl}?hide_gdpr_banner=1&background_color=ffffff&text_color=0a2a6b&primary_color=c8102e`}
-                className="w-full h-full"
-                frameBorder={0}
-                allowTransparency={true}
-              />
-            </div>
+            <div
+              className="calendly-inline-widget"
+              data-url={`${calendlyUrl}?hide_gdpr_banner=1&background_color=ffffff&text_color=0a2a6b&primary_color=c8102e`}
+              style={{ minWidth: '320px', height: '850px' }}
+            />
           </div>
 
           <p className="text-sm text-gray-600 mt-4 text-center">
-            Trouble loading? <a href={calendlyUrl} className="text-british-blue underline" target="_blank" rel="noreferrer">Open Calendly</a>
+            Trouble loading?{' '}
+            <a href={calendlyUrl} className="text-british-blue underline" target="_blank" rel="noreferrer">
+              Open Calendly
+            </a>
           </p>
         </div>
       </section>
