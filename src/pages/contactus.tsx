@@ -1,6 +1,7 @@
 // pages/contactus.tsx
 import React, { useState } from 'react';
 import emailjs from '@emailjs/browser';
+import { PAGE_PADDING_TOP } from '../config/pagePadding';
 
 export default function ContactUs() {
     const MAX_MESSAGE_WORDS = 100;
@@ -111,7 +112,7 @@ export default function ContactUs() {
     };
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-red-50 pt-20">
+        <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-red-50" style={{ paddingTop: PAGE_PADDING_TOP.contactus }}>
             {/* Hero Section */}
             <section className="section-padding-lg bg-gradient-to-br from-blue-50 via-white to-red-50">
                 <div className="container-custom">
@@ -120,7 +121,7 @@ export default function ContactUs() {
                         <div className="text-center lg:text-left animate-fade-in-up">
                             <div className="mb-6">
                                 <span className="inline-block px-8 py-4 bg-british-red text-white rounded-full body-medium font-bold mb-6 shadow-smooth">
-                                    🇬🇧 Contact Us
+                                    
                                 </span>
                             </div>
                             
@@ -176,7 +177,7 @@ export default function ContactUs() {
                         {/* Section Header */}
                         <div className="text-center mb-16">
                             <span className="inline-block px-8 py-4 bg-british-blue text-white rounded-full body-medium font-bold mb-6 shadow-smooth">
-                                📧 Professional Contact Form
+                               
                             </span>
                             
                             <h2 className="heading-2 mb-6 text-british-blue">

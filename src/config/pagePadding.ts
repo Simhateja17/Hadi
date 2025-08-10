@@ -2,11 +2,11 @@
 // Adjust these numbers to change the space between the navbar and page content
 
 export const PAGE_PADDING_TOP = {
-  gallery: 80,
-  contactus: 80,
-  toolkits: 80,
-  blogs: 80,
-  scheduleCall: 80,
+  gallery: 120,
+  contactus: 100,
+  toolkits: 120,
+  blogs: 100,
+  scheduleCall: 100,
 } as const;
 
 

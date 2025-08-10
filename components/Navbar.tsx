@@ -86,12 +86,7 @@ export const Navbar = () => {
                             >
                                 Blogs
                             </Link>
-                            <Link 
-                                href="/opportunities" 
-                                className="px-6 py-3 text-gray-700 font-medium hover:text-blue-600 transition-colors duration-200 emilys-candy-regular text-lg"
-                            >
-                                Opportunities
-                            </Link>
+                            
                             <Link 
                                 href="/toolkits" 
                                 className="px-6 py-3 text-gray-700 font-medium hover:text-blue-600 transition-colors duration-200 emilys-candy-regular text-lg"
@@ -166,13 +161,7 @@ export const Navbar = () => {
                             >
                                 Blogs
                             </Link>
-                            <Link 
-                                href="/opportunities" 
-                                className="block px-6 py-3 text-gray-700 font-medium hover:text-blue-600 hover:bg-gray-50 rounded-md transition-colors duration-200 emilys-candy-regular text-lg"
-                                onClick={() => setIsMenuOpen(false)}
-                            >
-                                Opportunities
-                            </Link>
+                            
                             <Link 
                                 href="/toolkits" 
                                 className="block px-6 py-3 text-gray-700 font-medium hover:text-blue-600 hover:bg-gray-50 rounded-md transition-colors duration-200 emilys-candy-regular text-lg"

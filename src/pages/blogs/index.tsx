@@ -3,6 +3,7 @@ import { GetStaticProps } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { getApiUrl } from '../../utils/api';
+import { PAGE_PADDING_TOP } from '../../config/pagePadding';
 
 type Blog = {
     id: string;
@@ -95,11 +96,11 @@ export default function BlogListPage({ blogs }: BlogListPageProps) {
     return (
         <div className="bg-white">
             {/* Hero Section */}
-            <section className="section-padding-lg bg-gradient-to-br from-blue-50 via-white to-red-50 pt-20">
+            <section className="section-padding-lg bg-gradient-to-br from-blue-50 via-white to-red-50" style={{ paddingTop: PAGE_PADDING_TOP.blogs }}>
                 <div className="container-custom text-center">
                     <div className="mb-6">
                         <span className="inline-block px-8 py-4 bg-british-red text-white rounded-full body-medium font-bold mb-6 shadow-smooth">
-                            📚 Professional Resources
+                           
                         </span>
                     </div>
                     

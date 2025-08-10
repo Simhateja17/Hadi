@@ -1,6 +1,7 @@
 // pages/schedule-call.tsx
 import React from 'react';
 import Script from 'next/script';
+import { PAGE_PADDING_TOP } from '../config/pagePadding';
 import { useEffect, useState } from 'react';
 
 const ScheduleCallPage: React.FC = () => {
@@ -12,7 +13,7 @@ const ScheduleCallPage: React.FC = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-red-50 pt-20">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-red-50" style={{ paddingTop: PAGE_PADDING_TOP.scheduleCall }}>
       <Script src="https://assets.calendly.com/assets/external/widget.js" strategy="afterInteractive" />
       <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
       <section className="section-padding-lg">
