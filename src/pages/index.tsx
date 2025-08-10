@@ -90,10 +90,10 @@ export default function Home({ blogs }: HomeProps) {
     // Our Values icon position controls (x/y in pixels)
     const VALUES_ICON_OFFSETS = {
         desktop: {
-            compassionate: { x: 87, y: 0 },
-            guidance: { x: 87, y: 0 },
-            community: { x: 87, y: 0 },
-            perspective: { x: 87, y: 0 },
+            compassionate: { x:80, y: 0 },
+            guidance: { x: 80, y: 0 },
+            community: { x: 80, y: 0 },
+            perspective: { x: 80, y: 0 },
         },
         mobile: {
             compassionate: { x: 0, y: 0 },
