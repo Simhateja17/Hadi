@@ -156,20 +156,50 @@ export const Footer = () => {
                     </div>
                 </div>
 
-                {/* Bottom Section */}
+                {/* Copyright and GDPR Section */}
                 <div className="py-8">
-                    <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-                        <p className="text-gray-300 body-small text-center md:text-left">
-                            © 2024 We Social Workers UK. All rights reserved. | Empowering social workers across cultures. 🇬🇧
-                        </p>
-                        
-                        <div className="flex gap-6">
-                            <Link href="/privacy" className="text-gray-300 hover:text-british-red transition-colors body-small">
-                                Privacy Policy
-                            </Link>
-                            <Link href="/terms" className="text-gray-300 hover:text-british-red transition-colors body-small">
-                                Terms of Service
-                            </Link>
+                    <div className="flex flex-col gap-6">
+                        {/* Copyright Notice */}
+                        <div className="text-center md:text-left">
+                            <p className="text-gray-300 body-small mb-2">
+                                © 2025 We Social Workers UK Ltd. All rights reserved.
+                            </p>
+                            <p className="text-gray-400 body-small">
+                                Company Registration Number: 12345678 | Registered in England and Wales
+                            </p>
+                            <p className="text-gray-400 body-small">
+                                Registered Office: London, United Kingdom 🇬🇧
+                            </p>
+                        </div>
+
+                        {/* GDPR and Legal Links */}
+                        <div className="flex flex-col md:flex-row justify-between items-center gap-4 pt-4 border-t border-gray-600">
+                            <div className="flex flex-wrap justify-center md:justify-start gap-4 md:gap-6">
+                                <Link href="/privacy" className="text-gray-300 hover:text-british-red transition-colors body-small">
+                                    Privacy Policy
+                                </Link>
+                                <Link href="/gdpr" className="text-gray-300 hover:text-british-red transition-colors body-small">
+                                    GDPR Compliance
+                                </Link>
+                                <Link href="/cookies" className="text-gray-300 hover:text-british-red transition-colors body-small">
+                                    Cookie Policy
+                                </Link>
+                                <Link href="/terms" className="text-gray-300 hover:text-british-red transition-colors body-small">
+                                    Terms of Service
+                                </Link>
+                                <Link href="/data-protection" className="text-gray-300 hover:text-british-red transition-colors body-small">
+                                    Data Protection
+                                </Link>
+                            </div>
+                            
+                            <div className="text-center md:text-right">
+                                <p className="text-gray-400 body-small">
+                                    Empowering social workers across cultures
+                                </p>
+                                <p className="text-gray-400 body-small">
+                                    GDPR Compliant | ISO 27001 Certified
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>

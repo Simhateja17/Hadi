@@ -8,10 +8,56 @@ export const Navbar = () => {
 
     return (
         <>
-            {/* Traditional Navbar */}
-            <nav className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="flex justify-between items-center h-16">
+            {/* Header Wrapper with Top Info Bar + Main Nav */}
+            <header className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md">
+                {/* Top Info Bar (Desktop) */}
+                <div className="hidden md:block border-b">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div className="flex items-center justify-between py-2 text-sm text-gray-600">
+                            <div className="flex items-center gap-6">
+                                {/* Email */}
+                                <a href="mailto:team@wesocialworkers.co.uk" className="flex items-center gap-2 hover:text-gray-900 transition-colors">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-4 h-4 text-british-red">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+                                    </svg>
+                                    <span>team@wesocialworkers.co.uk</span>
+                                </a>
+                                {/* Phone */}
+                                <a href="tel:+442012345678" className="flex items-center gap-2 hover:text-gray-900 transition-colors">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-4 h-4 text-british-red">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+                                    </svg>
+                                    <span>+44 20 1234 5678</span>
+                                </a>
+                                {/* Location */}
+                                <div className="hidden lg:flex items-center gap-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-4 h-4 text-british-red">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+                                    </svg>
+                                    <span>London, UK</span>
+                                </div>
+                            </div>
+                            <Link
+                                href="/contact"
+                                aria-label="Schedule a Call"
+                                className="inline-flex items-center pl-2 pr-6 py-3 rounded-full text-white font-semibold shadow-lg hover:shadow-xl transition-all bg-gradient-to-r from-[var(--british-blue)] via-[var(--british-blue)] to-[var(--british-red)]"
+                            >
+                                <span className="flex items-center justify-center w-10 h-10 rounded-full border-2 border-white/90 bg-white/10 mr-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-5 h-5 text-white">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                                    </svg>
+                                </span>
+                                <span className="text-[0.95rem]">Schedule a Call</span>
+                            </Link>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Main Nav */}
+                <nav>
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div className="flex justify-between items-center h-16">
                         {/* Logo Section */}
                         <Link href="/" className="flex items-center hover:opacity-80 transition-opacity">
                             <div className="relative flex items-center gap-3">
@@ -47,7 +93,7 @@ export const Navbar = () => {
                                 Opportunities
                             </Link>
                             <Link 
-                                href="/toolkit" 
+                                href="/toolkits" 
                                 className="px-6 py-3 text-gray-700 font-medium hover:text-blue-600 transition-colors duration-200 emilys-candy-regular text-lg"
                             >
                                 Toolkit
@@ -67,7 +113,7 @@ export const Navbar = () => {
                         </div>                        {/* Mobile Menu Button */}
                         <button
                             onClick={() => setIsMenuOpen(!isMenuOpen)}
-                            className="md:hidden p-2 rounded-md hover:bg-gray-100 transition-colors"
+                            className="md:hidden p-2 rounded-md hover:bg-gray-100 transition-colors focus:outline-none focus:ring-2 focus:ring-british-blue"
                             aria-label="Toggle menu"
                         >
                             <svg 
@@ -75,17 +121,19 @@ export const Navbar = () => {
                                 fill="none" 
                                 stroke="currentColor" 
                                 viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg"
                             >
                                 {isMenuOpen ? (
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                                 ) : (
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 8h16M4 16h16" />
                                 )}
                             </svg>
                         </button>
                     </div>
-                </div>
-            </nav>
+                    </div>
+                </nav>
+            </header>
 
             {/* Mobile Navigation Dropdown */}
             {isMenuOpen && (
@@ -114,7 +162,7 @@ export const Navbar = () => {
                                 Opportunities
                             </Link>
                             <Link 
-                                href="/toolkit" 
+                                href="/toolkits" 
                                 className="block px-6 py-3 text-gray-700 font-medium hover:text-blue-600 hover:bg-gray-50 rounded-md transition-colors duration-200 emilys-candy-regular text-lg"
                                 onClick={() => setIsMenuOpen(false)}
                             >
@@ -133,6 +181,17 @@ export const Navbar = () => {
                                 onClick={() => setIsMenuOpen(false)}
                             >
                                 Contact
+                            </Link>
+                            <Link 
+                                href="/contact"
+                                aria-label="Schedule a Call"
+                                className="mt-2 flex items-center justify-center gap-2 px-7 py-3 rounded-full text-white font-semibold bg-gradient-to-r from-[var(--british-blue)] via-[var(--british-blue)] to-[var(--british-red)] shadow-md"
+                                onClick={() => setIsMenuOpen(false)}
+                            >
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-4 h-4">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                                </svg>
+                                <span>Schedule a Call</span>
                             </Link>
                         </div>
                     </div>

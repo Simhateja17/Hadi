@@ -225,7 +225,7 @@ export default function BlogListPage({ blogs }: BlogListPageProps) {
                             <Link href="/contact" className="btn btn-secondary btn-large">
                                 Book Consultation
                             </Link>
-                            <Link href="/toolkit" className="btn btn-outline border-2 border-white text-white hover:bg-white hover:text-british-blue btn-large">
+                            <Link href="/toolkits" className="btn btn-outline border-2 border-white text-white hover:bg-white hover:text-british-blue btn-large">
                                 Access Toolkit
                             </Link>
                         </div>

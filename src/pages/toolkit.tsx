@@ -186,8 +186,8 @@ export default function Toolkit() {
                                         <p className="body-medium text-gray-700 leading-relaxed mb-6">
                                             {resource.description}
                                         </p>
-                                        <Link href="/contact" className="inline-flex items-center text-british-red font-bold hover:text-british-blue transition-colors">
-                                            Access Resource
+                                        <Link href="/toolkits" className="inline-flex items-center text-british-red font-bold hover:text-british-blue transition-colors">
+                                            Access Toolkit PDFs
                                             <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                                             </svg>
