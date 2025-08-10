@@ -12,7 +12,7 @@ const ScheduleCallPage: React.FC = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-red-50">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-red-50 pt-20">
       <Script src="https://assets.calendly.com/assets/external/widget.js" strategy="afterInteractive" />
       <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
       <section className="section-padding-lg">

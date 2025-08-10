@@ -1,5 +1,6 @@
 // src/pages/gallery.tsx
 import { useEffect, useState } from 'react';
+import { PAGE_PADDING_TOP } from '../config/pagePadding';
 
 type GalleryImage = {
   id: string;
@@ -26,7 +27,7 @@ export default function GalleryPage() {
   }, [API_BASE_URL]);
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12">
+    <div className="min-h-screen bg-gray-50 pb-12" style={{ paddingTop: PAGE_PADDING_TOP.gallery }}>
       <div className="max-w-7xl mx-auto px-6">
         <h1 className="text-4xl font-bold mb-8 text-british-blue">Gallery</h1>
         {loading ? (
