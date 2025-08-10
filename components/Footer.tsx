@@ -90,7 +90,7 @@ export const Footer = () => {
                                     { href: '/', label: 'About Us' },
                                     { href: '/blogs', label: 'Our Services' },
                                     { href: '/jobs', label: 'Our Team' },
-                                    { href: '/contact', label: 'Contact Us' }
+                                    { href: '/contactus', label: 'Contact Us' }
                                 ].map((link) => (
                                     <Link
                                         key={link.href}

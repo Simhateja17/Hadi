@@ -103,8 +103,8 @@ export const Hero = () => {
                     <div className={`${isVisible ? 'animate-scale-in' : 'opacity-0'} hidden md:block`}>
                         <div className="hero-image-control relative rounded-xl overflow-hidden shadow-smooth-lg border border-[var(--border-light)] bg-white">
                             <Image
-                                src="/Corporate Meeting Illustration.png"
-                                alt="Community of social workers in a meeting"
+                                src="/heroview.jpg"
+                                alt="We Social Workers hero visual"
                                 width={1000}
                                 height={700}
                                 className="w-full h-auto object-cover"

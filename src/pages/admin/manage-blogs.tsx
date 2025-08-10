@@ -97,7 +97,7 @@ const ManageBlogsPage = () => {
                 </div>
                 <Link 
                     href="/admin/edit-blog" 
-                    className="bg-secondary hover:bg-secondary-light text-white font-bold py-3 px-6 rounded-lg transition-colors shadow-md hover:shadow-lg flex items-center gap-2"
+                    className="bg-secondary hover:bg-secondary-light text-black font-bold py-3 px-6 rounded-lg transition-colors shadow-md hover:shadow-lg flex items-center gap-2"
                 >
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
@@ -117,7 +117,7 @@ const ManageBlogsPage = () => {
                     <p className="text-text-muted mb-6">Start creating engaging content for your audience</p>
                     <Link 
                         href="/admin/edit-blog" 
-                        className="bg-primary hover:bg-primary-light text-white font-bold py-3 px-6 rounded-lg transition-colors"
+                        className="bg-primary hover:bg-primary-light text-black font-bold py-3 px-6 rounded-lg transition-colors"
                     >
                         Create Your First Post
                     </Link>

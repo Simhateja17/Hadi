@@ -505,7 +505,7 @@ const BlogEditorPage = () => {
                                     />
                                     <label
                                         htmlFor="image-upload"
-                                        className="cursor-pointer bg-primary hover:bg-primary-dark text-white font-medium py-2 px-4 rounded-lg transition-colors"
+                                        className="cursor-pointer bg-primary hover:bg-primary-dark text-black font-medium py-2 px-4 rounded-lg transition-colors"
                                     >
                                         Choose File
                                     </label>
