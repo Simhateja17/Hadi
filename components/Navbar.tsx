@@ -105,10 +105,10 @@ export const Navbar = () => {
                                 Connect
                             </Link>
                             <Link 
-                                href="/contactus" 
+                                href="/gallery" 
                                 className="px-6 py-3 text-gray-700 font-medium hover:text-blue-600 transition-colors duration-200 emilys-candy-regular text-lg"
                             >
-                                Contact
+                                Gallery
                             </Link>
                             <Link
                                 href="/write-for-us"
@@ -188,11 +188,11 @@ export const Navbar = () => {
                                 Connect
                             </Link>
                             <Link 
-                                href="/contactus" 
+                                href="/gallery" 
                                 className="block px-6 py-3 text-gray-700 font-medium hover:text-blue-600 hover:bg-gray-50 rounded-md transition-colors duration-200 emilys-candy-regular text-lg"
                                 onClick={() => setIsMenuOpen(false)}
                             >
-                                Contact
+                                Gallery
                             </Link>
                             <Link 
                                 href="/write-for-us" 

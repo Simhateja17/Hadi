@@ -33,6 +33,10 @@ const AdminDashboard = () => {
                     <h2 className="text-2xl font-bold text-text-dark">Manage Toolkits</h2>
                     <p className="text-text-light mt-2">Upload and manage toolkit PDFs.</p>
                 </Link>
+                <Link href="/admin/manage-gallery" className="block p-8 bg-primary rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                    <h2 className="text-2xl font-bold text-text-dark">Manage Gallery</h2>
+                    <p className="text-text-light mt-2">Upload and manage gallery images.</p>
+                </Link>
                 <Link href="/admin/opportunities-controls" className="block p-8 bg-secondary rounded-lg shadow-md hover:shadow-lg transition-shadow">
                     <h2 className="text-2xl font-bold text-white">Layout Controls</h2>
                     <p className="text-gray-100 mt-2">Adjust position and size of opportunities page elements.</p>
