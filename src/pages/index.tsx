@@ -212,6 +212,17 @@ export default function Home({ blogs }: HomeProps) {
                 .list-heading { margin-bottom: ${LIST_SPACING_CONFIG.mobile.headingGap}px; }
                 .list-items { row-gap: ${LIST_SPACING_CONFIG.mobile.itemGap}px; }
                 
+                /* Our Story Section Positioning - Mobile */
+                .story-description {
+                    transform: translate(${OUR_STORY_CONFIG.description.mobile.position.x}px, ${OUR_STORY_CONFIG.description.mobile.position.y}px);
+                }
+                .story-founder-boxes {
+                    transform: translate(${OUR_STORY_CONFIG.founderBoxes.mobile.position.x}px, ${OUR_STORY_CONFIG.founderBoxes.mobile.position.y}px);
+                }
+                .story-header {
+                    margin-bottom: ${OUR_STORY_CONFIG.sectionGap.mobile}px;
+                }
+                
                 @media (min-width: 768px) {
                     .services-icon-desktop {
                         transform: translate(${SERVICES_ICON_CONFIG.desktop.position.x}px, ${SERVICES_ICON_CONFIG.desktop.position.y}px) !important;
@@ -250,6 +261,19 @@ export default function Home({ blogs }: HomeProps) {
                     .list-items { row-gap: ${LIST_SPACING_CONFIG.desktop.itemGap}px !important; }
                 }
                 
+                @media (min-width: 1280px) {
+                    /* Our Story Section Positioning - Desktop */
+                    .story-description {
+                        transform: translate(${OUR_STORY_CONFIG.description.desktop.position.x}px, ${OUR_STORY_CONFIG.description.desktop.position.y}px) !important;
+                    }
+                    .story-founder-boxes {
+                        transform: translate(${OUR_STORY_CONFIG.founderBoxes.desktop.position.x}px, ${OUR_STORY_CONFIG.founderBoxes.desktop.position.y}px) !important;
+                    }
+                    .story-header {
+                        margin-bottom: ${OUR_STORY_CONFIG.sectionGap.desktop}px !important;
+                    }
+                }
+                
                 @media (max-width: 767px) {
                     .container-custom {
                         max-width: 100%;
@@ -276,23 +300,9 @@ export default function Home({ blogs }: HomeProps) {
             <section className="section-padding-lg bg-gradient-to-br from-gray-50 to-white">
                 <div className="container-custom">
                     {/* Story Header */}
-                    <div 
-                        className="text-center"
-                        style={{
-                            marginBottom: typeof window !== 'undefined' && window.innerWidth >= 1280 
-                                ? `${OUR_STORY_CONFIG.sectionGap.desktop}px`
-                                : `${OUR_STORY_CONFIG.sectionGap.mobile}px`
-                        }}
-                    >
+                    <div className="text-center story-header">
                         <h2 className="heading-1 mb-8 text-gradient font-bold">Our Story</h2>
-                        <div 
-                            className={`max-w-4xl mx-auto space-y-6`}
-                            style={{
-                                transform: typeof window !== 'undefined' && window.innerWidth >= 1280 
-                                    ? `translate(${OUR_STORY_CONFIG.description.desktop.position.x}px, ${OUR_STORY_CONFIG.description.desktop.position.y}px)`
-                                    : `translate(${OUR_STORY_CONFIG.description.mobile.position.x}px, ${OUR_STORY_CONFIG.description.mobile.position.y}px)`
-                            }}
-                        >
+                        <div className={`max-w-4xl mx-auto space-y-6 story-description`}>
                             <p className="body-large text-gray-700 leading-relaxed">
                                 We Social Workers UK is a free, volunteer-led platform created by experienced UK-registered 
                                 social workers to support international professionals aspiring to build a career in the UK social work sector.
@@ -306,14 +316,7 @@ export default function Home({ blogs }: HomeProps) {
                     </div>
 
                     {/* Founders Section */}
-                    <div 
-                        className={`grid md:grid-cols-2 gap-12 max-w-5xl mx-auto`}
-                        style={{
-                            transform: typeof window !== 'undefined' && window.innerWidth >= 1280 
-                                ? `translate(${OUR_STORY_CONFIG.founderBoxes.desktop.position.x}px, ${OUR_STORY_CONFIG.founderBoxes.desktop.position.y}px)`
-                                : `translate(${OUR_STORY_CONFIG.founderBoxes.mobile.position.x}px, ${OUR_STORY_CONFIG.founderBoxes.mobile.position.y}px)`
-                        }}
-                    >
+                    <div className={`grid md:grid-cols-2 gap-12 max-w-5xl mx-auto story-founder-boxes`}>
                         {/* Mayel Hadi */}
                         <div className="bg-white rounded-2xl shadow-smooth p-8 hover-lift border border-gray-100">
                             <div className="text-center">
