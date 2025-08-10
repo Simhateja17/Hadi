@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import Link from 'next/link';
 
 const STORAGE_KEY = 'cookie_consent';
 
@@ -26,8 +27,8 @@ export default function CookieConsent() {
       <div className="bg-white border-2 border-british-blue rounded-xl shadow-xl p-4 md:p-5 flex flex-col md:flex-row md:items-center md:justify-between gap-3">
         <div className="text-sm text-gray-700">
           We use cookies to improve your experience. Read our{' '}
-          <a href="/cookies" className="text-british-blue underline">Cookie Policy</a> and{' '}
-          <a href="/privacy" className="text-british-blue underline">Privacy Policy</a>.
+          <Link href="/cookies" className="text-british-blue underline">Cookie Policy</Link> and{' '}
+          <Link href="/privacy" className="text-british-blue underline">Privacy Policy</Link>.
         </div>
         <div className="flex gap-2">
           <button onClick={reject} className="px-4 py-2 rounded-lg border border-british-blue text-british-blue bg-white">Reject</button>

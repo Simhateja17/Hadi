@@ -1,5 +1,5 @@
 // src/pages/admin/manage-gallery.tsx
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import withAuth from '../../components/auth/withAuth';
 
 type GalleryImage = {
@@ -18,7 +18,7 @@ const ManageGalleryPage = () => {
 
   const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
 
-  const loadImages = async () => {
+  const loadImages = useCallback(async () => {
     setLoading(true);
     try {
       const res = await fetch(`${API_BASE_URL}/api/gallery`);
@@ -29,11 +29,11 @@ const ManageGalleryPage = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [API_BASE_URL]);
 
   useEffect(() => {
     loadImages();
-  }, []);
+  }, [loadImages]);
 
   const handleFile = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0] || null;
@@ -65,7 +65,7 @@ const ManageGalleryPage = () => {
       setSelectedFile(null);
       await loadImages();
       alert('Image added to gallery.');
-    } catch (e) {
+    } catch {
       alert('Failed to add image.');
     } finally {
       setUploading(false);

@@ -167,7 +167,7 @@ const EditSubmissionPage = () => {
                 const errorData = await response.json();
                 setSaveMessage({ type: 'error', text: errorData.error || 'Failed to update submission.' });
             }
-        } catch (error) {
+        } catch {
             setSaveMessage({ type: 'error', text: 'Network error. Please try again.' });
         } finally {
             setSaving(false);
