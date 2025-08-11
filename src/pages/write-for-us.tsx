@@ -20,7 +20,7 @@ const WriteForUsPage = () => {
     const [wordCount, setWordCount] = useState(0);
 
     const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
-    const WORD_LIMIT = 600;
+    const WORD_LIMIT = 1200;
 
     const countWords = (text: string) => {
         const trimmed = text.trim();
