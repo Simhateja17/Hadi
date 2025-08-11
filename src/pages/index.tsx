@@ -106,10 +106,10 @@ export default function Home({ blogs }: HomeProps) {
             perspective: { x: 80, y: 0 },
         },
         mobile: {
-            compassionate: { x: 150, y: 0 },
-            guidance: { x: 150, y: 0 },
-            community: { x: 150, y: 0 },
-            perspective: { x: 150, y: 0 },
+            compassionate: { x: 130, y: 0 },
+            guidance: { x: 130, y: 0 },
+            community: { x: 130, y: 0 },
+            perspective: { x: 130, y: 0 },
         }
     } as const;
 
@@ -484,25 +484,7 @@ export default function Home({ blogs }: HomeProps) {
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7" />
                                         </svg>
                                     </div>
-                                    <p className="text-lg font-medium text-gray-700 leading-relaxed">English Language Test Preparation</p>
-                                </div>
-                                
-                                <div className="flex items-center gap-4 group">
-                                    <div className="w-8 h-8 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center flex-shrink-0 shadow-md group-hover:scale-110 transition-transform duration-300">
-                                        <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7" />
-                                        </svg>
-                                    </div>
                                     <p className="text-lg font-medium text-gray-700 leading-relaxed">Job Search Support</p>
-                                </div>
-                                
-                                <div className="flex items-center gap-4 group">
-                                    <div className="w-8 h-8 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center flex-shrink-0 shadow-md group-hover:scale-110 transition-transform duration-300">
-                                        <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7" />
-                                        </svg>
-                                    </div>
-                                    <p className="text-lg font-medium text-gray-700 leading-relaxed">Pre-employment Checks Guidance (DBS, references & compliance)</p>
                                 </div>
                                 
                                 <div className="flex items-center gap-4 group">
