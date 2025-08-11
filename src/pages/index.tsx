@@ -158,8 +158,8 @@ export default function Home({ blogs }: HomeProps) {
             ali: { x: 180, y: 0 },
         },
         mobile: {
-            mayel: { x: 0, y: 0 },
-            ali: { x: 0, y: 0 },
+            mayel: { x: 170, y: 4 },
+            ali: { x: 170, y: 4 },
         },
     } as const;
 
