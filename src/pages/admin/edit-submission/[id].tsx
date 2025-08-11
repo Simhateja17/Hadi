@@ -35,7 +35,7 @@ const EditSubmissionPage = () => {
         authorBio: '',
         adminNotes: ''
     });
-    const [characterCount, setCharacterCount] = useState(0);
+    const [wordCount, setWordCount] = useState(0);
     const [saveMessage, setSaveMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
     const [selectedImage, setSelectedImage] = useState<File | null>(null);
     const [imagePreview, setImagePreview] = useState<string | null>(null);
@@ -43,7 +43,13 @@ const EditSubmissionPage = () => {
     const [showApprovalSection, setShowApprovalSection] = useState(false);
 
     const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
-    const CHARACTER_LIMIT = 600;
+    const WORD_LIMIT = 600;
+
+    const countWords = (text: string) => {
+        const trimmed = text.trim();
+        if (!trimmed) return 0;
+        return trimmed.split(/\s+/).length;
+    };
 
     const topicOptions = [
         'Social Work Practice',
@@ -88,7 +94,7 @@ const EditSubmissionPage = () => {
                     authorBio: data.authorBio || '',
                     adminNotes: data.adminNotes || ''
                 });
-                setCharacterCount(data.content.length);
+                setWordCount(countWords(data.content));
 
                 // If adminNotes carries a submitted image URL, set preview for convenience
                 if (data.adminNotes && typeof data.adminNotes === 'string' && data.adminNotes.startsWith('IMAGE_URL: ')) {
@@ -112,9 +118,14 @@ const EditSubmissionPage = () => {
         const { name, value } = e.target;
         
         if (name === 'content') {
-            if (value.length <= CHARACTER_LIMIT) {
+            const words = countWords(value);
+            if (words <= WORD_LIMIT) {
                 setFormData(prev => ({ ...prev, [name]: value }));
-                setCharacterCount(value.length);
+                setWordCount(words);
+            } else {
+                const truncated = value.trim().split(/\s+/).slice(0, WORD_LIMIT).join(' ');
+                setFormData(prev => ({ ...prev, [name]: truncated }));
+                setWordCount(WORD_LIMIT);
             }
         } else {
             setFormData(prev => ({ ...prev, [name]: value }));
@@ -134,8 +145,8 @@ const EditSubmissionPage = () => {
             return;
         }
 
-        if (formData.content.length > CHARACTER_LIMIT) {
-            setSaveMessage({ type: 'error', text: `Content must not exceed ${CHARACTER_LIMIT} characters.` });
+        if (countWords(formData.content) > WORD_LIMIT) {
+            setSaveMessage({ type: 'error', text: `Content must not exceed ${WORD_LIMIT} words.` });
             setSaving(false);
             return;
         }
@@ -534,9 +545,9 @@ const EditSubmissionPage = () => {
                                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors resize-vertical"
                             />
                             <div className={`absolute bottom-3 right-3 text-sm ${
-                                characterCount > CHARACTER_LIMIT * 0.9 ? 'text-red-500' : 'text-gray-500'
+                                wordCount > WORD_LIMIT * 0.9 ? 'text-red-500' : 'text-gray-500'
                             }`}>
-                                {characterCount}/{CHARACTER_LIMIT} characters
+                                {wordCount}/{WORD_LIMIT} words
                             </div>
                         </div>
                     </div>

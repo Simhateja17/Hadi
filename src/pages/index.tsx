@@ -151,6 +151,18 @@ export default function Home({ blogs }: HomeProps) {
         }
     };
 
+    // Founder image position controls (offsets in pixels)
+    const FOUNDER_IMAGE_OFFSETS = {
+        desktop: {
+            mayel: { x: 180, y: 0 },
+            ali: { x: 180, y: 0 },
+        },
+        mobile: {
+            mayel: { x: 0, y: 0 },
+            ali: { x: 0, y: 0 },
+        },
+    } as const;
+
     // ===== END OF DESIGN CONTROLS =====
 
     return (
@@ -216,6 +228,10 @@ export default function Home({ blogs }: HomeProps) {
                 .story-header {
                     margin-bottom: ${OUR_STORY_CONFIG.sectionGap.mobile}px;
                 }
+
+                /* Founder images position - Mobile */
+                .founder-image-mayel { transform: translate(${FOUNDER_IMAGE_OFFSETS.mobile.mayel.x}px, ${FOUNDER_IMAGE_OFFSETS.mobile.mayel.y}px); }
+                .founder-image-ali { transform: translate(${FOUNDER_IMAGE_OFFSETS.mobile.ali.x}px, ${FOUNDER_IMAGE_OFFSETS.mobile.ali.y}px); }
                 
                 @media (min-width: 768px) {
                     .services-icon-desktop {
@@ -267,6 +283,12 @@ export default function Home({ blogs }: HomeProps) {
                         margin-bottom: ${OUR_STORY_CONFIG.sectionGap.desktop}px !important;
                     }
                 }
+
+                @media (min-width: 768px) {
+                    /* Founder images position - Desktop */
+                    .founder-image-mayel { transform: translate(${FOUNDER_IMAGE_OFFSETS.desktop.mayel.x}px, ${FOUNDER_IMAGE_OFFSETS.desktop.mayel.y}px) !important; }
+                    .founder-image-ali { transform: translate(${FOUNDER_IMAGE_OFFSETS.desktop.ali.x}px, ${FOUNDER_IMAGE_OFFSETS.desktop.ali.y}px) !important; }
+                }
                 
                 @media (max-width: 767px) {
                     .container-custom {
@@ -314,7 +336,7 @@ export default function Home({ blogs }: HomeProps) {
                         {/* Mayel Hadi */}
                         <div className="bg-white rounded-2xl shadow-smooth p-8 hover-lift border border-gray-100">
                             <div className="text-center">
-                                <div className="relative w-32 h-32 mx-auto mb-6">
+                                <div className="relative w-32 h-32 mx-auto mb-6 founder-image-mayel">
                                     <Image
                                         src="/mayel-hadi-profile.jpg"
                                         alt="Mayel Hadi - Co-Founder"
@@ -336,7 +358,7 @@ export default function Home({ blogs }: HomeProps) {
                         {/* Ali Azam */}
                         <div className="bg-white rounded-2xl shadow-smooth p-8 hover-lift border border-gray-100">
                             <div className="text-center">
-                                <div className="relative w-32 h-32 mx-auto mb-6">
+                                <div className="relative w-32 h-32 mx-auto mb-6 founder-image-ali">
                                     <Image
                                         src="/ali-azam-profile-new.jpg"
                                         alt="Ali Azam - Co-Founder"
@@ -480,7 +502,7 @@ export default function Home({ blogs }: HomeProps) {
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7" />
                                         </svg>
                                     </div>
-                                    <p className="text-lg font-medium text-gray-700 leading-relaxed">Visa & Immigration Assistance</p>
+                                    <p className="text-lg font-medium text-gray-700 leading-relaxed">Pre-employment Checks Guidance (DBS, references & compliance)</p>
                                 </div>
                                 
                                 <div className="flex items-center gap-4 group">

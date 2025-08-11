@@ -294,7 +294,7 @@ export default function ContactUs() {
                                                 value={formData.phone}
                                                 onChange={handleChange}
                                                 className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-british-blue focus:outline-none transition-colors bg-gray-50 focus:bg-white"
-                                                placeholder="+44 7XXX XXXXXX"
+                                                 placeholder="Enter your Mobile No. with Country Code"
                                             />
                                         </div>
                                     </div>
