@@ -106,10 +106,10 @@ export default function Home({ blogs }: HomeProps) {
             perspective: { x: 80, y: 0 },
         },
         mobile: {
-            compassionate: { x: 200, y: 0 },
-            guidance: { x: 200, y: 0 },
-            community: { x: 200, y: 0 },
-            perspective: { x: 200, y: 0 },
+            compassionate: { x: 150, y: 0 },
+            guidance: { x: 150, y: 0 },
+            community: { x: 150, y: 0 },
+            perspective: { x: 150, y: 0 },
         }
     } as const;
 

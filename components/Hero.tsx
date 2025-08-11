@@ -14,7 +14,7 @@ export const Hero = () => {
     // Adjust these values to move ONLY the main heading (h1)
     // Positive X moves right, negative X moves left; positive Y moves down, negative Y moves up
     const HEADING_OFFSET_MOBILE = { x: 0, y: 0 };
-    const HEADING_OFFSET_DESKTOP = { x: 0, y: 30 };
+    const HEADING_OFFSET_DESKTOP = { x: 0, y: 40 };
     // ==========================================
 
     // ===== HERO IMAGE POSITION & SIZE CONTROLS =====
@@ -49,7 +49,7 @@ export const Hero = () => {
                 /* Desktop-only offset for description + buttons */
                 .hero-subcontent-offset { transform: translateY(0); }
                 @media (min-width: 1024px) {
-                    .hero-subcontent-offset { transform: translateY(20px) !important; }
+                    .hero-subcontent-offset { transform: translateY(30px) !important; }
                 }
 
                 /* Image position and size controls */
@@ -80,9 +80,8 @@ export const Hero = () => {
 
                         <div className="hero-subcontent-offset">
                             <p className="body-xl text-gray-700 mb-10 max-w-2xl mx-auto text-center">
-                                Navigate Social Work England registration, find opportunities, and build
-                                your career in the UK. We provide guidance, resources, and community
-                                support for international social workers.
+                            Guiding international social workers through Social Work England registration, career opportunities, and UK community support.
+
                             </p>
 
                             <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
