@@ -154,12 +154,12 @@ export default function Home({ blogs }: HomeProps) {
     // Founder image position controls (offsets in pixels)
     const FOUNDER_IMAGE_OFFSETS = {
         desktop: {
-            mayel: { x: 180, y: 0 },
-            ali: { x: 180, y: 0 },
+            mayel: { x: 0, y: 0 },
+            ali: { x: 0, y: 0 },
         },
         mobile: {
-            mayel: { x: 130, y: 4 },
-            ali: { x: 130, y: 4 },
+            mayel: { x: 0, y: 0 },
+            ali: { x: 0, y: 0 },
         },
     } as const;
 
@@ -336,16 +336,18 @@ export default function Home({ blogs }: HomeProps) {
                         {/* Mayel Hadi */}
                         <div className="bg-white rounded-2xl shadow-smooth p-8 hover-lift border border-gray-100">
                             <div className="text-center">
-                                <div className="relative w-32 h-32 mx-auto mb-6 founder-image-mayel">
-                                    <Image
-                                        src="/mayel-hadi-profile.jpg"
-                                        alt="Mayel Hadi - Co-Founder"
-                                        fill
-                                        className="rounded-full object-cover border-4 border-british-blue"
-                                    />
+                                <div className="flex justify-center mb-6">
+                                    <div className="relative w-32 h-32 founder-image-mayel">
+                                        <Image
+                                            src="/mayel-hadi-profile.jpg"
+                                            alt="Mayel Hadi - Mentor"
+                                            fill
+                                            className="rounded-full object-cover border-4 border-british-blue"
+                                        />
+                                    </div>
                                 </div>
                                 <h3 className="heading-4 text-british-blue mb-2">Mayel Hadi</h3>
-                                <p className="text-british-red font-semibold mb-4">Co-Founder & Senior Social Worker</p>
+                                <p className="text-british-red font-semibold mb-4">Mentor & Senior Social Worker</p>
                                 <p className="body-medium text-gray-600 leading-relaxed">
                                     Mayel brings extensive experience in UK social work practice, having successfully transitioned 
                                     from India to become a registered social worker in the UK. With a passion for mentoring and 
@@ -358,16 +360,18 @@ export default function Home({ blogs }: HomeProps) {
                         {/* Ali Azam */}
                         <div className="bg-white rounded-2xl shadow-smooth p-8 hover-lift border border-gray-100">
                             <div className="text-center">
-                                <div className="relative w-32 h-32 mx-auto mb-6 founder-image-ali">
-                                    <Image
-                                        src="/ali-azam-profile-new.jpg"
-                                        alt="Ali Azam - Co-Founder"
-                                        fill
-                                        className="rounded-full object-cover border-4 border-british-red"
-                                    />
+                                <div className="flex justify-center mb-6">
+                                    <div className="relative w-32 h-32 founder-image-ali">
+                                        <Image
+                                            src="/ali-azam-profile-new.jpg"
+                                            alt="Ali Azam - Mentor"
+                                            fill
+                                            className="rounded-full object-cover border-4 border-british-red"
+                                        />
+                                    </div>
                                 </div>
                                 <h3 className="heading-4 text-british-red mb-2">Ali Azam</h3>
-                                <p className="text-british-blue font-semibold mb-4">Co-Founder & Senior Social Worker</p>
+                                <p className="text-british-red font-semibold mb-4">Mentor & Senior Social Worker</p>
                                 <p className="body-medium text-gray-600 leading-relaxed">
                                     Ali is a dedicated social work professional who has navigated the journey from India to the UK, 
                                     gaining valuable insights into the challenges and opportunities that international social workers face. 

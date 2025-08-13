@@ -232,7 +232,7 @@ export default function About() {
                                         <div className="w-full h-64 rounded-lg overflow-hidden shadow-lg relative">
                                             <Image 
                                                 src="/ali-azam-profile-new.jpg" 
-                                                alt="Ali Azam - Co-Founder and Mentor"
+                                                alt="Ali Azam -  Mentor"
                                                 fill
                                                 className="object-cover"
                                             />
@@ -242,7 +242,7 @@ export default function About() {
                                     {/* Profile Content */}
                                     <div className="lg:col-span-2">
                                         <h3 className="heading-3 mb-2 text-british-blue">Meet Ali</h3>
-                                        <h4 className="heading-5 mb-4 text-british-red">Md Ali Azam – Co-Founder and Mentor, We Social Workers UK</h4>
+                                        <h4 className="heading-5 mb-4 text-british-red">Md Ali Azam – Mentor, We Social Workers UK</h4>
                                         <p className="body-medium mb-4 text-gray-600 font-semibold">PhD, MA, BA (Social Work)</p>
                                         
                                         <p className="body-medium mb-6 text-gray-700 leading-relaxed">
@@ -272,7 +272,7 @@ export default function About() {
                                         <div className="w-full h-64 rounded-lg overflow-hidden shadow-lg relative">
                                             <Image 
                                                 src="/mayel-hadi-profile.jpg" 
-                                                alt="Mayel Hadi - Co-Founder and Mentor"
+                                                alt="Mayel Hadi - Mentor"
                                                 fill
                                                 className="object-cover"
                                             />
@@ -282,7 +282,7 @@ export default function About() {
                                     {/* Profile Content */}
                                     <div className="lg:col-span-2">
                                         <h3 className="heading-3 mb-2 text-british-blue">Meet Mayel</h3>
-                                        <h4 className="heading-5 mb-4 text-british-red">Mayel Hadi – Co-Founder and Mentor, We Social Workers UK</h4>
+                                        <h4 className="heading-5 mb-4 text-british-red">Mayel Hadi – Mentor, We Social Workers UK</h4>
                                         <p className="body-medium mb-4 text-gray-600 font-semibold">BSW (Jamia Millia Islamia) | MSW (University of Delhi) | MSc (Comparative Social Change – Trinity College Dublin & University College Dublin)</p>
                                         
                                         <p className="body-medium mb-6 text-gray-700 leading-relaxed">
