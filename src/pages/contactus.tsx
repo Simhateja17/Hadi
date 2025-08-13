@@ -181,13 +181,12 @@ export default function ContactUs() {
                             </span>
                             
                             <h2 className="heading-2 mb-6 text-british-blue">
-                                Tell Us About
-                                <span className="text-gradient block">Your Professional Needs</span>
+                                Register your interest
+                                <span className="text-gradient block"></span>
                             </h2>
                             
                             <p className="body-xl text-gray-700 leading-relaxed max-w-2xl mx-auto">
-                                Fill out our comprehensive form below and our expert team will get back to you 
-                                with personalized support and guidance for your social work journey.
+                                
                             </p>
                         </div>
 
@@ -231,7 +230,7 @@ export default function ContactUs() {
                                                 <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
                                             </svg>
                                         </div>
-                                        <h3 className="heading-4 text-british-blue font-bold">Personal Information</h3>
+                                        <h3 className="heading-4 text-british-blue font-bold"></h3>
                                     </div>
                                     
                                     <div className="grid md:grid-cols-2 gap-6">

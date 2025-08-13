@@ -313,7 +313,7 @@ export default function Home({ blogs }: HomeProps) {
             <Hero />
             
             {/* Our Story Section */}
-            <section className="section-padding-lg bg-gradient-to-br from-gray-50 to-white">
+            <section className="pt-12 md:pt-16 pb-24 bg-gradient-to-br from-gray-50 to-white">
                 <div className="container-custom">
                     {/* Story Header */}
                     <div className="text-center story-header">
