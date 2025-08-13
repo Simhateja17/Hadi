@@ -92,11 +92,13 @@ export default function BlogPostPage({ post }: BlogPostPageProps) {
     const getTitleStyle = () => {
         return {
             position: 'absolute' as const,
-            left: `${settings.title.x}%`,
+            left: '50%',
             top: `${settings.title.y}%`,
+            transform: 'translateX(-50%)',
+            textAlign: 'center' as const,
             fontSize: `${settings.title.fontSize * (settings.title.size / 100)}px`,
             zIndex: 2,
-            width: `${Math.min(100 - settings.title.x, 80)}%` // Ensure it doesn't overflow
+            width: '90%'
         };
     };
 
@@ -126,15 +128,16 @@ export default function BlogPostPage({ post }: BlogPostPageProps) {
 
                     /* Adjust title and content to sit under the new horizontal image */
                     .blog-title {
-                        left: 5% !important;
+                        left: 50% !important;
                         top: 6% !important;
                         width: 90% !important;
+                        transform: translateX(-50%) !important;
                         font-size: 28px !important;
                     }
 
                     .blog-content {
                         left: 5% !important;
-                        top: 45% !important;
+                        top: 38% !important; /* reduced gap to thumbnail on mobile */
                         width: 90% !important;
                         font-size: 16px !important;
                         line-height: 1.6 !important;
@@ -194,13 +197,6 @@ export default function BlogPostPage({ post }: BlogPostPageProps) {
                     className="text-gray-800 font-serif blog-content"
                     style={getContentStyle()}
                 >
-                    {/* Subtitle/Description */}
-                    <div className="mb-6">
-                        <p className="text-gray-700 leading-relaxed font-medium opacity-80">
-                            {getContentSnippet(post.content, 200)}
-                        </p>
-                    </div>
-
                     {/* Author and Date Information */}
                     <div className="border-b border-gray-200 pb-6 mb-8">
                         <div className="flex flex-col md:flex-row md:items-center md:justify-between text-gray-600">
@@ -223,6 +219,13 @@ export default function BlogPostPage({ post }: BlogPostPageProps) {
                                 </span>
                             </div>
                         </div>
+                    </div>
+
+                    {/* Subtitle/Description (moved below byline to avoid confusion with body) */}
+                    <div className="mb-6">
+                        <p className="text-gray-700 leading-relaxed font-medium opacity-80">
+                            {getContentSnippet(post.content, 200)}
+                        </p>
                     </div>
 
                     {/* Action Buttons */}
