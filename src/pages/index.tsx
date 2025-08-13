@@ -100,16 +100,16 @@ export default function Home({ blogs }: HomeProps) {
     // Our Values icon position controls (x/y in pixels)
     const VALUES_ICON_OFFSETS = {
         desktop: {
-            compassionate: { x: 80, y: 0 },
-            guidance: { x: 80, y: 0 },
-            community: { x: 80, y: 0 },
-            perspective: { x: 80, y: 0 },
+            compassionate: { x: 0, y: 0 },
+            guidance: { x: 0, y: 0 },
+            community: { x: 0, y: 0 },
+            perspective: { x: 0, y: 0 },
         },
         mobile: {
-            compassionate: { x: 130, y: 0 },
-            guidance: { x: 130, y: 0 },
-            community: { x: 130, y: 0 },
-            perspective: { x: 130, y: 0 },
+            compassionate: { x: 0, y: 0 },
+            guidance: { x: 0, y: 0 },
+            community: { x: 0, y: 0 },
+            perspective: { x: 0, y: 0 },
         }
     } as const;
 
@@ -396,10 +396,12 @@ export default function Home({ blogs }: HomeProps) {
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 xl:gap-16 max-w-7xl mx-auto">
                         {/* Compassionate Support */}
                         <div className="bg-white rounded-3xl shadow-lg p-12 text-center hover-lift border border-gray-100 transition-all duration-300 min-h-[320px] flex flex-col">
-                            <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-blue-100 via-indigo-100 to-rose-100 ring-1 ring-blue-200 flex items-center justify-center mx-auto mb-8 values-icon-compassionate">
-                                <svg className="w-9 h-9 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                                </svg>
+                            <div className="flex justify-center mb-8">
+                                <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-blue-100 via-indigo-100 to-rose-100 ring-1 ring-blue-200 flex items-center justify-center values-icon-compassionate">
+                                    <svg className="w-9 h-9 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                                    </svg>
+                                </div>
                             </div>
                             <div className="flex-grow flex flex-col justify-center">
                                 <h3 className="text-2xl font-semibold text-gray-800 mb-4">Compassionate Support</h3>
@@ -411,10 +413,12 @@ export default function Home({ blogs }: HomeProps) {
 
                         {/* Clear Guidance */}
                         <div className="bg-white rounded-3xl shadow-lg p-12 text-center hover-lift border border-gray-100 transition-all duration-300 min-h-[320px] flex flex-col">
-                            <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-blue-100 via-indigo-100 to-rose-100 ring-1 ring-blue-200 flex items-center justify-center mx-auto mb-8 values-icon-guidance">
-                                <svg className="w-9 h-9 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                </svg>
+                            <div className="flex justify-center mb-8">
+                                <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-blue-100 via-indigo-100 to-rose-100 ring-1 ring-blue-200 flex items-center justify-center values-icon-guidance">
+                                    <svg className="w-9 h-9 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                </div>
                             </div>
                             <div className="flex-grow flex flex-col justify-center">
                                 <h3 className="text-2xl font-semibold text-gray-800 mb-4">Clear Guidance</h3>
@@ -426,10 +430,12 @@ export default function Home({ blogs }: HomeProps) {
 
                         {/* Community Focus */}
                         <div className="bg-white rounded-3xl shadow-lg p-12 text-center hover-lift border border-gray-100 transition-all duration-300 min-h-[320px] flex flex-col">
-                            <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-blue-100 via-indigo-100 to-rose-100 ring-1 ring-blue-200 flex items-center justify-center mx-auto mb-8 values-icon-community">
-                                <svg className="w-9 h-9 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                                </svg>
+                            <div className="flex justify-center mb-8">
+                                <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-blue-100 via-indigo-100 to-rose-100 ring-1 ring-blue-200 flex items-center justify-center values-icon-community">
+                                    <svg className="w-9 h-9 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                                    </svg>
+                                </div>
                             </div>
                             <div className="flex-grow flex flex-col justify-center">
                                 <h3 className="text-2xl font-semibold text-gray-800 mb-4">Community Focus</h3>
@@ -441,10 +447,12 @@ export default function Home({ blogs }: HomeProps) {
 
                         {/* Global Perspective */}
                         <div className="bg-white rounded-3xl shadow-lg p-12 text-center hover-lift border border-gray-100 transition-all duration-300 min-h-[320px] flex flex-col">
-                            <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-blue-100 via-indigo-100 to-rose-100 ring-1 ring-blue-200 flex items-center justify-center mx-auto mb-8 values-icon-perspective">
-                                <svg className="w-9 h-9 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                </svg>
+                            <div className="flex justify-center mb-8">
+                                <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-blue-100 via-indigo-100 to-rose-100 ring-1 ring-blue-200 flex items-center justify-center values-icon-perspective">
+                                    <svg className="w-9 h-9 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                </div>
                             </div>
                             <div className="flex-grow flex flex-col justify-center">
                                 <h3 className="text-2xl font-semibold text-gray-800 mb-4">Global Perspective</h3>
@@ -592,7 +600,8 @@ export default function Home({ blogs }: HomeProps) {
                                 paddingLeft: `${BUBBLE_SIZE.horizontal * 0.25}rem`, 
                                 paddingRight: `${BUBBLE_SIZE.horizontal * 0.25}rem`,
                                 paddingTop: `${BUBBLE_SIZE.vertical * 0.25}rem`,
-                                paddingBottom: `${BUBBLE_SIZE.vertical * 0.25}rem`
+                                paddingBottom: `${BUBBLE_SIZE.vertical * 0.25}rem`,
+                                marginBottom: 'calc(1.5rem + 50px)'
                             }}
                         >
                             Professional Growth & Learning

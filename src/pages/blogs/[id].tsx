@@ -114,12 +114,39 @@ export default function BlogPostPage({ post }: BlogPostPageProps) {
 
     return (
         <div className="bg-white" style={{ minHeight: '200vh' }}>
+            <style jsx global>{`
+                @media (max-width: 767px) {
+                    /* Force horizontal thumbnail on mobile */
+                    .blog-thumbnail {
+                        left: 4% !important;
+                        top: 14% !important;
+                        width: 92% !important;
+                        height: 220px !important;
+                    }
+
+                    /* Adjust title and content to sit under the new horizontal image */
+                    .blog-title {
+                        left: 5% !important;
+                        top: 6% !important;
+                        width: 90% !important;
+                        font-size: 28px !important;
+                    }
+
+                    .blog-content {
+                        left: 5% !important;
+                        top: 45% !important;
+                        width: 90% !important;
+                        font-size: 16px !important;
+                        line-height: 1.6 !important;
+                    }
+                }
+            `}</style>
             {/* Main Container - Fixed height container for absolute positioning */}
             <div className="relative w-full bg-white shadow-sm" style={{ height: '150vh', paddingBottom: '2rem' }}>
                 {/* Thumbnail */}
                 {post.imageUrl ? (
                     <div 
-                        className="overflow-hidden rounded-lg border shadow-sm"
+                        className="overflow-hidden rounded-lg border shadow-sm blog-thumbnail"
                         style={getThumbnailStyle()}
                     >
                         <Image 
@@ -156,7 +183,7 @@ export default function BlogPostPage({ post }: BlogPostPageProps) {
 
                 {/* Title */}
                 <h1 
-                    className="font-bold text-gray-900 leading-tight font-serif"
+                    className="font-bold text-gray-900 leading-tight font-serif blog-title"
                     style={getTitleStyle()}
                 >
                     {post.title}
@@ -164,7 +191,7 @@ export default function BlogPostPage({ post }: BlogPostPageProps) {
 
                 {/* Content */}
                 <div
-                    className="text-gray-800 font-serif"
+                    className="text-gray-800 font-serif blog-content"
                     style={getContentStyle()}
                 >
                     {/* Subtitle/Description */}
