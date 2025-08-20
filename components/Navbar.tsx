@@ -39,7 +39,7 @@ export const Navbar = () => {
                                 </div>
                             </div>
                             <Link
-                                href="/schedule-call"
+                                href="/contactus#schedule-call"
                                 aria-label="Schedule a Call"
                                 className="inline-flex items-center pl-2 pr-6 py-3 rounded-full text-white font-semibold shadow-lg hover:shadow-xl transition-all bg-gradient-to-r from-[var(--british-blue)] via-[var(--british-blue)] to-[var(--british-red)]"
                             >
@@ -195,7 +195,7 @@ export const Navbar = () => {
                                 <span>Write for Us</span>
                             </Link>
                             <Link 
-                                href="/schedule-call"
+                                href="/contactus#schedule-call"
                                 aria-label="Schedule a Call"
                                 className="mt-2 flex items-center justify-center gap-2 px-7 py-3 rounded-full text-white font-semibold bg-gradient-to-r from-[var(--british-blue)] via-[var(--british-blue)] to-[var(--british-red)] shadow-md"
                                 onClick={() => setIsMenuOpen(false)}

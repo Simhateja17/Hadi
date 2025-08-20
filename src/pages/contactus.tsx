@@ -1,10 +1,14 @@
 // pages/contactus.tsx
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import Script from 'next/script';
 import emailjs from '@emailjs/browser';
 import { PAGE_PADDING_TOP } from '../config/pagePadding';
 
 export default function ContactUs() {
     const MAX_MESSAGE_WORDS = 100;
+    const calendlyUrl = 'https://calendly.com/couture-founders/30min';
+    const [mounted, setMounted] = useState(false);
+    
     const countWords = (text: string): number => {
         const trimmed = text.trim();
         if (!trimmed) return 0;
@@ -12,21 +16,20 @@ export default function ContactUs() {
     };
 
     const [formData, setFormData] = useState({
-        firstName: '',
-        lastName: '',
+        name: '',
         email: '',
         phone: '',
-        organization: '',
-        role: '',
-        subject: '',
-        message: '',
-        preferredContact: 'email',
-        urgency: 'medium'
+        qualification: '',
+        message: ''
     });
 
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
     const [messageWords, setMessageWords] = useState<number>(0);
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
@@ -62,30 +65,20 @@ export default function ContactUs() {
             }
 
             type TemplateParams = {
-                firstName: string;
-                lastName: string;
+                name: string;
                 email: string;
                 phone: string;
-                organization: string;
-                role: string;
-                subject: string;
+                qualification: string;
                 message: string;
-                preferredContact: string;
-                urgency: string;
                 site_name: string;
             };
 
             const templateParams: TemplateParams = {
-                firstName: formData.firstName,
-                lastName: formData.lastName,
+                name: formData.name,
                 email: formData.email,
                 phone: formData.phone,
-                organization: formData.organization,
-                role: formData.role,
-                subject: formData.subject,
+                qualification: formData.qualification,
                 message: formData.message,
-                preferredContact: formData.preferredContact,
-                urgency: formData.urgency,
                 site_name: 'We Social Workers UK'
             };
 
@@ -93,16 +86,11 @@ export default function ContactUs() {
 
             setSubmitStatus('success');
             setFormData({
-                firstName: '',
-                lastName: '',
+                name: '',
                 email: '',
                 phone: '',
-                organization: '',
-                role: '',
-                subject: '',
-                message: '',
-                preferredContact: 'email',
-                urgency: 'medium'
+                qualification: '',
+                message: ''
             });
         } catch {
             setSubmitStatus('error');
@@ -198,8 +186,8 @@ export default function ContactUs() {
                                         <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                                     </svg>
                                     <div>
-                                        <h3 className="font-bold">Message Sent Successfully!</h3>
-                                        <p>Thank you for reaching out! Our team will get back to you within 24 hours.</p>
+                                        <h3 className="font-bold">Registration Submitted Successfully!</h3>
+                                        <p>Thank you for registering your interest! Our team will get back to you within 24 hours.</p>
                                     </div>
                                 </div>
                             </div>
@@ -212,8 +200,8 @@ export default function ContactUs() {
                                         <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
                                     </svg>
                                     <div>
-                                        <h3 className="font-bold">Error Sending Message</h3>
-                                        <p>Sorry, there was an error sending your message. Please try again.</p>
+                                        <h3 className="font-bold">Error Submitting Registration</h3>
+                                        <p>Sorry, there was an error submitting your registration. Please try again.</p>
                                     </div>
                                 </div>
                             </div>
@@ -230,40 +218,23 @@ export default function ContactUs() {
                                                 <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
                                             </svg>
                                         </div>
-                                        <h3 className="heading-4 text-british-blue font-bold"></h3>
+                                        <h3 className="heading-4 text-british-blue font-bold">Contact Information</h3>
                                     </div>
                                     
-                                    <div className="grid md:grid-cols-2 gap-6">
-                                        <div>
-                                            <label htmlFor="firstName" className="block text-british-blue font-bold mb-3">
-                                                First Name *
-                                            </label>
-                                            <input
-                                                type="text"
-                                                id="firstName"
-                                                name="firstName"
-                                                value={formData.firstName}
-                                                onChange={handleChange}
-                                                className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-british-blue focus:outline-none transition-colors bg-gray-50 focus:bg-white"
-                                                placeholder="Enter your first name"
-                                                required
-                                            />
-                                        </div>
-                                        <div>
-                                            <label htmlFor="lastName" className="block text-british-blue font-bold mb-3">
-                                                Last Name *
-                                            </label>
-                                            <input
-                                                type="text"
-                                                id="lastName"
-                                                name="lastName"
-                                                value={formData.lastName}
-                                                onChange={handleChange}
-                                                className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-british-blue focus:outline-none transition-colors bg-gray-50 focus:bg-white"
-                                                placeholder="Enter your last name"
-                                                required
-                                            />
-                                        </div>
+                                    <div>
+                                        <label htmlFor="name" className="block text-british-blue font-bold mb-3">
+                                            Name *
+                                        </label>
+                                        <input
+                                            type="text"
+                                            id="name"
+                                            name="name"
+                                            value={formData.name}
+                                            onChange={handleChange}
+                                            className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-british-blue focus:outline-none transition-colors bg-gray-50 focus:bg-white"
+                                            placeholder="Enter your full name"
+                                            required
+                                        />
                                     </div>
                                     
                                     <div className="grid md:grid-cols-2 gap-6">
@@ -284,7 +255,7 @@ export default function ContactUs() {
                                         </div>
                                         <div>
                                             <label htmlFor="phone" className="block text-british-blue font-bold mb-3">
-                                                Phone Number
+                                                Phone Number <span className="text-gray-500">(Optional)</span>
                                             </label>
                                             <input
                                                 type="tel"
@@ -293,13 +264,13 @@ export default function ContactUs() {
                                                 value={formData.phone}
                                                 onChange={handleChange}
                                                 className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-british-blue focus:outline-none transition-colors bg-gray-50 focus:bg-white"
-                                                 placeholder="Enter your Mobile No. with Country Code"
+                                                placeholder="Enter your Mobile No. with Country Code"
                                             />
                                         </div>
                                     </div>
                                 </div>
 
-                                {/* Professional Information Section */}
+                                {/* Qualification Section */}
                                 <div className="space-y-6">
                                     <div className="flex items-center gap-3 pb-4 border-b-2 border-british-red">
                                         <div className="w-10 h-10 bg-british-red rounded-lg flex items-center justify-center">
@@ -310,92 +281,23 @@ export default function ContactUs() {
                                         <h3 className="heading-4 text-british-red font-bold">Professional Background</h3>
                                     </div>
                                     
-                                    <div className="grid md:grid-cols-2 gap-6">
-                                        <div>
-                                            <label htmlFor="organization" className="block text-british-blue font-bold mb-3">
-                                                Organization/Employer
-                                            </label>
-                                            <input
-                                                type="text"
-                                                id="organization"
-                                                name="organization"
-                                                value={formData.organization}
-                                                onChange={handleChange}
-                                                className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-british-blue focus:outline-none transition-colors bg-gray-50 focus:bg-white"
-                                                placeholder="Your current workplace"
-                                            />
-                                        </div>
-                                        <div>
-                                            <label htmlFor="role" className="block text-british-blue font-bold mb-3">
-                                                Current Role
-                                            </label>
-                                            <select
-                                                id="role"
-                                                name="role"
-                                                value={formData.role}
-                                                onChange={handleChange}
-                                                className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-british-blue focus:outline-none transition-colors bg-gray-50 focus:bg-white"
-                                            >
-                                                <option value="">Select your role</option>
-                                                <option value="social-worker">Social Worker</option>
-                                                <option value="student">Social Work Student</option>
-                                                <option value="manager">Team Manager</option>
-                                                <option value="senior-practitioner">Senior Practitioner</option>
-                                                <option value="independent">Independent Social Worker</option>
-                                                <option value="educator">Social Work Educator</option>
-                                                <option value="researcher">Researcher</option>
-                                                <option value="other">Other</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                {/* Contact Preferences Section */}
-                                <div className="space-y-6">
-                                    <div className="flex items-center gap-3 pb-4 border-b-2 border-gray-300">
-                                        <div className="w-10 h-10 bg-gray-600 rounded-lg flex items-center justify-center">
-                                            <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                                            </svg>
-                                        </div>
-                                        <h3 className="heading-4 text-gray-700 font-bold">Contact Preferences</h3>
-                                    </div>
-                                    
-                                    <div className="grid md:grid-cols-2 gap-6">
-                                        <div>
-                                            <label htmlFor="preferredContact" className="block text-british-blue font-bold mb-3">
-                                                Preferred Contact Method
-                                            </label>
-                                            <select
-                                                id="preferredContact"
-                                                name="preferredContact"
-                                                value={formData.preferredContact}
-                                                onChange={handleChange}
-                                                className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-british-blue focus:outline-none transition-colors bg-gray-50 focus:bg-white"
-                                            >
-                                                <option value="email">Email</option>
-                                                <option value="phone">Phone</option>
-                                                <option value="either">Either Email or Phone</option>
-                                            </select>
-                                        </div>
-                                        <div>
-                                            <label htmlFor="urgency" className="block text-british-blue font-bold mb-3">
-                                                Urgency Level
-                                            </label>
-                                            <select
-                                                id="urgency"
-                                                name="urgency"
-                                                value={formData.urgency}
-                                                onChange={handleChange}
-                                                className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-british-blue focus:outline-none transition-colors bg-gray-50 focus:bg-white"
-                                            >
-                                                <option value="low">Low - General inquiry</option>
-                                                <option value="medium">Medium - Within a few days</option>
-                                                <option value="high">High - Within 24 hours</option>
-                                                <option value="urgent">Urgent - Same day response needed</option>
-                                            </select>
-                                        </div>
+                                    <div>
+                                        <label htmlFor="qualification" className="block text-british-blue font-bold mb-3">
+                                            Qualification *
+                                        </label>
+                                        <select
+                                            id="qualification"
+                                            name="qualification"
+                                            value={formData.qualification}
+                                            onChange={handleChange}
+                                            className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-british-blue focus:outline-none transition-colors bg-gray-50 focus:bg-white"
+                                            required
+                                        >
+                                            <option value="">Select your qualification</option>
+                                            <option value="pursuing-ma-ba">Pursuing MA/BA in Social Work</option>
+                                            <option value="graduate-pg">Graduate/ PG in Social Work</option>
+                                            <option value="working-social-worker">Working as a social worker</option>
+                                        </select>
                                     </div>
                                 </div>
 
@@ -408,22 +310,6 @@ export default function ContactUs() {
                                             </svg>
                                         </div>
                                         <h3 className="heading-4 text-british-blue font-bold">Your Message</h3>
-                                    </div>
-                                    
-                                    <div>
-                                        <label htmlFor="subject" className="block text-british-blue font-bold mb-3">
-                                            Subject *
-                                        </label>
-                                        <input
-                                            type="text"
-                                            id="subject"
-                                            name="subject"
-                                            value={formData.subject}
-                                            onChange={handleChange}
-                                            className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-british-blue focus:outline-none transition-colors bg-gray-50 focus:bg-white"
-                                            placeholder="Brief description of your inquiry"
-                                            required
-                                        />
                                     </div>
                                     
                                     <div>
@@ -461,14 +347,14 @@ export default function ContactUs() {
                                                 <svg className="w-5 h-5 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
                                                 </svg>
-                                                <span>Sending Message...</span>
+                                                <span>Submitting...</span>
                                             </div>
                                         ) : (
                                             <div className="flex items-center gap-3">
                                                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
                                                 </svg>
-                                                <span>Send Message 🇬🇧</span>
+                                                <span>Submit</span>
                                             </div>
                                         )}
                                     </button>
@@ -480,6 +366,46 @@ export default function ContactUs() {
                             </form>
                         </div>
                     </div>
+                </div>
+            </section>
+
+            {/* Schedule a Call Section */}
+            <section id="schedule-call" className="section-padding-lg bg-gradient-to-br from-gray-50 to-white">
+                <Script src="https://assets.calendly.com/assets/external/widget.js" strategy="afterInteractive" />
+                <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
+                <div className="container-custom">
+                    <div className="text-center mb-10">
+                        <span className="inline-block px-8 py-4 bg-british-red text-white rounded-full body-medium font-bold mb-6 shadow-smooth">
+                            📅 Schedule a Call
+                        </span>
+                        <h2 className="heading-2 mb-6 text-british-blue">
+                            Book a time that works for you
+                        </h2>
+                        <p className="body-xl text-gray-700 leading-relaxed max-w-2xl mx-auto">
+                            Ready to take the next step? Schedule a personalized consultation with our expert team to discuss your social work journey in the UK.
+                        </p>
+                    </div>
+
+                    <div className="bg-white rounded-2xl shadow-lg border-2 border-british-blue overflow-hidden">
+                        {mounted ? (
+                            <div
+                                className="calendly-inline-widget"
+                                data-url={`${calendlyUrl}?hide_gdpr_banner=1&background_color=ffffff&text_color=0a2a6b&primary_color=c8102e`}
+                                style={{ minWidth: '320px', height: '850px' }}
+                            />
+                        ) : (
+                            <div className="flex items-center justify-center" style={{ minWidth: '320px', height: '200px' }}>
+                                <span className="text-gray-500">Loading calendar…</span>
+                            </div>
+                        )}
+                    </div>
+
+                    <p className="text-sm text-gray-600 mt-4 text-center">
+                        Trouble loading?{' '}
+                        <a href="https://calendly.com/couture-founders/30min" className="text-british-blue underline" target="_blank" rel="noreferrer">
+                            Open Calendly
+                        </a>
+                    </p>
                 </div>
             </section>
 

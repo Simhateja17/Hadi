@@ -87,9 +87,9 @@ export const Footer = () => {
                             <h4 className="heading-5 text-white mb-6">Quick Links</h4>
                             <nav className="space-y-3">
                                 {[
-                                    { href: '/', label: 'About Us' },
-                                    { href: '/blogs', label: 'Our Services' },
-                                    { href: '/jobs', label: 'Our Team' },
+                                    { href: '/#our-section', label: 'About Us' },
+                                    { href: '/#our-services', label: 'Our Services' },
+                                    { href: '/jobs', label: 'Jobs' },
                                     { href: '/contactus', label: 'Contact Us' }
                                 ].map((link) => (
                                     <Link
@@ -165,10 +165,10 @@ export const Footer = () => {
                                 © 2025 We Social Workers UK Ltd. All rights reserved.
                             </p>
                             <p className="text-gray-400 body-small">
-                                Company Registration Number: 12345678 | Registered in England and Wales
+                               
                             </p>
                             <p className="text-gray-400 body-small">
-                                Registered Office: London, United Kingdom 🇬🇧
+                                
                             </p>
                         </div>
 

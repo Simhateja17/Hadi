@@ -223,7 +223,7 @@ export default function BlogListPage({ blogs }: BlogListPageProps) {
                             Get in touch to discuss your specific needs and goals.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                            <Link href="/schedule-call" className="btn btn-secondary btn-large">
+                            <Link href="/contactus#schedule-call" className="btn btn-secondary btn-large">
                                 Book Consultation
                             </Link>
                             <Link href="/toolkits" className="btn btn-outline border-2 border-white text-white hover:bg-white hover:text-british-blue btn-large">

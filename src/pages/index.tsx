@@ -404,8 +404,8 @@ export default function Home({ blogs }: HomeProps) {
                                 </div>
                             </div>
                             <div className="flex-grow flex flex-col justify-center">
-                                <h3 className="text-xl md:text-2xl font-semibold text-gray-800 mb-2 md:mb-3">Compassionate Support</h3>
-                                <p className="body-medium text-gray-600 leading-relaxed">
+                                <h3 className="text-xl md:text-2xl font-semibold text-gray-800 mb-2">Compassionate Support</h3>
+                                <p className="body-medium text-gray-600 leading-relaxed mt-2">
                                     We understand the challenges of relocating and starting fresh in a new country.
                                 </p>
                             </div>
@@ -421,8 +421,8 @@ export default function Home({ blogs }: HomeProps) {
                                 </div>
                             </div>
                             <div className="flex-grow flex flex-col justify-center">
-                                <h3 className="text-xl md:text-2xl font-semibold text-gray-800 mb-2 md:mb-3">Clear Guidance</h3>
-                                <p className="body-medium text-gray-600 leading-relaxed">
+                                <h3 className="text-xl md:text-2xl font-semibold text-gray-800 mb-2">Clear Guidance</h3>
+                                <p className="body-medium text-gray-600 leading-relaxed mt-2">
                                     Step-by-step processes that eliminate confusion and uncertainty.
                                 </p>
                             </div>
@@ -438,8 +438,8 @@ export default function Home({ blogs }: HomeProps) {
                                 </div>
                             </div>
                             <div className="flex-grow flex flex-col justify-center">
-                                <h3 className="text-xl md:text-2xl font-semibold text-gray-800 mb-2 md:mb-3">Community Focus</h3>
-                                <p className="body-medium text-gray-600 leading-relaxed">
+                                <h3 className="text-xl md:text-2xl font-semibold text-gray-800 mb-2">Community Focus</h3>
+                                <p className="body-medium text-gray-600 leading-relaxed mt-2">
                                     Building connections between international social workers worldwide.
                                 </p>
                             </div>
@@ -455,8 +455,8 @@ export default function Home({ blogs }: HomeProps) {
                                 </div>
                             </div>
                             <div className="flex-grow flex flex-col justify-center">
-                                <h3 className="text-xl md:text-2xl font-semibold text-gray-800 mb-2 md:mb-3">Global Perspective</h3>
-                                <p className="body-medium text-gray-600 leading-relaxed">
+                                <h3 className="text-xl md:text-2xl font-semibold text-gray-800 mb-2">Global Perspective</h3>
+                                <p className="body-medium text-gray-600 leading-relaxed mt-2">
                                     Celebrating diversity and bringing international expertise to the UK.
                                 </p>
                             </div>
