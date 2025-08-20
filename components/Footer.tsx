@@ -87,10 +87,10 @@ export const Footer = () => {
                             <h4 className="heading-5 text-white mb-6">Quick Links</h4>
                             <nav className="space-y-3">
                                 {[
-                                    { href: '/#our-section', label: 'About Us' },
-                                    { href: '/#our-services', label: 'Our Services' },
-                                    { href: '/jobs', label: 'Jobs' },
-                                    { href: '/contactus', label: 'Contact Us' }
+                                    { href: '/#our-section', label: '' },
+                                    { href: '/#our-services', label: '' },
+                                    { href: '/jobs', label: '' },
+                                    { href: '/contactus', label: '' }
                                 ].map((link) => (
                                     <Link
                                         key={link.href}
