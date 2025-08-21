@@ -382,7 +382,7 @@ export default function ContactUs() {
                             Book a time that works for you
                         </h2>
                         <p className="body-xl text-gray-700 leading-relaxed max-w-2xl mx-auto">
-                            Ready to take the next step? Schedule a personalized consultation with our expert team to discuss your social work journey in the UK.
+                           
                         </p>
                     </div>
 
