@@ -2,7 +2,7 @@
 import React from 'react';
 import { GetStaticProps } from 'next';
 import { getApiUrl } from '../utils/api';
-import { Layout } from '../../components/Layout';
+
 
 type Job = {
     id: string;
@@ -44,7 +44,6 @@ const OpportunitiesPage = ({ jobs }: OpportunitiesPageProps) => {
     jobsSize: 100
   };
     return (
-        <Layout>
             <div className="py-12 max-w-6xl mx-auto px-6">
                 {/* Dynamic Title with Layout Controls */}
                 <div 
@@ -198,7 +197,6 @@ const OpportunitiesPage = ({ jobs }: OpportunitiesPageProps) => {
                     </div>
                 </div>
             </div>
-        </Layout>
     );
 };
 

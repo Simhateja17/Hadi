@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { GetStaticProps } from 'next';
 import { getApiUrl } from '../utils/api';
 import { layoutApi } from '../lib/api';
-import { Layout } from '../../components/Layout';
+
 
 type Job = {
     id: string;
@@ -66,8 +66,7 @@ export default function OpportunitiesEnhanced({ jobs }: OpportunitiesPageProps) 
   };
 
   return (
-    <Layout>
-      <div className="py-12 max-w-6xl mx-auto px-6">
+    <div className="py-12 max-w-6xl mx-auto px-6">
         {/* Dynamic Title with Layout Controls */}
         <div 
           className="mb-8 transition-all duration-300"
@@ -220,8 +219,7 @@ export default function OpportunitiesEnhanced({ jobs }: OpportunitiesPageProps) 
             </div>
           </div>
         </div>
-      </div>
-    </Layout>
+    </div>
   );
 }
 

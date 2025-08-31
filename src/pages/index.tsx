@@ -81,6 +81,18 @@ export default function Home({ blogs }: HomeProps) {
         }
     } as const;
 
+    // Position controls for What We Do / Don't Do content (headings and bullet points)
+    const WHAT_WE_DO_CONTENT_CONFIG = {
+        desktop: { 
+            heading: { x: 20, y: 5 },  // Move headings right 20px, down 5px
+            items: { x: 20, y: -5 }    // Move bullet points right 20px, up 5px
+        },
+        mobile: { 
+            heading: { x: 20, y: 5 },  // Move headings right 20px, down 5px
+            items: { x: 20, y: -5 }    // Move bullet points right 20px, up 5px
+        }
+    } as const;
+
     // Choose Your Path icon offsets (x/y in pixels)
     const PATH_ICON_OFFSETS = {
         desktop: {
@@ -100,16 +112,16 @@ export default function Home({ blogs }: HomeProps) {
     // Our Values icon position controls (x/y in pixels)
     const VALUES_ICON_OFFSETS = {
         desktop: {
-            compassionate: { x: 0, y: 0 },
-            guidance: { x: 0, y: 0 },
-            community: { x: 0, y: 0 },
-            perspective: { x: 0, y: 0 },
+            compassionate: { x: 0, y: 15 },
+            guidance: { x: 0, y: 15 },
+            community: { x: 0, y: 15 },
+            perspective: { x: 0, y: 15 },
         },
         mobile: {
-            compassionate: { x: 0, y: 0 },
-            guidance: { x: 0, y: 0 },
-            community: { x: 0, y: 0 },
-            perspective: { x: 0, y: 0 },
+            compassionate: { x: 0, y: 15 },
+            guidance: { x: 0, y: 15 },
+            community: { x: 0, y: 15 },
+            perspective: { x: 0, y: 15 },
         }
     } as const;
 
@@ -218,6 +230,19 @@ export default function Home({ blogs }: HomeProps) {
                 .list-heading { margin-bottom: ${LIST_SPACING_CONFIG.mobile.headingGap}px; }
                 .list-items { row-gap: ${LIST_SPACING_CONFIG.mobile.itemGap}px; }
                 
+                /* What We Do Content Positioning - Mobile */
+                .what-we-do-heading { 
+                    transform: translate(${WHAT_WE_DO_CONTENT_CONFIG.mobile.heading.x}px, ${WHAT_WE_DO_CONTENT_CONFIG.mobile.heading.y}px); 
+                }
+                .what-we-do-items { 
+                    transform: translate(${WHAT_WE_DO_CONTENT_CONFIG.mobile.items.x}px, ${WHAT_WE_DO_CONTENT_CONFIG.mobile.items.y}px); 
+                }
+                
+                /* Our Story Section Spacing - Mobile */
+                .our-story-section { 
+                    padding-top: 23px; /* 48px - 25px = 23px */
+                }
+                
                 /* Our Story Section Positioning - Mobile */
                 .story-description {
                     transform: translate(${OUR_STORY_CONFIG.description.mobile.position.x}px, ${OUR_STORY_CONFIG.description.mobile.position.y}px);
@@ -269,6 +294,19 @@ export default function Home({ blogs }: HomeProps) {
                     /* List Spacing - Desktop */
                     .list-heading { margin-bottom: ${LIST_SPACING_CONFIG.desktop.headingGap}px !important; }
                     .list-items { row-gap: ${LIST_SPACING_CONFIG.desktop.itemGap}px !important; }
+                    
+                    /* What We Do Content Positioning - Desktop */
+                    .what-we-do-heading { 
+                        transform: translate(${WHAT_WE_DO_CONTENT_CONFIG.desktop.heading.x}px, ${WHAT_WE_DO_CONTENT_CONFIG.desktop.heading.y}px) !important; 
+                    }
+                    .what-we-do-items { 
+                        transform: translate(${WHAT_WE_DO_CONTENT_CONFIG.desktop.items.x}px, ${WHAT_WE_DO_CONTENT_CONFIG.desktop.items.y}px) !important; 
+                    }
+                    
+                    /* Our Story Section Spacing - Desktop */
+                    .our-story-section { 
+                        padding-top: 39px !important; /* 64px - 25px = 39px */
+                    }
                 }
                 
                 @media (min-width: 1280px) {
@@ -313,7 +351,7 @@ export default function Home({ blogs }: HomeProps) {
             <Hero />
             
             {/* Our Story Section */}
-            <section className="pt-12 md:pt-16 pb-24 bg-gradient-to-br from-gray-50 to-white">
+            <section className="pb-24 bg-gradient-to-br from-gray-50 to-white our-story-section">
                 <div className="container-custom">
                     {/* Story Header */}
                     <div className="text-center story-header">
@@ -470,8 +508,8 @@ export default function Home({ blogs }: HomeProps) {
                 <div className="container-custom">
                     <div className="grid lg:grid-cols-2 gap-14 xl:gap-16 max-w-7xl mx-auto">
                         {/* What We Do */}
-                        <div className="bg-gradient-to-br from-green-50 via-emerald-50 to-green-100 rounded-none p-8 lg:p-10 shadow-xl border border-green-200/50 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-1">
-                            <div className="flex items-center gap-4 list-heading">
+                        <div className="bg-gradient-to-br from-green-50 via-emerald-50 to-green-100 rounded-3xl p-8 lg:p-10 shadow-xl border border-green-200/50 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-1">
+                            <div className="flex items-center gap-4 list-heading what-we-do-heading">
                                 <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center shadow-lg">
                                     <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7" />
@@ -480,7 +518,7 @@ export default function Home({ blogs }: HomeProps) {
                                 <h3 className="text-3xl font-bold text-gray-800 tracking-tight">What We Do</h3>
                             </div>
                             
-                            <div className="flex flex-col list-items">
+                            <div className="flex flex-col list-items what-we-do-items">
                                 <div className="flex items-center gap-4 group">
                                     <div className="w-8 h-8 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center flex-shrink-0 shadow-md group-hover:scale-110 transition-transform duration-300">
                                         <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -520,8 +558,8 @@ export default function Home({ blogs }: HomeProps) {
                         </div>
 
                         {/* What We Don't Do */}
-                        <div className="bg-gradient-to-br from-red-50 via-rose-50 to-red-100 rounded-none p-8 lg:p-10 shadow-xl border border-red-200/50 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-1">
-                            <div className="flex items-center gap-4 list-heading">
+                        <div className="bg-gradient-to-br from-red-50 via-rose-50 to-red-100 rounded-3xl p-8 lg:p-10 shadow-xl border border-red-200/50 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-1">
+                            <div className="flex items-center gap-4 list-heading what-we-do-heading">
                                 <div className="w-12 h-12 bg-gradient-to-br from-red-500 to-rose-600 rounded-2xl flex items-center justify-center shadow-lg">
                                     <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M6 18L18 6M6 6l12 12" />
@@ -530,7 +568,7 @@ export default function Home({ blogs }: HomeProps) {
                                 <h3 className="text-3xl font-bold text-gray-800 tracking-tight">What We Don&apos;t Do</h3>
                             </div>
                             
-                            <div className="flex flex-col list-items">
+                            <div className="flex flex-col list-items what-we-do-items">
                                 <div className="flex items-center gap-4 group">
                                     <div className="w-8 h-8 bg-gradient-to-br from-red-500 to-rose-600 rounded-xl flex items-center justify-center flex-shrink-0 shadow-md group-hover:scale-110 transition-transform duration-300">
                                         <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -611,7 +649,7 @@ export default function Home({ blogs }: HomeProps) {
                             <span className="text-british-red block">Compassionate Care</span>
                         </h2>
                         <p className="body-xl max-w-3xl mx-auto text-gray-700 leading-relaxed">
-                            Access our curated resources and insights to stay ahead in your professional development.
+                           
                         </p>
                     </div>
                     

@@ -109,7 +109,7 @@ export default function BlogListPage({ blogs }: BlogListPageProps) {
                         <span className="text-gradient block">Resources & Insights</span>
                     </h1>
                     
-                    <p className="body-xl mb-8 text-gray-700 leading-relaxed max-w-3xl mx-auto">
+                    <p className="body-xl mb-8 text-gray-700 leading-relaxed" style={{ marginTop: '5px' }}>
                         Stay informed with the latest guidance, tips, and expert insights to help you 
                         succeed as a social worker in the United Kingdom.
                     </p>
@@ -213,7 +213,7 @@ export default function BlogListPage({ blogs }: BlogListPageProps) {
 
             {/* CTA Section */}
             <section className="section-padding-lg bg-gradient-primary text-white">
-                <div className="container-custom text-center">
+                <div className="container-custom text-center" style={{ marginRight: '30px' }}>
                     <div className="max-w-4xl mx-auto">
                         <h2 className="heading-2 mb-6 text-white">
                             Need Personalized Guidance? 🇬🇧

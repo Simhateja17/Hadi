@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import Image from 'next/image';
-import { Layout } from '../../components/Layout';
 
 const WriteForUsPage = () => {
     const [formData, setFormData] = useState({
@@ -187,9 +186,8 @@ const WriteForUsPage = () => {
     ];
 
     return (
-        <Layout>
-            <div className="min-h-screen bg-gray-50 py-12">
-                <div className="max-w-4xl mx-auto px-6">
+        <div className="min-h-screen bg-gray-50 py-12">
+                <div className="max-w-4xl mx-auto px-6" style={{ marginTop: '100px', marginLeft: '300px' }}>
                     {/* Header Section */}
                     <div className="text-center mb-12">
                         <h1 className="text-4xl font-bold text-gray-900 mb-4 emilys-candy-regular">
@@ -446,8 +444,7 @@ const WriteForUsPage = () => {
                         </form>
                     </div>
                 </div>
-            </div>
-        </Layout>
+        </div>
     );
 };
 

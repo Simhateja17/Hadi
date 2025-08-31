@@ -1,13 +1,10 @@
 // pages/contactus.tsx
-import React, { useState, useEffect } from 'react';
-import Script from 'next/script';
+import React, { useState } from 'react';
 import emailjs from '@emailjs/browser';
 import { PAGE_PADDING_TOP } from '../config/pagePadding';
 
 export default function ContactUs() {
     const MAX_MESSAGE_WORDS = 100;
-    const calendlyUrl = 'https://calendly.com/couture-founders/30min';
-    const [mounted, setMounted] = useState(false);
     
     const countWords = (text: string): number => {
         const trimmed = text.trim();
@@ -26,10 +23,6 @@ export default function ContactUs() {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
     const [messageWords, setMessageWords] = useState<number>(0);
-
-    useEffect(() => {
-        setMounted(true);
-    }, []);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
@@ -101,63 +94,6 @@ export default function ContactUs() {
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-red-50" style={{ paddingTop: PAGE_PADDING_TOP.contactus }}>
-            {/* Hero Section */}
-            <section className="section-padding-lg bg-gradient-to-br from-blue-50 via-white to-red-50">
-                <div className="container-custom">
-                    <div className="grid grid-cols-1 gap-16 items-center">
-                        {/* Content */}
-                        <div className="text-center lg:text-left animate-fade-in-up">
-                            <div className="mb-6">
-                                <span className="inline-block px-8 py-4 bg-british-red text-white rounded-full body-medium font-bold mb-6 shadow-smooth">
-                                    
-                                </span>
-                            </div>
-                            
-                            <h1 className="heading-xl mb-6 text-british-blue">
-                                Get Professional
-                                <span className="text-gradient block">Support Today</span>
-                            </h1>
-                            
-                            <p className="body-xl mb-8 text-gray-700 leading-relaxed max-w-2xl lg:mx-0 mx-auto">
-                                Whether you need guidance on your career path, have questions about our services, 
-                                or want to collaborate on meaningful projects, our expert team is here to support 
-                                your social work journey in the UK.
-                            </p>
-                            
-                            {/* Contact Info */}
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                                <div className="flex items-center gap-4 p-4 bg-white rounded-xl border-2 border-british-blue shadow-smooth">
-                                    <div className="w-12 h-12 bg-british-blue rounded-lg flex items-center justify-center">
-                                        <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                            <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
-                                            <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
-                                        </svg>
-                                    </div>
-                                    <div>
-                                        <h3 className="font-bold text-british-blue">Email</h3>
-                                        <p className="text-gray-600">info@wesocialworkersuk.com</p>
-                                    </div>
-                                </div>
-                                
-                                <div className="flex items-center gap-4 p-4 bg-white rounded-xl border-2 border-british-red shadow-smooth">
-                                    <div className="w-12 h-12 bg-british-red rounded-lg flex items-center justify-center">
-                                        <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                            <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
-                                        </svg>
-                                    </div>
-                                    <div>
-                                        <h3 className="font-bold text-british-red">Phone</h3>
-                                        <p className="text-gray-600">+44 (0) 20 1234 5678</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Removed decorative flag element */}
-                    </div>
-                </div>
-            </section>
-
             {/* Contact Form Section */}
             <section className="section-padding-lg bg-white">
                 <div className="container-custom">
@@ -212,15 +148,6 @@ export default function ContactUs() {
                             <form onSubmit={handleSubmit} className="space-y-8">
                                 {/* Personal Information Section */}
                                 <div className="space-y-6">
-                                    <div className="flex items-center gap-3 pb-4 border-b-2 border-british-blue">
-                                        <div className="w-10 h-10 bg-british-blue rounded-lg flex items-center justify-center">
-                                            <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                                <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
-                                            </svg>
-                                        </div>
-                                        <h3 className="heading-4 text-british-blue font-bold">Contact Information</h3>
-                                    </div>
-                                    
                                     <div>
                                         <label htmlFor="name" className="block text-british-blue font-bold mb-3">
                                             Name *
@@ -272,15 +199,6 @@ export default function ContactUs() {
 
                                 {/* Qualification Section */}
                                 <div className="space-y-6">
-                                    <div className="flex items-center gap-3 pb-4 border-b-2 border-british-red">
-                                        <div className="w-10 h-10 bg-british-red rounded-lg flex items-center justify-center">
-                                            <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                                <path fillRule="evenodd" d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z" clipRule="evenodd" />
-                                            </svg>
-                                        </div>
-                                        <h3 className="heading-4 text-british-red font-bold">Professional Background</h3>
-                                    </div>
-                                    
                                     <div>
                                         <label htmlFor="qualification" className="block text-british-blue font-bold mb-3">
                                             Qualification *
@@ -303,15 +221,6 @@ export default function ContactUs() {
 
                                 {/* Message Section */}
                                 <div className="space-y-6">
-                                    <div className="flex items-center gap-3 pb-4 border-b-2 border-british-blue">
-                                        <div className="w-10 h-10 bg-british-blue rounded-lg flex items-center justify-center">
-                                            <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-                                            </svg>
-                                        </div>
-                                        <h3 className="heading-4 text-british-blue font-bold">Your Message</h3>
-                                    </div>
-                                    
                                     <div>
                                         <div className="flex items-center justify-between mb-1">
                                             <label htmlFor="message" className="block text-british-blue font-bold">
@@ -369,89 +278,64 @@ export default function ContactUs() {
                 </div>
             </section>
 
-            {/* Schedule a Call Section */}
-            <section id="schedule-call" className="section-padding-lg bg-gradient-to-br from-gray-50 to-white">
-                <Script src="https://assets.calendly.com/assets/external/widget.js" strategy="afterInteractive" />
-                <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
+            {/* Hero Section */}
+            <section className="section-padding-lg bg-gradient-to-br from-blue-50 via-white to-red-50">
                 <div className="container-custom">
-                    <div className="text-center mb-10">
-                        <span className="inline-block px-8 py-4 bg-british-red text-white rounded-full body-medium font-bold mb-6 shadow-smooth">
-                            📅 Schedule a Call
-                        </span>
-                        <h2 className="heading-2 mb-6 text-british-blue">
-                            Book a time that works for you
-                        </h2>
-                        <p className="body-xl text-gray-700 leading-relaxed max-w-2xl mx-auto">
-                           
-                        </p>
-                    </div>
-
-                    <div className="bg-white rounded-2xl shadow-lg border-2 border-british-blue overflow-hidden">
-                        {mounted ? (
-                            <div
-                                className="calendly-inline-widget"
-                                data-url={`${calendlyUrl}?hide_gdpr_banner=1&background_color=ffffff&text_color=0a2a6b&primary_color=c8102e`}
-                                style={{ minWidth: '320px', height: '850px' }}
-                            />
-                        ) : (
-                            <div className="flex items-center justify-center" style={{ minWidth: '320px', height: '200px' }}>
-                                <span className="text-gray-500">Loading calendar…</span>
+                    <div className="grid grid-cols-1 gap-16 items-center">
+                        {/* Content */}
+                        <div className="text-center lg:text-left animate-fade-in-up">
+                            <div className="mb-6">
+                                <span className="inline-block px-8 py-4 bg-british-red text-white rounded-full body-medium font-bold mb-6 shadow-smooth">
+                                    
+                                </span>
                             </div>
-                        )}
-                    </div>
+                            
+                            <h1 className="heading-xl mb-6 text-british-blue">
+                                Get Professional
+                                <span className="text-gradient block">Support Today</span>
+                            </h1>
+                            
+                            <p className="body-xl mb-8 text-gray-700 leading-relaxed max-w-2xl lg:mx-0 mx-auto">
+                                Whether you need guidance on your career path, have questions about our services, 
+                                or want to collaborate on meaningful projects, our expert team is here to support 
+                                your social work journey in the UK.
+                            </p>
+                            
+                            {/* Contact Info */}
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                                <div className="flex items-center gap-4 p-4 bg-white rounded-xl border-2 border-british-blue shadow-smooth">
+                                    <div className="w-12 h-12 bg-british-blue rounded-lg flex items-center justify-center">
+                                        <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                            <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                                            <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <h3 className="font-bold text-british-blue">Email</h3>
+                                        <p className="text-gray-600">team@wesocialworkers.co.uk</p>
+                                    </div>
+                                </div>
+                                
+                                <div className="flex items-center gap-4 p-4 bg-white rounded-xl border-2 border-british-red shadow-smooth">
+                                    <div className="w-12 h-12 bg-british-red rounded-lg flex items-center justify-center">
+                                        <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                            <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <h3 className="font-bold text-british-red">Phone</h3>
+                                        <p className="text-gray-600">+44 (0) 20 1234 5678</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-                    <p className="text-sm text-gray-600 mt-4 text-center">
-                        Trouble loading?{' '}
-                        <a href="https://calendly.com/couture-founders/30min" className="text-british-blue underline" target="_blank" rel="noreferrer">
-                            Open Calendly
-                        </a>
-                    </p>
+                        {/* Removed decorative flag element */}
+                    </div>
                 </div>
             </section>
 
-            {/* Why Choose Us Section */}
-            <section className="section-padding-lg bg-red-50">
-                <div className="container-custom">
-                    <div className="text-center mb-16">
-                        <h2 className="heading-2 mb-6 text-british-blue">
-                            Why Choose 
-                            <span className="text-gradient block">We Social Workers UK?</span>
-                        </h2>
-                    </div>
-                    
-                    <div className="grid md:grid-cols-3 gap-8">
-                        <div className="text-center p-6 card border-2 border-british-blue hover-lift">
-                            <div className="w-16 h-16 bg-british-blue rounded-lg flex items-center justify-center mx-auto mb-4">
-                                <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                                </svg>
-                            </div>
-                            <h3 className="heading-5 mb-3 text-british-blue">Expert Guidance</h3>
-                            <p className="body-medium text-gray-700">Professional advice from experienced UK social workers with proven track records</p>
-                        </div>
-                        
-                        <div className="text-center p-6 card border-2 border-british-red hover-lift">
-                            <div className="w-16 h-16 bg-british-red rounded-lg flex items-center justify-center mx-auto mb-4">
-                                <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                    <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z" />
-                                </svg>
-                            </div>
-                            <h3 className="heading-5 mb-3 text-british-red">Personalized Support</h3>
-                            <p className="body-medium text-gray-700">Tailored assistance based on your unique background, goals, and circumstances</p>
-                        </div>
-                        
-                        <div className="text-center p-6 card border-2 border-british-blue hover-lift">
-                            <div className="w-16 h-16 bg-white border-2 border-british-blue rounded-lg flex items-center justify-center mx-auto mb-4">
-                                <svg className="w-8 h-8 text-british-blue" fill="currentColor" viewBox="0 0 20 20">
-                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                </svg>
-                            </div>
-                            <h3 className="heading-5 mb-3 text-british-blue">Proven Success</h3>
-                            <p className="body-medium text-gray-700">95% success rate in helping international social workers achieve UK careers</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
+
         </div>
     );
 } 
