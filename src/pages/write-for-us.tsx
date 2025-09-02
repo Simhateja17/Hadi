@@ -187,16 +187,16 @@ const WriteForUsPage = () => {
 
     return (
         <div className="min-h-screen bg-gray-50 py-12">
-                <div className="max-w-4xl mx-auto px-6" style={{ marginTop: '100px', marginLeft: '300px' }}>
+                <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8" style={{ marginTop: '100px' }}>
                     {/* Header Section */}
                     <div className="text-center mb-12">
-                        <h1 className="text-4xl font-bold text-gray-900 mb-4 emilys-candy-regular">
+                        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4 emilys-candy-regular">
                             Write for Us
                         </h1>
-                        <p className="text-xl text-gray-600 mb-6">
+                        <p className="text-lg sm:text-xl text-gray-600 mb-6">
                             Share your knowledge and insights with the social work community
                         </p>
-                        <div className="max-w-3xl mx-auto bg-blue-50 border border-blue-200 rounded-lg p-6">
+                        <div className="max-w-3xl mx-auto bg-blue-50 border border-blue-200 rounded-lg p-4 sm:p-6">
                             <h2 className="text-lg font-semibold text-blue-800 mb-3">Submission Guidelines</h2>
                             <ul className="text-blue-700 text-left space-y-2">
                                 <li>• Articles should be original and relevant to social work practice</li>
@@ -209,7 +209,7 @@ const WriteForUsPage = () => {
                     </div>
 
                     {/* Disclaimer */}
-                    <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6 mb-8">
+                    <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 sm:p-6 mb-8">
                         <div className="flex items-start">
                             <svg className="w-6 h-6 text-yellow-600 mt-0.5 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16c-.77.833.192 2.5 1.732 2.5z" />
@@ -226,7 +226,7 @@ const WriteForUsPage = () => {
                     </div>
 
                     {/* Submission Form */}
-                    <div className="bg-white rounded-lg shadow-lg p-8">
+                    <div className="bg-white rounded-lg shadow-lg p-4 sm:p-6 lg:p-8">
                         <form onSubmit={handleSubmit} className="space-y-6">
                             {/* Article Title */}
                             <div>

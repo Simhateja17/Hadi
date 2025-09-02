@@ -631,19 +631,8 @@ export default function Home({ blogs }: HomeProps) {
             {/* Resources Section */}
             <section className="section-padding-lg bg-white/60 backdrop-blur-sm">
                 <div className="container-custom">
-                    <div className="text-center mb-16 animate-fade-in-up">
-                        <span 
-                            className="inline-block bg-british-red text-white rounded-full body-medium font-bold mb-6 shadow-smooth"
-                            style={{ 
-                                paddingLeft: `${BUBBLE_SIZE.horizontal * 0.25}rem`, 
-                                paddingRight: `${BUBBLE_SIZE.horizontal * 0.25}rem`,
-                                paddingTop: `${BUBBLE_SIZE.vertical * 0.25}rem`,
-                                paddingBottom: `${BUBBLE_SIZE.vertical * 0.25}rem`,
-                                marginBottom: 'calc(1.5rem + 50px)'
-                            }}
-                        >
-                            Professional Growth & Learning
-                        </span>
+                    <div className="text-center mb-12 animate-fade-in-up">
+
                         <h2 className="heading-2 mb-6 text-british-blue font-bold">
                             Expert Knowledge for
                             <span className="text-british-red block">Compassionate Care</span>

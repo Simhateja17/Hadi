@@ -159,7 +159,7 @@ export default function ContactUs() {
                                             value={formData.name}
                                             onChange={handleChange}
                                             className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-british-blue focus:outline-none transition-colors bg-gray-50 focus:bg-white"
-                                            placeholder="Enter your full name"
+                                            placeholder=""
                                             required
                                         />
                                     </div>
@@ -176,7 +176,7 @@ export default function ContactUs() {
                                                 value={formData.email}
                                                 onChange={handleChange}
                                                 className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-british-blue focus:outline-none transition-colors bg-gray-50 focus:bg-white"
-                                                placeholder="your.email@example.com"
+                                                placeholder=""
                                                 required
                                             />
                                         </div>
@@ -191,7 +191,7 @@ export default function ContactUs() {
                                                 value={formData.phone}
                                                 onChange={handleChange}
                                                 className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-british-blue focus:outline-none transition-colors bg-gray-50 focus:bg-white"
-                                                placeholder="Enter your Mobile No. with Country Code"
+                                                placeholder=""
                                             />
                                         </div>
                                     </div>
@@ -237,7 +237,7 @@ export default function ContactUs() {
                                             onChange={handleChange}
                                             rows={6}
                                             className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-british-blue focus:outline-none transition-colors resize-vertical bg-gray-50 focus:bg-white"
-                                            placeholder="Please provide details about your inquiry, questions, or how we can support you in your social work journey..."
+                                            placeholder=""
                                             required
                                         ></textarea>
                                         <p className="mt-1 text-xs text-gray-500">Up to {MAX_MESSAGE_WORDS} words.</p>
@@ -269,7 +269,7 @@ export default function ContactUs() {
                                     </button>
                                     
                                     <p className="text-sm text-gray-600 mt-4">
-                                        ✅ We respect your privacy and will never share your information with third parties.
+                                         We respect your privacy and will never share your information with third parties.
                                     </p>
                                 </div>
                             </form>
