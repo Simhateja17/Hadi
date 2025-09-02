@@ -232,7 +232,7 @@ export default function About() {
                                         <div className="w-full h-64 rounded-lg overflow-hidden shadow-lg relative">
                                             <Image 
                                                 src="/ali-azam-profile-new.jpg" 
-                                                alt="Ali Azam -  Mentor"
+                                                alt="Dr.Ali Azam -  Mentor"
                                                 fill
                                                 className="object-cover"
                                             />

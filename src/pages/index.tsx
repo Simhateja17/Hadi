@@ -395,20 +395,20 @@ export default function Home({ blogs }: HomeProps) {
                             </div>
                         </div>
 
-                        {/* Ali Azam */}
+                        {/* Dr.Ali Azam */}
                         <div className="bg-white rounded-2xl shadow-smooth p-8 hover-lift border border-gray-100">
                             <div className="text-center">
                                 <div className="flex justify-center mb-6">
                                     <div className="relative w-32 h-32 founder-image-ali">
                                         <Image
                                             src="/ali-azam-profile-new.jpg"
-                                            alt="Ali Azam - Mentor"
+                                            alt="Dr.Ali Azam - Mentor"
                                             fill
                                             className="rounded-full object-cover border-4 border-british-red"
                                         />
                                     </div>
                                 </div>
-                                <h3 className="heading-4 text-british-red mb-2">Ali Azam</h3>
+                                <h3 className="heading-4 text-british-red mb-2">Dr.Ali Azam</h3>
                                 <p className="text-british-red font-semibold mb-4">Mentor & Senior Social Worker</p>
                                 <p className="body-medium text-gray-600 leading-relaxed">
                                     Ali is a dedicated social work professional who has navigated the journey from India to the UK, 
