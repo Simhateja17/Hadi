@@ -97,21 +97,20 @@ export default function BlogListPage({ blogs }: BlogListPageProps) {
         <div className="bg-white">
             {/* Hero Section */}
             <section className="section-padding-lg bg-gradient-to-br from-blue-50 via-white to-red-50" style={{ paddingTop: PAGE_PADDING_TOP.blogs }}>
-                <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
                     <div className="mb-8">
                         <span className="inline-block px-8 py-4 bg-british-red text-white rounded-full body-medium font-bold mb-8 shadow-smooth">
-                            🇬🇧 UK Social Work Hub
+                            
                         </span>
                     </div>
                     
-                    <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-8 text-british-blue max-w-4xl mx-auto">
+                    <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-8 text-british-blue max-w-4xl mx-auto text-center lg:translate-x-45">
                         UK Social Work
                         <span className="text-gradient block">Resources & Insights</span>
                     </h1>
                     
-                    <p className="text-xl mb-12 text-gray-700 leading-relaxed max-w-3xl mx-auto">
-                        Stay informed with the latest guidance, tips, and expert insights to help you 
-                        succeed as a social worker in the United Kingdom.
+                    <p className="text-xl mb-12 text-gray-700 leading-relaxed max-w-3xl mx-auto text-center lg:translate-x-6">
+                        
                     </p>
                 </div>
             </section>
