@@ -23,7 +23,7 @@ export const Footer = () => {
             <div className="container-custom relative z-10">
                 {/* Main Footer Content */}
                 <div className="py-16 border-b border-british-red">
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
                         {/* Brand Section */}
                         <div className="lg:col-span-2">
                             <Link href="/" className="flex items-center gap-3 mb-6 group">
@@ -39,8 +39,8 @@ export const Footer = () => {
                                     </div>
                                 </div>
                                 <div>
-                                    <h3 className="heading-4 text-white font-bold">We Social Workers UK</h3>
-                                    <p className="body-small text-british-red font-medium">Professional Development & Support</p>
+                                    <h3 className="heading-4 text-white font-bold"></h3>
+                                    <p className="body-small text-white font-medium">Professional Development & Support</p>
                                 </div>
                             </Link>
                             
@@ -82,25 +82,7 @@ export const Footer = () => {
                             </div>
                         </div>
 
-                        {/* Quick Links */}
-                        <div>
-                            <h4 className="heading-5 text-white mb-6">Quick Links</h4>
-                            <nav className="space-y-3">
-                                {[
-                                    { href: '/#our-section', label: 'About Us' },
-                                    { href: '/#our-services', label: '' },
-                                    { href: '/contactus', label: 'Contact Us' }
-                                ].map((link) => (
-                                    <Link
-                                        key={link.href}
-                                        href={link.href}
-                                        className="block text-gray-200 hover:text-british-red transition-colors duration-200 body-medium"
-                                    >
-                                        {link.label}
-                                    </Link>
-                                ))}
-                            </nav>
-                        </div>
+                        {/* Quick Links removed as requested */}
 
                         {/* Get In Touch */}
                         <div>
