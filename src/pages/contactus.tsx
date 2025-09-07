@@ -1,96 +1,8 @@
 // pages/contactus.tsx
-import React, { useState } from 'react';
-import emailjs from '@emailjs/browser';
+import React from 'react';
 import { PAGE_PADDING_TOP } from '../config/pagePadding';
 
 export default function ContactUs() {
-    const MAX_MESSAGE_WORDS = 100;
-    
-    const countWords = (text: string): number => {
-        const trimmed = text.trim();
-        if (!trimmed) return 0;
-        return trimmed.split(/\s+/).length;
-    };
-
-    const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        phone: '',
-        qualification: '',
-        message: ''
-    });
-
-    const [isSubmitting, setIsSubmitting] = useState(false);
-    const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
-    const [messageWords, setMessageWords] = useState<number>(0);
-
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-        const { name, value } = e.target;
-
-        // Enforce 100-word limit on the message field
-        if (name === 'message') {
-            const words = value.trim().length ? value.trim().split(/\s+/) : [];
-            let limited = value;
-            if (words.length > MAX_MESSAGE_WORDS) {
-                limited = words.slice(0, MAX_MESSAGE_WORDS).join(' ');
-            }
-            setMessageWords(countWords(limited));
-            setFormData(prev => ({ ...prev, message: limited }));
-            return;
-        }
-
-        setFormData(prev => ({ ...prev, [name]: value }));
-    };
-
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
-        setIsSubmitting(true);
-        
-        try {
-            const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID as string;
-            // Use a dedicated contact template; fallback to generic template id only if needed
-            const templateId = (process.env.NEXT_PUBLIC_EMAILJS_CONTACT_TEMPLATE_ID || process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID) as string;
-            const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY as string;
-
-            if (!serviceId || !templateId || !publicKey) {
-                console.warn('EmailJS env vars missing. Please set NEXT_PUBLIC_EMAILJS_SERVICE_ID, NEXT_PUBLIC_EMAILJS_TEMPLATE_ID, NEXT_PUBLIC_EMAILJS_PUBLIC_KEY.');
-                throw new Error('Email service not configured');
-            }
-
-            type TemplateParams = {
-                name: string;
-                email: string;
-                phone: string;
-                qualification: string;
-                message: string;
-                site_name: string;
-            };
-
-            const templateParams: TemplateParams = {
-                name: formData.name,
-                email: formData.email,
-                phone: formData.phone,
-                qualification: formData.qualification,
-                message: formData.message,
-                site_name: 'We Social Workers UK'
-            };
-
-            await emailjs.send(serviceId, templateId, templateParams, { publicKey });
-
-            setSubmitStatus('success');
-            setFormData({
-                name: '',
-                email: '',
-                phone: '',
-                qualification: '',
-                message: ''
-            });
-        } catch {
-            setSubmitStatus('error');
-        } finally {
-            setIsSubmitting(false);
-        }
-    };
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-red-50" style={{ paddingTop: PAGE_PADDING_TOP.contactus }}>
@@ -105,7 +17,7 @@ export default function ContactUs() {
                             </span>
                             
                             <h2 className="heading-2 mb-6 text-british-blue">
-                                Register your interest
+                                Contact Us
                                 <span className="text-gradient block"></span>
                             </h2>
                             
@@ -114,165 +26,32 @@ export default function ContactUs() {
                             </p>
                         </div>
 
-                        {/* Success/Error Messages */}
-                        {submitStatus === 'success' && (
-                            <div className="mb-8 p-6 bg-green-50 border-2 border-green-200 text-green-800 rounded-xl">
-                                <div className="flex items-center gap-3">
-                                    <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                        {/* Contact Card */}
+                        <div className="card card-elevated border-2 border-british-blue p-8 text-center">
+                            <div className="max-w-md mx-auto">
+                                <div className="w-16 h-16 bg-british-blue rounded-full flex items-center justify-center mx-auto mb-6">
+                                    <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                                        <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
                                     </svg>
-                                    <div>
-                                        <h3 className="font-bold">Registration Submitted Successfully!</h3>
-                                        <p>Thank you for registering your interest! Our team will get back to you within 24 hours.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        )}
-                        
-                        {submitStatus === 'error' && (
-                            <div className="mb-8 p-6 bg-red-50 border-2 border-red-200 text-red-800 rounded-xl">
-                                <div className="flex items-center gap-3">
-                                    <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
-                                    </svg>
-                                    <div>
-                                        <h3 className="font-bold">Error Submitting Registration</h3>
-                                        <p>Sorry, there was an error submitting your registration. Please try again.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        )}
-
-                        {/* Contact Form */}
-                        <div className="card card-elevated border-2 border-british-blue p-8">
-                            <form onSubmit={handleSubmit} className="space-y-8">
-                                {/* Personal Information Section */}
-                                <div className="space-y-6">
-                                    <div>
-                                        <label htmlFor="name" className="block text-british-blue font-bold mb-3">
-                                            Name *
-                                        </label>
-                                        <input
-                                            type="text"
-                                            id="name"
-                                            name="name"
-                                            value={formData.name}
-                                            onChange={handleChange}
-                                            className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-british-blue focus:outline-none transition-colors bg-gray-50 focus:bg-white"
-                                            placeholder=""
-                                            required
-                                        />
-                                    </div>
-                                    
-                                    <div className="grid md:grid-cols-2 gap-6">
-                                        <div>
-                                            <label htmlFor="email" className="block text-british-blue font-bold mb-3">
-                                                Email Address *
-                                            </label>
-                                            <input
-                                                type="email"
-                                                id="email"
-                                                name="email"
-                                                value={formData.email}
-                                                onChange={handleChange}
-                                                className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-british-blue focus:outline-none transition-colors bg-gray-50 focus:bg-white"
-                                                placeholder=""
-                                                required
-                                            />
-                                        </div>
-                                        <div>
-                                            <label htmlFor="phone" className="block text-british-blue font-bold mb-3">
-                                                Phone Number <span className="text-gray-500">(Optional)</span>
-                                            </label>
-                                            <input
-                                                type="tel"
-                                                id="phone"
-                                                name="phone"
-                                                value={formData.phone}
-                                                onChange={handleChange}
-                                                className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-british-blue focus:outline-none transition-colors bg-gray-50 focus:bg-white"
-                                                placeholder=""
-                                            />
-                                        </div>
-                                    </div>
-                                </div>
-
-                                {/* Qualification Section */}
-                                <div className="space-y-6">
-                                    <div>
-                                        <label htmlFor="qualification" className="block text-british-blue font-bold mb-3">
-                                            Qualification *
-                                        </label>
-                                        <select
-                                            id="qualification"
-                                            name="qualification"
-                                            value={formData.qualification}
-                                            onChange={handleChange}
-                                            className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-british-blue focus:outline-none transition-colors bg-gray-50 focus:bg-white"
-                                            required
-                                        >
-                                            <option value="">Select your qualification</option>
-                                            <option value="pursuing-ma-ba">Pursuing MA/BA in Social Work</option>
-                                            <option value="graduate-pg">Graduate/ PG in Social Work</option>
-                                            <option value="working-social-worker">Working as a social worker</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                {/* Message Section */}
-                                <div className="space-y-6">
-                                    <div>
-                                        <div className="flex items-center justify-between mb-1">
-                                            <label htmlFor="message" className="block text-british-blue font-bold">
-                                                Message *
-                                            </label>
-                                            <span className={`text-sm ${messageWords > MAX_MESSAGE_WORDS ? 'text-red-600' : 'text-gray-500'}`}>
-                                                {messageWords}/{MAX_MESSAGE_WORDS} words
-                                            </span>
-                                        </div>
-                                        <textarea
-                                            id="message"
-                                            name="message"
-                                            value={formData.message}
-                                            onChange={handleChange}
-                                            rows={6}
-                                            className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-british-blue focus:outline-none transition-colors resize-vertical bg-gray-50 focus:bg-white"
-                                            placeholder=""
-                                            required
-                                        ></textarea>
-                                        <p className="mt-1 text-xs text-gray-500">Up to {MAX_MESSAGE_WORDS} words.</p>
-                                    </div>
                                 </div>
                                 
-                                {/* Submit Button */}
-                                <div className="text-center pt-8 border-t-2 border-gray-100">
-                                    <button
-                                        type="submit"
-                                        disabled={isSubmitting}
-                                        className="btn btn-primary btn-large disabled:opacity-50 disabled:cursor-not-allowed hover-lift min-w-60"
+                                <h3 className="heading-3 text-british-blue mb-4">Contact Us</h3>
+                                
+                                <div className="bg-gray-50 rounded-lg p-6 mb-6">
+                                    <p className="text-gray-600 mb-2">Email</p>
+                                    <a 
+                                        href="mailto:team@wesocialworkers.co.uk" 
+                                        className="text-british-blue font-bold text-lg hover:underline"
                                     >
-                                        {isSubmitting ? (
-                                            <div className="flex items-center gap-3">
-                                                <svg className="w-5 h-5 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-                                                </svg>
-                                                <span>Submitting...</span>
-                                            </div>
-                                        ) : (
-                                            <div className="flex items-center gap-3">
-                                                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-                                                </svg>
-                                                <span>Submit</span>
-                                            </div>
-                                        )}
-                                    </button>
-                                    
-                                    <p className="text-sm text-gray-600 mt-4">
-                                         We respect your privacy and will never share your information with third parties.
-                                    </p>
+                                        team@wesocialworkers.co.uk
+                                    </a>
                                 </div>
-                            </form>
+                                
+                                <p className="text-gray-600 text-sm">
+                                    We&apos;re here to help with any questions or inquiries you may have.
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -97,19 +97,19 @@ export default function BlogListPage({ blogs }: BlogListPageProps) {
         <div className="bg-white">
             {/* Hero Section */}
             <section className="section-padding-lg bg-gradient-to-br from-blue-50 via-white to-red-50" style={{ paddingTop: PAGE_PADDING_TOP.blogs }}>
-                <div className="container-custom text-center">
-                    <div className="mb-6">
-                        <span className="inline-block px-8 py-4 bg-british-red text-white rounded-full body-medium font-bold mb-6 shadow-smooth">
-                           
+                <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                    <div className="mb-8">
+                        <span className="inline-block px-8 py-4 bg-british-red text-white rounded-full body-medium font-bold mb-8 shadow-smooth">
+                            🇬🇧 UK Social Work Hub
                         </span>
                     </div>
                     
-                    <h1 className="heading-xl mb-6 text-british-blue">
+                    <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-8 text-british-blue max-w-4xl mx-auto">
                         UK Social Work
                         <span className="text-gradient block">Resources & Insights</span>
                     </h1>
                     
-                    <p className="body-xl mb-8 text-gray-700 leading-relaxed" style={{ marginTop: '5px' }}>
+                    <p className="text-xl mb-12 text-gray-700 leading-relaxed max-w-3xl mx-auto">
                         Stay informed with the latest guidance, tips, and expert insights to help you 
                         succeed as a social worker in the United Kingdom.
                     </p>
@@ -118,7 +118,7 @@ export default function BlogListPage({ blogs }: BlogListPageProps) {
 
             {/* Blog Grid */}
             <section className="section-padding-lg">
-                <div className="container-custom">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     {safeBlogs.length === 0 ? (
                         <div className="text-center py-20">
                             <div className="w-20 h-20 mx-auto bg-british-blue rounded-2xl flex items-center justify-center mb-8 shadow-smooth">
@@ -213,16 +213,16 @@ export default function BlogListPage({ blogs }: BlogListPageProps) {
 
             {/* CTA Section */}
             <section className="section-padding-lg bg-gradient-primary text-white">
-                <div className="container-custom text-center" style={{ marginRight: '30px' }}>
+                <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                     <div className="max-w-4xl mx-auto">
-                        <h2 className="heading-2 mb-6 text-white">
+                        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-8 text-white">
                             Need Personalized Guidance? 🇬🇧
                         </h2>
-                        <p className="body-xl mb-8 text-blue-100 leading-relaxed">
+                        <p className="text-xl mb-10 text-blue-100 leading-relaxed">
                             Our expert team is ready to provide personalized support for your UK social work journey. 
                             Get in touch to discuss your specific needs and goals.
                         </p>
-                        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                        <div className="flex flex-col sm:flex-row gap-6 justify-center">
                             <Link href="/contactus#schedule-call" className="btn btn-secondary btn-large">
                                 Book Consultation
                             </Link>

@@ -55,12 +55,6 @@ export const Navbar = () => {
                             >
                                 Connect
                             </Link>
-                            <Link 
-                                href="/gallery" 
-                                className="px-6 py-3 text-gray-700 font-medium hover:text-blue-600 transition-colors duration-200 emilys-candy-regular text-lg"
-                            >
-                                Gallery
-                            </Link>
                             <Link
                                 href="/write-for-us"
                                 className="inline-flex items-center pl-2 pr-6 py-3 rounded-full text-white font-semibold shadow-lg hover:shadow-xl transition-all bg-gradient-to-r from-[var(--british-blue)] via-[var(--british-blue)] to-[var(--british-red)]"
@@ -131,13 +125,6 @@ export const Navbar = () => {
                                 onClick={() => setIsMenuOpen(false)}
                             >
                                 Connect
-                            </Link>
-                            <Link 
-                                href="/gallery" 
-                                className="block px-6 py-3 text-gray-700 font-medium hover:text-blue-600 hover:bg-gray-50 rounded-md transition-colors duration-200 emilys-candy-regular text-lg"
-                                onClick={() => setIsMenuOpen(false)}
-                            >
-                                Gallery
                             </Link>
                             <Link 
                                 href="/write-for-us" 

@@ -2,7 +2,6 @@
 import { GetStaticProps } from 'next';
 import { getApiUrl } from '../utils/api';
 import Link from 'next/link';
-import Image from 'next/image';
 import { Hero } from '../../components/Hero';
 import { BlogScroller } from '../../components/BlogScroller';
 
@@ -349,78 +348,6 @@ export default function Home({ blogs }: HomeProps) {
                 }
             `}</style>
             <Hero />
-            
-            {/* Our Story Section */}
-            <section className="pb-24 bg-gradient-to-br from-gray-50 to-white our-story-section">
-                <div className="container-custom">
-                    {/* Story Header */}
-                    <div className="text-center story-header">
-                        <h2 className="heading-1 mb-8 text-gradient font-bold">Our Story</h2>
-                        <div className={`max-w-4xl mx-auto space-y-6 story-description`}>
-                            <p className="body-large text-gray-700 leading-relaxed">
-                                We Social Workers UK is a free, volunteer-led platform created by experienced UK-registered 
-                                social workers to support international professionals aspiring to build a career in the UK social work sector.
-                            </p>
-                            <p className="body-large text-gray-700 leading-relaxed">
-                                Founded by Ali and Mayel, who moved from India to the UK in 2023, our mission is to make your 
-                                transition smoother—whether you&apos;re just starting out or navigating your way into UK practice. 
-                                We&apos;ve been where you are, and we&apos;re here to help.
-                            </p>
-                        </div>
-                    </div>
-
-                    {/* Founders Section */}
-                    <div className={`grid md:grid-cols-2 gap-12 max-w-5xl mx-auto story-founder-boxes`}>
-                        {/* Mayel Hadi */}
-                        <div className="bg-white rounded-2xl shadow-smooth p-8 hover-lift border border-gray-100">
-                            <div className="text-center">
-                                <div className="flex justify-center mb-6">
-                                    <div className="relative w-32 h-32 founder-image-mayel">
-                                        <Image
-                                            src="/mayel-hadi-profile.jpg"
-                                            alt="Mayel Hadi - Mentor"
-                                            fill
-                                            className="rounded-full object-cover border-4 border-british-blue"
-                                        />
-                                    </div>
-                                </div>
-                                <h3 className="heading-4 text-british-blue mb-2">Mayel Hadi</h3>
-                                <p className="text-british-red font-semibold mb-4">Mentor & Senior Social Worker</p>
-                                <p className="body-medium text-gray-600 leading-relaxed">
-                                    Mayel brings extensive experience in UK social work practice, having successfully transitioned 
-                                    from India to become a registered social worker in the UK. With a passion for mentoring and 
-                                    supporting international professionals, Mayel provides invaluable guidance on registration 
-                                    processes, professional development, and career progression in the UK social work sector.
-                                </p>
-                            </div>
-                        </div>
-
-                        {/* Dr.Ali Azam */}
-                        <div className="bg-white rounded-2xl shadow-smooth p-8 hover-lift border border-gray-100">
-                            <div className="text-center">
-                                <div className="flex justify-center mb-6">
-                                    <div className="relative w-32 h-32 founder-image-ali">
-                                        <Image
-                                            src="/ali-azam-profile-new.jpg"
-                                            alt="Dr.Ali Azam - Mentor"
-                                            fill
-                                            className="rounded-full object-cover border-4 border-british-red"
-                                        />
-                                    </div>
-                                </div>
-                                <h3 className="heading-4 text-british-red mb-2">Dr.Ali Azam</h3>
-                                <p className="text-british-red font-semibold mb-4">Mentor & Senior Social Worker</p>
-                                <p className="body-medium text-gray-600 leading-relaxed">
-                                    Ali is a dedicated social work professional who has navigated the journey from India to the UK, 
-                                    gaining valuable insights into the challenges and opportunities that international social workers face. 
-                                    Ali specializes in helping professionals understand UK practice standards, cultural adaptation, 
-                                    and building confidence in the UK social work environment.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
             
             {/* Our Values Section */}
             <section className="section-padding-lg bg-white">
