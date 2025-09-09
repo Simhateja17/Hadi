@@ -9,7 +9,7 @@ export default function ContactUs() {
             {/* Contact Form Section */}
             <section className="section-padding-lg bg-white">
                 <div className="container-custom">
-                    <div className="max-w-4xl mx-auto">
+                    <div className="max-w-4xl mx-auto flex justify-center">
                         {/* Section Header */}
                         <div className="text-center mb-16">
                             <span className="inline-block px-8 py-4 bg-british-blue text-white rounded-full body-medium font-bold mb-6 shadow-smooth">
@@ -17,7 +17,7 @@ export default function ContactUs() {
                             </span>
                             
                             <h2 className="heading-2 mb-6 text-british-blue">
-                                Contact Us
+                                
                                 <span className="text-gradient block"></span>
                             </h2>
                             
@@ -27,7 +27,7 @@ export default function ContactUs() {
                         </div>
 
                         {/* Contact Card */}
-                        <div className="card card-elevated border-2 border-british-blue p-8 text-center">
+                        <div className="card card-elevated border-2 border-british-blue p-8 text-center w-full">
                             <div className="max-w-md mx-auto">
                                 <div className="w-16 h-16 bg-british-blue rounded-full flex items-center justify-center mx-auto mb-6">
                                     <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">

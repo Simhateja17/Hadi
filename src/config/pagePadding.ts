@@ -6,6 +6,7 @@ export const PAGE_PADDING_TOP = {
   contactus: 64,
   toolkits: 80,
   blogs: 64,
+  aboutus: 64,
 } as const;
 
 

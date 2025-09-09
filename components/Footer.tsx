@@ -110,7 +110,7 @@ export const Footer = () => {
                         {/* Copyright Notice */}
                         <div className="text-center md:text-left">
                             <p className="text-gray-300 body-small mb-2">
-                                © 2025 We Social Workers UK Ltd. All rights reserved.
+                                
                             </p>
                             <p className="text-gray-400 body-small">
                                
