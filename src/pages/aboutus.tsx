@@ -27,7 +27,7 @@ export default function AboutUsPage() {
 
                     <div className="mt-10">
                         <h2 className="heading-2 mb-4 text-british-blue text-center">What We Offer:</h2>
-                        <ul className="list-disc space-y-3 text-gray-800 body-large text-left inline-block mx-auto">
+                        <ul className="list-none space-y-3 text-gray-800 body-large text-center mx-auto">
                             <li>Step-by-step guidance on registration, job search, and UK practice standards</li>
                             <li>Free resources and practical advice from real-world experience</li>
                             <li>Fortnightly group sessions for international candidates</li>
