@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { PAGE_PADDING_TOP } from '../../config/pagePadding';
 import { useState } from 'react';
 import CommentSection from '../../../components/CommentSection';
+import { formatBlogContent } from '../../utils/formatContent';
 
 type Blog = {
     id: string;
@@ -172,7 +173,7 @@ export default function BlogPostPage({ post }: BlogPostPageProps) {
                 <div className="prose prose-lg prose-gray max-w-4xl mx-auto text-left">
                     <div 
                         className="article-content"
-                        dangerouslySetInnerHTML={{ __html: post.content }} 
+                        dangerouslySetInnerHTML={{ __html: formatBlogContent(post.content) }} 
                     />
                 </div>
 

@@ -13,7 +13,9 @@ type Blog = {
 };
 
 export const BlogCard = ({ blog }: { blog: Blog }) => {
-    const snippet = blog.content.substring(0, 140) + '...';
+    // Remove any HTML tags and get clean text for snippet
+    const plainText = blog.content.replace(/<[^>]*>/g, '');
+    const snippet = plainText.substring(0, 140) + '...';
     const postDate = new Date(blog.createdAt).toLocaleDateString('en-UK', {
         year: 'numeric',
         month: 'long',

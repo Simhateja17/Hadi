@@ -74,7 +74,9 @@ const ManageBlogsPage = () => {
     };
 
     const getSnippet = (content: string) => {
-        return content.substring(0, 120) + '...';
+        // Remove any HTML tags and get clean text
+        const plainText = content.replace(/<[^>]*>/g, '');
+        return plainText.substring(0, 120) + '...';
     };
 
     if (loading) {

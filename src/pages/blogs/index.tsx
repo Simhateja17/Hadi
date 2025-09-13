@@ -24,7 +24,9 @@ export default function BlogListPage({ blogs }: BlogListPageProps) {
 
     // Helper function to get snippet
     const getSnippet = (content: string) => {
-        return content.substring(0, 140) + '...';
+        // Remove any HTML tags and get clean text
+        const plainText = content.replace(/<[^>]*>/g, '');
+        return plainText.substring(0, 140) + '...';
     };
 
     // Helper function to format date
