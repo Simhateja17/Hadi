@@ -5,7 +5,7 @@ import { PAGE_PADDING_TOP } from '../config/pagePadding';
 export default function ContactUs() {
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-red-50" style={{ paddingTop: PAGE_PADDING_TOP.contactus }}>
+        <div style={{ paddingTop: PAGE_PADDING_TOP.contactus }}>
             {/* Combined Contact Section */}
             <section className="section-padding-lg bg-white">
                 <div className="container-custom">
