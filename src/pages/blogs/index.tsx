@@ -213,17 +213,17 @@ export default function BlogListPage({ blogs }: BlogListPageProps) {
             </section>
 
             {/* CTA Section */}
-            <section className="section-padding-lg bg-gradient-primary text-white">
-                <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <div className="max-w-4xl mx-auto">
-                        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-8 text-white">
+            <section className="section-padding-lg bg-gradient-primary text-white flex items-center justify-center">
+                <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+                    <div className="max-w-4xl mx-auto text-center flex flex-col items-center justify-center lg:translate-x-24">
+                        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-8 text-white text-center">
                             Need Personalized Guidance? 🇬🇧
                         </h2>
-                        <p className="text-xl mb-10 text-blue-100 leading-relaxed">
+                        <p className="text-xl mb-10 text-blue-100 leading-relaxed text-center max-w-3xl mx-auto">
                             Our expert team is ready to provide personalized support for your UK social work journey. 
                             Get in touch to discuss your specific needs and goals.
                         </p>
-                        <div className="flex flex-col sm:flex-row gap-6 justify-center">
+                        <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
                             <Link href="/contactus#schedule-call" className="btn btn-secondary btn-large">
                                 Book Consultation
                             </Link>
